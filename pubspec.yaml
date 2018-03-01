@@ -12,10 +12,10 @@ environment:
 dependencies:
   reflectable:
     git: git://github.com/dart-lang/reflectable.git
-  build_runner: ^0.7.0
+  build_runner: ^0.7.11
   glob: ^1.1.5
 dev_dependencies:
-  unittest: ^0.11.0
+  unittest: ^0.11.7
 transformers:
 - $dart2js:
     $include: []
