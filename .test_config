@@ -1,3 +1,6 @@
 {
-  "use_custom_script": "$dart $project_root/tool/annotated_steps.dart $dart $python"
+  "pre_pub_build_hooks": {
+      "Running reflectable code generation":
+      "$dart $project_root/tool/build.dart 'test/test_*.dart'"
+  }
 }
