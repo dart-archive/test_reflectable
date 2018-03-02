@@ -1,6 +1,6 @@
 {
   "pre_pub_build_hooks": {
       "Running reflectable code generation":
-      "$dart $project_root/tool/build.dart 'test/test_*.dart'"
+      "$dart $project_root/tool/build.dart '$project_root/test/test_*.dart'"
   }
 }
