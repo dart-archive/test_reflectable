@@ -5,7 +5,7 @@
 library test_reflectable.test.annotated_classes_test;
 
 import "package:reflectable/reflectable.dart";
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import 'annotated_classes_test.reflectable.dart';
 
 class MyReflectable extends Reflectable {

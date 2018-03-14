@@ -5,7 +5,7 @@
 library test_reflectable.test.reflect_type_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'reflect_type_test.reflectable.dart';
 
 class Reflector extends Reflectable {

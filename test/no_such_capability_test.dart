@@ -5,7 +5,7 @@
 library test_reflectable.test.no_such_capability_test;
 
 import 'package:reflectable/reflectable.dart' as r;
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'no_such_capability_test.reflectable.dart';
 
 class MyReflectable extends r.Reflectable {

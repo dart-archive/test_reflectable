@@ -12,7 +12,7 @@ library test_reflectable.test.subtype_test;
 @GlobalQuantifyCapability(
     r"^test_reflectable\.test\.subtype_test\..*", const InsufficientReflector())
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'subtype_test.reflectable.dart';
 
 class Reflector extends Reflectable {

@@ -14,7 +14,7 @@
 library test_reflectable.test.mixin_application_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'mixin_application_test.reflectable.dart';
 
 class Reflector extends Reflectable {

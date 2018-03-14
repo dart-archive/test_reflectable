@@ -4,7 +4,7 @@
 
 library test_reflectable.test.invoke_capabilities_test;
 
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'package:reflectable/reflectable.dart' as r;
 import 'package:reflectable/capability.dart' as c;
 import 'invoke_capabilities_test.reflectable.dart';

@@ -6,7 +6,7 @@
 // Uses type relations without a `typeRelations` capability.
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'no_type_relations_test.reflectable.dart';
 
 class Reflector extends Reflectable {

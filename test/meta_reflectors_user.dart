@@ -13,7 +13,7 @@
 library test_reflectable.test.meta_reflectors_user;
 
 import "package:reflectable/reflectable.dart";
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import "meta_reflectors_meta.dart";
 import "meta_reflectors_domain.dart";
 

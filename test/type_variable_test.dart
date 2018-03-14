@@ -8,7 +8,7 @@
 library test_reflectable.test.type_variable_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'type_variable_test.reflectable.dart';
 
 class NoTypeVariablesReflector extends Reflectable {

@@ -5,7 +5,7 @@
 library test_reflectable.test.name_clash_test;
 
 import "name_clash_lib.dart" as o;
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import 'name_clash_test.reflectable.dart';
 
 @o.reflector

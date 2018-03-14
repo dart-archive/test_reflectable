@@ -13,7 +13,7 @@ library test_reflectable.test.meta_reflector_test;
 @GlobalQuantifyCapability(
     r"^reflectable.reflectable.Reflectable$", const MetaReflector())
 import "package:reflectable/reflectable.dart";
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import 'meta_reflector_test.reflectable.dart';
 
 abstract class AllReflectorsCapable implements Reflectable {

@@ -8,7 +8,7 @@
 @topLevelInvokeFrReflector
 library test_reflectable.test.corresponding_setter_test;
 
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'package:reflectable/reflectable.dart';
 import 'package:reflectable/capability.dart';
 import 'corresponding_setter_test.reflectable.dart';

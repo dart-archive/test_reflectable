@@ -9,7 +9,7 @@
 library test_reflectable.test.use_prefix_test;
 
 import 'package:reflectable/reflectable.dart' as r;
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'use_prefix_test.reflectable.dart';
 
 class MyReflectable extends r.Reflectable {

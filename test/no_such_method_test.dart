@@ -9,7 +9,7 @@
 library test_reflectable.test.no_such_method_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'no_such_method_test.reflectable.dart';
 
 class Reflector extends Reflectable {

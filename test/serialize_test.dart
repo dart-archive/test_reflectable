@@ -4,7 +4,7 @@
 
 library test_reflectable.test.serialize_test;
 
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import "package:test_reflectable/serialize.dart";
 import 'serialize_test.reflectable.dart';
 

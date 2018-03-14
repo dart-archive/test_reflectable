@@ -7,7 +7,7 @@
 library test_reflectable.test.polymer_basic_needs_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'polymer_basic_needs_test.reflectable.dart';
 
 /// This class was used to separate Jacob Macdonald's Polymer example from

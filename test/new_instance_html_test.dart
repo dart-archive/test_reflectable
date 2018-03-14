@@ -12,7 +12,7 @@ import 'dart:html';
 
 @GlobalQuantifyCapability(r"^dart.dom.html.HttpRequest$", reflector)
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'new_instance_html_test.reflectable.dart';
 
 class Reflector extends Reflectable {

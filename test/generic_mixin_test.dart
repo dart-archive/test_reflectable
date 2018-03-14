@@ -11,7 +11,7 @@ library test_reflectable.test.generic_mixin_test;
 // why we need to explicitly request coverage for `num`.
 @GlobalQuantifyCapability(r"^dart.core.num$", reflector)
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'generic_mixin_test.reflectable.dart';
 
 class Reflector extends Reflectable {

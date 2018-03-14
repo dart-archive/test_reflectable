@@ -47,7 +47,7 @@
 
 library test_reflectable.test.exported_main_lib;
 
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'package:reflectable/reflectable.dart';
 import 'exported_main_test.reflectable.dart';
 

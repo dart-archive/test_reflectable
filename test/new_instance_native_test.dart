@@ -11,7 +11,7 @@
 
 @GlobalQuantifyCapability(r"^dart.core.List", reflector)
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'new_instance_native_test.reflectable.dart';
 
 class Reflector extends Reflectable {

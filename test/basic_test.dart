@@ -6,7 +6,7 @@
 
 library test_reflectable.test.basic_test;
 
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'package:reflectable/reflectable.dart' as r;
 import 'package:reflectable/capability.dart';
 import 'basic_test.reflectable.dart';

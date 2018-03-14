@@ -9,7 +9,7 @@
 library test_reflectable.test.unused_reflector_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'unused_reflector_test.reflectable.dart';
 
 class Reflector extends Reflectable {

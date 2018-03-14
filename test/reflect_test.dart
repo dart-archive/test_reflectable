@@ -8,7 +8,7 @@
 library test_reflectable.test.reflect_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'reflect_test.reflectable.dart';
 
 class MyReflectable extends Reflectable {

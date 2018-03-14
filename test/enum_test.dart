@@ -6,7 +6,7 @@
 /// Based on https://github.com/dart-lang/reflectable/issues/80.
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'enum_test.reflectable.dart';
 
 /// This annotation specifies the object can be serialized

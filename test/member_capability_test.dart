@@ -9,7 +9,7 @@
 library test_reflectable.test.member_capability_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'member_capability_test.reflectable.dart';
 
 class MyReflectable extends Reflectable {

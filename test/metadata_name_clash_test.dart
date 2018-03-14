@@ -7,7 +7,7 @@ library test_reflectable.test.metadata_name_clash_test;
 import "metadata_name_clash_lib.dart" as o;
 
 import "package:reflectable/reflectable.dart";
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import 'metadata_name_clash_test.reflectable.dart';
 
 class Reflector extends Reflectable {

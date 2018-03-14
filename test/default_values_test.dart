@@ -8,7 +8,7 @@
 library test_reflectable.test.default_values_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'default_values_lib.dart' as prefix;
 import 'default_values_test.reflectable.dart';
 

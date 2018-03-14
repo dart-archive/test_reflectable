@@ -8,7 +8,7 @@ library test_reflectable.test.global_quantify_test;
     r"^test_reflectable.test.global_quantify_test.(A|B)$", reflector)
 @GlobalQuantifyMetaCapability(Mark, reflector)
 import "package:reflectable/reflectable.dart";
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import 'global_quantify_test.reflectable.dart';
 
 class Reflector extends Reflectable {

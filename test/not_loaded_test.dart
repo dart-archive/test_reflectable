@@ -10,7 +10,7 @@
 library test_reflectable.test.not_loaded_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'not_loaded_lib.dart' deferred as not_loaded; // ignore:unused_import
 
 class Reflector extends Reflectable {

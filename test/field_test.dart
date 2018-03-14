@@ -8,7 +8,7 @@
 library test_reflectable.test.field_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'field_test.reflectable.dart';
 
 class FieldReflector extends Reflectable {

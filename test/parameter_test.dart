@@ -10,7 +10,7 @@
 library test_reflectable.test.parameter_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'parameter_test.reflectable.dart';
 
 // TODO(eernst) implement: Avoid testing the same things twice in this test and

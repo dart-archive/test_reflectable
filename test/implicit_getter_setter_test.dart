@@ -8,7 +8,7 @@
 library test_reflectable.test.implicit_getter_setter_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'implicit_getter_setter_test.reflectable.dart';
 
 class Reflector extends Reflectable {

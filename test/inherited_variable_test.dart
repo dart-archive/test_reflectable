@@ -10,7 +10,7 @@
 library test_reflectable.test.inherited_variable_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'inherited_variable_test.reflectable.dart';
 
 class Reflector extends Reflectable {

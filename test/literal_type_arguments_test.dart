@@ -8,7 +8,7 @@
 library test_reflectable.test.literal_type_arguments_test;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'literal_type_arguments_test.reflectable.dart';
 
 class Reflector extends Reflectable {

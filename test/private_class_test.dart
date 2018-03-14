@@ -10,7 +10,7 @@ library test_reflectable.test.private_class_test;
 
 @GlobalQuantifyCapability("PublicClass", privacyReflectable)
 import 'package:reflectable/reflectable.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'private_class_library.dart';
 import 'private_class_test.reflectable.dart';
 

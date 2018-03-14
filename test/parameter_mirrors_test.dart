@@ -4,7 +4,7 @@
 
 library test_reflectable.test.parameter_mirrors_test;
 
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import "package:reflectable/reflectable.dart";
 import "parameter_mirrors_lib.dart" as lib;
 import 'parameter_mirrors_test.reflectable.dart';
