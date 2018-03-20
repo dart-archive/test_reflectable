@@ -45,31 +45,28 @@ main() {
   ParameterMirror methodArgument0Mirror = methodMirror.parameters[0];
   ParameterMirror methodArgument1Mirror = methodMirror.parameters[1];
 
+  Type int2intType = const TypeValue<int Function(int)>().type;
+
   test('Function type as annotation', () {
     expect(variableMirror.hasReflectedType, true);
-    expect(variableMirror.reflectedType, Int2IntFunc);
+    expect(variableMirror.reflectedType, int2intType);
     expect(getterMirror.hasReflectedReturnType, true);
-    expect(getterMirror.reflectedReturnType, Int2IntFunc);
+    expect(getterMirror.reflectedReturnType, int2intType);
     expect(setterArgumentMirror.hasReflectedType, true);
-    expect(setterArgumentMirror.reflectedType, Int2IntFunc);
+    expect(setterArgumentMirror.reflectedType, int2intType);
     expect(methodArgument1Mirror.hasReflectedType, true);
-    expect(methodArgument1Mirror.reflectedType, Int2IntFunc);
+    expect(methodArgument1Mirror.reflectedType, int2intType);
     expect(variableMirror.hasDynamicReflectedType, true);
-    expect(variableMirror.dynamicReflectedType, Int2IntFunc);
+    expect(variableMirror.dynamicReflectedType, int2intType);
     expect(getterMirror.hasDynamicReflectedReturnType, true);
-    expect(getterMirror.dynamicReflectedReturnType, Int2IntFunc);
+    expect(getterMirror.dynamicReflectedReturnType, int2intType);
     expect(setterArgumentMirror.hasDynamicReflectedType, true);
-    expect(setterArgumentMirror.dynamicReflectedType, Int2IntFunc);
+    expect(setterArgumentMirror.dynamicReflectedType, int2intType);
+    expect(methodArgument0Mirror.hasReflectedType, true);
+    expect(methodArgument0Mirror.reflectedType, int2intType);
+    expect(methodArgument0Mirror.hasDynamicReflectedType, true);
+    expect(methodArgument0Mirror.dynamicReflectedType, int2intType);
     expect(methodArgument1Mirror.hasDynamicReflectedType, true);
-    expect(methodArgument1Mirror.dynamicReflectedType, Int2IntFunc);
-
-    // A nameless function type currently does not have a reflected type:
-    // Even though we could generate such a thing it would only be known to
-    // be different from other types --- programmers cannot denote it, so they
-    // cannot perform a test whereby it is recognized as equal to anything.
-    // Hence, a function type should have a `typedef` in order to have a
-    // reflected type.
-    expect(methodArgument0Mirror.hasReflectedType, false);
-    expect(methodArgument0Mirror.hasDynamicReflectedType, false);
+    expect(methodArgument1Mirror.dynamicReflectedType, int2intType);
   });
 }
