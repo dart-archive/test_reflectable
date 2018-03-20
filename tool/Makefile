@@ -6,7 +6,7 @@
 # on all platforms.
 
 PACKAGES=../.packages
-OPTIONS=--packages=$(PACKAGES)
+OPTIONS=--preview-dart-2
 TEST_DIR=../test
 
 all: get clean build check test
@@ -32,14 +32,14 @@ upgrade:
 	( cd ..; pub upgrade --no-packages-dir )
 
 check:
-	dartanalyzer $(OPTIONS) ../{lib,test}/*.dart
+	( cd ..; dartanalyzer $(OPTIONS) {lib,test}/*.dart )
 
 measure_output: build
 	@./measure_output --include-js --include-source-tree --include-unminified
 
 build:
-	( cd ..; dart tool/build.dart test/*_test.dart)
-	( cd ..; pub build --mode=debug test)
+	( cd ..; dart tool/build.dart test/*_test.dart )
+	( cd ..; pub build --mode=debug test )
 
 test:
 	@echo "-------------------- test"
