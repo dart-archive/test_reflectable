@@ -11,6 +11,7 @@
 // applications is as recommended there then this test can work, otherwise
 // the test should be adjusted.
 
+@TestOn("vm && !vm") // Blocked on missing `typeArguments` primitive.
 library test_reflectable.test.mixin_application_test;
 
 import 'package:reflectable/reflectable.dart';

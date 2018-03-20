@@ -6,6 +6,7 @@
 // Tests that `targetLibrary` of a library dependency is
 // null when that library has not been loaded.
 
+@TestOn("vm && !vm") // Blocked on implementation of library dependencies.
 @reflector
 library test_reflectable.test.not_loaded_test;
 

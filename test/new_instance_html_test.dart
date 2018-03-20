@@ -8,6 +8,7 @@
 // already avoids creating). Uses type annotations like all other parts of
 // reflectable.
 
+@TestOn("browser")
 import 'dart:html';
 
 @GlobalQuantifyCapability(r"^dart.dom.html.HttpRequest$", reflector)
