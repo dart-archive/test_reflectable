@@ -26,10 +26,10 @@ t: test
 cb: clean build
 
 get:
-	( cd ..; pub get --no-packages-dir )
+	( cd ..; pub get )
 
 upgrade:
-	( cd ..; pub upgrade --no-packages-dir )
+	( cd ..; pub upgrade )
 
 check:
 	( cd ..; dartanalyzer $(OPTIONS) {lib,test}/*.dart )
@@ -39,14 +39,14 @@ measure_output: build
 
 build:
 	( cd ..; dart tool/build.dart test/*_test.dart )
-	( cd ..; pub build --mode=debug test )
 
 test:
 	@echo "-------------------- test"
 	@./run_tests
 
 clean:
-	( rm -rf ../.dart_tool ../build )
+	( rm -rf ../.dart_tool )
 	( rm -f ../test/*.reflectable.dart )
 
 .PHONY: all g u c b t ft get upgrade check measure_output build test clean
+
