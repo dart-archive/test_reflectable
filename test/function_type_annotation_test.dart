@@ -29,7 +29,36 @@ class C {
   Int2IntFunc get getter => int2int;
   void set setter(Int2IntFunc int2int) {}
   void method(int noNameType(int _), {Int2IntFunc int2int: null}) {}
+
+  void inlineTypes(
+    int Function() f1,
+    int Function(int) f2,
+    int Function(int, int) f3,
+    int Function(int, [int]) f4,
+    int Function([int, int]) f5,
+    int Function(int, [int, int]) f6,
+    int Function(int, {int a}) f7,
+    int Function({int a, int b}) f8,
+    int Function(int, {int a, int b}) f9,
+    X Function<X>(X) f10,
+    X Function<X>(X, X) f11,
+    X Function<X>(X, [X]) f12,
+    X Function<X>([X, X]) f13,
+    X Function<X>(X, [X, X]) f14,
+    X Function<X>(X, {X a}) f15,
+    X Function<X>({X a, X b}) f16,
+    X Function<X>(X, {X a, X b}) f17,
+  ) {}
 }
+
+typedef typeF10 = X Function<X>(X);
+typedef typeF11 = X Function<X>(X, X);
+typedef typeF12 = X Function<X>(X, [X]);
+typedef typeF13 = X Function<X>([X, X]);
+typedef typeF14 = X Function<X>(X, [X, X]);
+typedef typeF15 = X Function<X>(X, {X a});
+typedef typeF16 = X Function<X>({X a, X b});
+typedef typeF17 = X Function<X>(X, {X a, X b});
 
 main() {
   initializeReflectable();
@@ -44,29 +73,55 @@ main() {
   ParameterMirror setterArgumentMirror = setterMirror.parameters[0];
   ParameterMirror methodArgument0Mirror = methodMirror.parameters[0];
   ParameterMirror methodArgument1Mirror = methodMirror.parameters[1];
-
   Type int2intType = const TypeValue<int Function(int)>().type;
 
-  test('Function type as annotation', () {
+  test('Using a function type as an annotation', () {
     expect(variableMirror.hasReflectedType, true);
     expect(variableMirror.reflectedType, int2intType);
     expect(getterMirror.hasReflectedReturnType, true);
     expect(getterMirror.reflectedReturnType, int2intType);
     expect(setterArgumentMirror.hasReflectedType, true);
     expect(setterArgumentMirror.reflectedType, int2intType);
+    expect(methodArgument0Mirror.hasReflectedType, true);
+    expect(methodArgument0Mirror.reflectedType, int2intType);
     expect(methodArgument1Mirror.hasReflectedType, true);
     expect(methodArgument1Mirror.reflectedType, int2intType);
+
     expect(variableMirror.hasDynamicReflectedType, true);
     expect(variableMirror.dynamicReflectedType, int2intType);
     expect(getterMirror.hasDynamicReflectedReturnType, true);
     expect(getterMirror.dynamicReflectedReturnType, int2intType);
     expect(setterArgumentMirror.hasDynamicReflectedType, true);
     expect(setterArgumentMirror.dynamicReflectedType, int2intType);
-    expect(methodArgument0Mirror.hasReflectedType, true);
-    expect(methodArgument0Mirror.reflectedType, int2intType);
     expect(methodArgument0Mirror.hasDynamicReflectedType, true);
     expect(methodArgument0Mirror.dynamicReflectedType, int2intType);
     expect(methodArgument1Mirror.hasDynamicReflectedType, true);
     expect(methodArgument1Mirror.dynamicReflectedType, int2intType);
+  });
+
+  MethodMirror inlineTypesMirror =
+      classMirror.declarations["inlineTypes"];
+  List<ParameterMirror> parameterMirrors = inlineTypesMirror.parameters;
+  List<Type> expectedTypes = [
+    new TypeValue<int Function()>().type,
+    new TypeValue<int Function(int)>().type,
+    new TypeValue<int Function(int, int)>().type,
+    new TypeValue<int Function(int, [int])>().type,
+    new TypeValue<int Function([int, int])>().type,
+    new TypeValue<int Function(int, [int, int])>().type,
+    new TypeValue<int Function(int, {int a})>().type,
+    new TypeValue<int Function({int a, int b})>().type,
+    new TypeValue<int Function(int, {int a, int b})>().type,
+    // The following types cannot be recognized (SDK issue #32625):
+    // typeF10, typeF11, typeF12, typeF13, typeF14, typeF15, typeF16, typeF17
+  ];
+
+  test('Using different kinds of function types', () {
+    for (ParameterMirror parameterMirror in parameterMirrors) {
+      expect(parameterMirror.hasReflectedType, true);
+    }
+    for (int index = 0; index < expectedTypes.length; index++) {
+      expect(parameterMirrors[index].reflectedType, expectedTypes[index]);
+    }
   });
 }
