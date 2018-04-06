@@ -3,7 +3,7 @@
 // the LICENSE file.
 
 // File used to test reflectable code generation.
-// Defines a reflector that is never used as a reflector; causes a transformer
+// Defines a reflector that is never used as a reflector; causes a
 // warning, but not an error.
 
 library test_reflectable.test.unused_reflector_test;
