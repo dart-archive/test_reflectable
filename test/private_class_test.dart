@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-/// File being transformed by the reflectable transformer.
+/// File used to test reflectable code generation.
 /// Uses public features of an instance of a private class in a different
 /// library. This illustrates that there is (very limited) support for access
 /// to private features.

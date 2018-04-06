@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Uses multiple fields declared with a shared type annotation.
 
 library test_reflectable.test.multi_field_test;

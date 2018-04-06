@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Uses a declaration from the original main file (this one)
 // in an expression that will be copied in generated code.
 

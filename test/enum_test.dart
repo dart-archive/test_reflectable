@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-/// File being transformed by the reflectable transformer.
+/// File used to test reflectable code generation.
 /// Based on https://github.com/dart-lang/reflectable/issues/80.
 
 import 'package:reflectable/reflectable.dart';

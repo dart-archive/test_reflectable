@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Checks that the occurrence of an expanding generic type (where
 // class `C` takes one type argument `X` and uses `C<C<X>>` as a
 // type annotation.

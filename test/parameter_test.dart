@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Accesses method parameters and their properties, such as
 // existence, being optional, type annotations; includes checks
 // concerning method return types.

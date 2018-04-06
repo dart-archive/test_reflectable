@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Used from 'default_values_test.dart' in order to test the situation
 // where a default value which is already imported is moved to a third
 // file and must be imported from there.

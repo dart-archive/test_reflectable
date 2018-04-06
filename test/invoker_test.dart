@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Uses `invoker` on methods with various argument list shapes.
 
 library test_reflectable.test.invoker_test;

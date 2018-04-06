@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Uses a getter/setter for a variable which is inherited
 // from a non-covered class. Created for issue #51, based on
 // input from Lasse Damgaard.

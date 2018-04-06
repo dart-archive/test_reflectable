@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-/// File being transformed by the reflectable transformer.
+/// File used to test reflectable code generation.
 /// Creates a `MetaReflector` which may be used to reflect on the set of
 /// reflectors themselves. Illustrates how it is possible to avoid the
 /// use of the method `Reflectable.getInstance` using an extra interface

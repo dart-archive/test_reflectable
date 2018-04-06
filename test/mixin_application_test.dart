@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Accesses the `typeArguments` of an anonymous mixin application.
 //
 // This test exists in order to provide a concrete case illustrating the

@@ -2,7 +2,7 @@
 // source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-// File being transformed by the reflectable transformer.
+// File used to test reflectable code generation.
 // Explores properties of implicit getters and setters.
 
 library test_reflectable.test.implicit_getter_setter_test;
