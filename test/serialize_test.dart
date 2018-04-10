@@ -40,6 +40,8 @@ class A {
   bool operator ==(other) {
     return _equalsHandlingLists(a, other.a) && _equalsHandlingLists(b, other.b);
   }
+
+  int get hashCode => a.hashCode ^ b.hashCode;
 }
 
 @Serializable()
@@ -57,6 +59,8 @@ class B extends A {
         _equalsHandlingLists(b, other.b) &&
         _equalsHandlingLists(c, other.c);
   }
+
+  int get hashCode => super.hashCode ^ c.hashCode;
 }
 
 main() {
