@@ -7,6 +7,7 @@ import "dart:io";
 Uri baseUri = Platform.script.resolve("../../../../../");
 
 runBuildRunnerInDirectory(String directory) async {
+  print("^^^^^ Current working directory: ${Directory.current}");
   Map<String, String> environment =
       new Map<String, String>.from(Platform.environment);
   Directory.current = directory;  
