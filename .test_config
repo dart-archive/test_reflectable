@@ -1,6 +1,3 @@
 {
-  "pre_pub_build_hooks": {
-      "Running reflectable code generation":
-      "pub run build_runner build"
-  }
+  "use_custom_script": "(cd $project_root; pub run build_runner build)"
 }
