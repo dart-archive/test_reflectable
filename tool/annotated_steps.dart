@@ -6,23 +6,31 @@ import "dart:io";
 
 Uri baseUri = Platform.script.resolve("../../../../../");
 
-runBuildRunnerInDirectory(String directory) async {
+int runBuildRunnerInDirectory(String directory) async {
   print("^^^ Current working directory: ${Directory.current}");
   Map<String, String> environment =
       new Map<String, String>.from(Platform.environment);
-  Directory.current = directory;  
+  Directory.current = directory;
   print("^^^ Current working directory after change: ${Directory.current}");
-    Process process = await Process.start(
-      'pub', ['run', 'build_runner', 'test'], environment: environment);
-  stdout.addStream(process.stdout);
-  stderr.addStream(process.stderr);
-  return process.exitCode;
+
+  Process process1 =
+      await Process.start('pub', ['get'], environment: environment);
+  stdout.addStream(process1.stdout);
+  stderr.addStream(process1.stderr);
+  int exitCode = await process1.exitCode;
+  if (exitCode != 0) return process1.exitCode;
+
+  Process process2 = await Process.start('pub', ['run', 'build_runner', 'test'],
+      environment: environment);
+  stdout.addStream(process2.stdout);
+  stderr.addStream(process2.stderr);
+  return process2.exitCode;
 }
 
 // Expects to be called with the path to the package root.
 // See .test_config.
 main(List<String> arguments) async {
-  String packagePath = arguments[0];
+  String packagePath = arguments[1];
   print("^^^ Run 'annotated_steps.dart' in $packagePath");
   int exitCode = await runBuildRunnerInDirectory(packagePath);
   print("^^^ Done 'annotated_steps.dart'");
