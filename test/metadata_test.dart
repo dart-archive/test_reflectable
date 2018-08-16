@@ -119,9 +119,9 @@ main() {
   test("metadata without capability", () {
     ClassMirror foo2Mirror = myReflectable2.reflectType(Foo2);
     expect(() => foo2Mirror.metadata,
-        throwsA(const isInstanceOf<NoSuchCapabilityError>()));
+        throwsA(const TypeMatcher<NoSuchCapabilityError>()));
 
     expect(() => foo2Mirror.declarations["foo"].metadata,
-        throwsA(const isInstanceOf<NoSuchCapabilityError>()));
+        throwsA(const TypeMatcher<NoSuchCapabilityError>()));
   });
 }

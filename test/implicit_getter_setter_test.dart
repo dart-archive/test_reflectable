@@ -24,7 +24,7 @@ class A {
   final A f2;
   static A f3;
   static final A f4 = new A(null);
-  static const f5 = 542;
+  static const dynamic f5 = 542;
   A(this.f2);
 }
 

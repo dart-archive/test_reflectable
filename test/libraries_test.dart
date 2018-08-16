@@ -59,10 +59,10 @@ set setter(x) => p = x + 1;
 get getter => "10";
 
 final Matcher throwsNoCapability =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 final Matcher throwsReflectableNoMethod =
-    throwsA(const isInstanceOf<ReflectableNoSuchMethodError>());
+    throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
 main() {
   initializeReflectable();
@@ -92,7 +92,7 @@ main() {
     MethodMirror setterMirror = libraryMirror.declarations["setter="];
     expect(pMirror.owner, libraryMirror);
     expect(pMirror.hasReflectedType, true);
-    expect(pMirror.reflectedType, dynamic);
+    expect(pMirror.reflectedType, int);
     expect(pMirror.metadata.length, 1);
     expect(pMirror.metadata[0], const Test());
     expect(pMirror.isConst, false);

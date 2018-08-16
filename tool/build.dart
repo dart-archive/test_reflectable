@@ -16,6 +16,6 @@ main(List<String> arguments) async {
       globbedArguments.add(fileSpec);
     }
   }
-  return await builder.reflectableBuild(globbedArguments) ==
+  return (await builder.reflectableBuild(globbedArguments)).status ==
       BuildStatus.success;
 }

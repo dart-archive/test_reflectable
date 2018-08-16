@@ -44,7 +44,7 @@ class A {
   static void set staticGetset(List<String> list) {}
 }
 
-final throwsNoCapability = throwsA(const isInstanceOf<NoSuchCapabilityError>());
+final throwsNoCapability = throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 main() {
   initializeReflectable();

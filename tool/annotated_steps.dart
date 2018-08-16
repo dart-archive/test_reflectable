@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import "dart:async";
 import "dart:io";
 
 Uri baseUri = Platform.script.resolve("../../../../../");
@@ -9,7 +10,7 @@ Uri baseUri = Platform.script.resolve("../../../../../");
 /// Run `pub` commands to set up .packages, generate code, and run tests.
 /// Will change current working directory of this process to the root of
 /// the copy of package 'test_reflectable' where the tests are executed.
-int runBuildRunnerInDirectory(String directory) async {
+Future<int> runBuildRunnerInDirectory(String directory) async {
   Map<String, String> environment =
       new Map<String, String>.from(Platform.environment);
   Directory.current = directory;

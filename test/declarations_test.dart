@@ -23,7 +23,7 @@ abstract class A {
   factory A.factory() {
     return new B();
   }
-  const factory A.redirectingFactory() = A.c;
+  const factory A.redirectingFactory() = B.c;
   const A.c();
   foo() {}
   int get getter1 => 10;
@@ -42,6 +42,8 @@ class B extends A {
   int get getter1 => 11;
   @override
   int get getter2 => 12;
+  const B.c(): super.c();
+  B();
 }
 
 main() {
@@ -70,7 +72,7 @@ main() {
         ]));
 
     expect(declarationsB.values.map((x) => x.simpleName),
-        new Set.from(["bar", "getter1", "getter2", "setter2=", "B"]));
+        new Set.from(["bar", "getter1", "getter2", "setter2=", "B.c", "B"]));
   });
 
   test("MethodMirror properties", () {

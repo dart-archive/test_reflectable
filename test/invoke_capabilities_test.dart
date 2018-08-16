@@ -119,10 +119,10 @@ class BImplementer implements A {
 }
 
 Matcher throwsNoCapability =
-    throwsA(new isInstanceOf<c.NoSuchCapabilityError>());
+    throwsA(new TypeMatcher<c.NoSuchCapabilityError>());
 
 Matcher throwsReflectableNoMethod =
-    throwsA(new isInstanceOf<c.ReflectableNoSuchMethodError>());
+    throwsA(new TypeMatcher<c.ReflectableNoSuchMethodError>());
 
 void testInstance(r.Reflectable mirrorSystem, A reflectee,
     {bool broad: false}) {

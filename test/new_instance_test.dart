@@ -87,7 +87,7 @@ void performTests(String message, Reflectable reflector) {
 }
 
 final throwsReflectableNoMethod =
-    throwsA(const isInstanceOf<ReflectableNoSuchMethodError>());
+    throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
 main() {
   performTests('reflector', reflector);

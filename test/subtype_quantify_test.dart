@@ -42,8 +42,8 @@ class E extends C with M {
 class F {}
 
 Matcher throwsNoSuchCapabilityError =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
-Matcher isClassMirror = const isInstanceOf<ClassMirror>();
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
+Matcher isClassMirror = const TypeMatcher<ClassMirror>();
 
 main() {
   initializeReflectable();

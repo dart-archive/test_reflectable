@@ -40,7 +40,7 @@ class D {
 }
 
 Matcher throwsNoSuchCapabilityError =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 main() {
   initializeReflectable();
@@ -48,11 +48,11 @@ main() {
   test("GlobalQuantifyCapability", () {
     expect(reflector.canReflectType(A), true);
     expect(reflector.canReflect(new A()), true);
-    expect(reflector.reflectType(A), const isInstanceOf<ClassMirror>());
+    expect(reflector.reflectType(A), const TypeMatcher<ClassMirror>());
     expect(reflector.reflect(new A()).invoke("foo", []), 42);
     expect(reflector.canReflectType(B), true);
     expect(reflector.canReflect(new B()), true);
-    expect(reflector.reflectType(B), const isInstanceOf<ClassMirror>());
+    expect(reflector.reflectType(B), const TypeMatcher<ClassMirror>());
     expect(reflector.reflect(new B()).invoke("foo", []), 43);
     expect(reflector.canReflectType(C), false);
     expect(reflector.canReflect(new C()), false);

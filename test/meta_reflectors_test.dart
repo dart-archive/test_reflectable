@@ -14,6 +14,8 @@
 /// dynamically.
 library test_reflectable.test.meta_reflectors_test;
 
+@GlobalQuantifyCapability(r"^reflectable.reflectable.Reflectable$",
+    const AllReflectorsMetaReflector()) // Remove when #34148 is resolved.
 @GlobalQuantifyCapability(r"\.(M1|M2|M3|A|B|C|D)$", const Reflector())
 @GlobalQuantifyCapability(r"\.(M1|M2|M3|B|C|D)$", const Reflector2())
 @GlobalQuantifyCapability(r"\.(C|D)$", const ReflectorUpwardsClosed())

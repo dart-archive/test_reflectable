@@ -104,7 +104,7 @@ void runTest(String message, ClassMirror bMirror, ClassMirror cMirror,
 }
 
 Matcher throwsANoSuchCapabilityException =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 main() {
   initializeReflectable();

@@ -34,7 +34,7 @@ class A {
 }
 
 Matcher throwsReflectableNoSuchMethod =
-    throwsA(const isInstanceOf<ReflectableNoSuchMethodError>());
+    throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
 main() {
   initializeReflectable();

@@ -23,7 +23,7 @@ class Foo {}
 class Bar extends Foo {}
 
 final Matcher throwsNoCapability =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 void expectCapabilityMessage(f()) {
   expect(() => f(), throwsNoCapability);

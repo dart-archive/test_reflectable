@@ -77,7 +77,7 @@ class B implements A {
 }
 
 Matcher throwsReflectableNoMethod =
-    throwsA(const isInstanceOf<ReflectableNoSuchMethodError>());
+    throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
 main() {
   initializeReflectable();

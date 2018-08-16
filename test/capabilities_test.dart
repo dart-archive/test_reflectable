@@ -99,9 +99,9 @@ class BImplementer implements B {
 }
 
 Matcher throwsNoCapability =
-    throwsA(new isInstanceOf<c.NoSuchCapabilityError>());
+    throwsA(new TypeMatcher<c.NoSuchCapabilityError>());
 Matcher throwsReflectableNoMethod =
-    throwsA(new isInstanceOf<c.ReflectableNoSuchMethodError>());
+    throwsA(new TypeMatcher<c.ReflectableNoSuchMethodError>());
 
 void testDynamic(B o, String description) {
   test("Dynamic invocation $description", () {

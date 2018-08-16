@@ -136,7 +136,7 @@ void set fooBar(int newValue) {
 }
 
 Matcher throwsReflectableNoMethod =
-    throwsA(new isInstanceOf<ReflectableNoSuchMethodError>());
+    throwsA(new TypeMatcher<ReflectableNoSuchMethodError>());
 
 void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad: false}) {
   test("Instance invocation: ${description[mirrorSystem.runtimeType]}", () {

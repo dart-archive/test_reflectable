@@ -132,14 +132,14 @@ testReflector(Reflectable reflector, String desc) {
     expect(bMirror.superclass.declarations["field"].owner, m1Mirror);
     expect(bMirror.superclass.declarations["staticBar"], null);
     expect(bMirror.superclass.hasReflectedType, true);
-    expect(bMirror.superclass.reflectedType, const isInstanceOf<Type>());
+    expect(bMirror.superclass.reflectedType, const TypeMatcher<Type>());
     expect(bMirror.superclass.superclass.reflectedType,
-        const isInstanceOf<Type>());
+        const TypeMatcher<Type>());
   });
 }
 
 Matcher throwsANoSuchCapabilityException =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 main() {
   initializeReflectable();
@@ -265,6 +265,6 @@ main() {
   });
   test("Mixins, some covered and some uncovered", () {
     expect(
-        const Reflector().reflectType(BB), const isInstanceOf<ClassMirror>());
+        const Reflector().reflectType(BB), const TypeMatcher<ClassMirror>());
   });
 }

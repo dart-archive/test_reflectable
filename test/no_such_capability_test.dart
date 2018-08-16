@@ -20,7 +20,7 @@ const myReflectable = const MyReflectable();
 class A {}
 
 Matcher throwsReflectableNoMethod =
-    throwsA(const isInstanceOf<r.ReflectableNoSuchMethodError>());
+    throwsA(const TypeMatcher<r.ReflectableNoSuchMethodError>());
 
 main() {
   initializeReflectable();
@@ -28,10 +28,10 @@ main() {
   test('reflect', () {
     r.InstanceMirror instanceMirror = myReflectable.reflect(new A());
     expect(() => instanceMirror.invoke("foo", []),
-        throwsA(const isInstanceOf<r.ReflectableNoSuchMethodError>()));
+        throwsA(const TypeMatcher<r.ReflectableNoSuchMethodError>()));
     r.ClassMirror classMirror = myReflectable.reflectType(A);
     expect(() => classMirror.invoke("foo", []),
-        throwsA(const isInstanceOf<r.ReflectableNoSuchMethodError>()));
+        throwsA(const TypeMatcher<r.ReflectableNoSuchMethodError>()));
     // When we have the capability we get the NoSuchMethodError, not
     // NoSuchCapabilityError.
     expect(() => instanceMirror.invoke("nonExisting", []),

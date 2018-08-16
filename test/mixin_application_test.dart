@@ -47,7 +47,7 @@ main() {
     ClassMirror bMirror = reflector.reflectType(B);
     ClassMirror bmMirror = bMirror.superclass;
     DeclarationMirror beMirror = bmMirror.instanceMembers['e'];
-    expect(beMirror, new isInstanceOf<MethodMirror>());
+    expect(beMirror, new TypeMatcher<MethodMirror>());
     MethodMirror beMethodMirror = beMirror;
     if (beMethodMirror.hasReflectedReturnType) {
       expect(beMethodMirror.reflectedReturnType, int);
@@ -63,7 +63,7 @@ main() {
     expect(cmMirror.typeArguments[0].hasReflectedType, isTrue);
     expect(cmMirror.typeArguments[0].reflectedType, A);
     DeclarationMirror ceMirror = cmMirror.instanceMembers['e'];
-    expect(ceMirror, new isInstanceOf<MethodMirror>());
+    expect(ceMirror, new TypeMatcher<MethodMirror>());
     MethodMirror ceMethodMirror = ceMirror;
     if (ceMethodMirror.hasReflectedReturnType) {
       expect(ceMethodMirror.reflectedReturnType, A);

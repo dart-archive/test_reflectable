@@ -42,14 +42,14 @@ testReflector(Reflectable reflector, String desc) {
     expect(bMirror.superclass.declarations["field"].owner, m1Mirror);
     expect(bMirror.superclass.declarations["staticBar"], null);
     expect(bMirror.superclass.hasReflectedType, true);
-    expect(bMirror.superclass.reflectedType, const isInstanceOf<Type>());
+    expect(bMirror.superclass.reflectedType, const TypeMatcher<Type>());
     expect(bMirror.superclass.superclass.reflectedType,
-        const isInstanceOf<Type>());
+        const TypeMatcher<Type>());
   });
 }
 
 Matcher throwsANoSuchCapabilityException =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 Iterable<String> getNames(Iterable<Reflectable> reflectables) {
   return reflectables.map((Reflectable reflector) {

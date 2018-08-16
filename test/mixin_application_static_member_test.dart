@@ -28,7 +28,7 @@ class A {
 class B extends A with M {}
 
 Matcher throwsReflectableNoMethod =
-    throwsA(const isInstanceOf<ReflectableNoSuchMethodError>());
+    throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
 main() {
   initializeReflectable();

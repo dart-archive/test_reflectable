@@ -19,7 +19,7 @@ class Reflector extends Reflectable {
 const reflector = const Reflector();
 
 Matcher throwsNoCapability =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 main() {
   initializeReflectable();

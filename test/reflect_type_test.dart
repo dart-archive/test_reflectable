@@ -28,12 +28,12 @@ class A {}
 class B {}
 
 final Matcher throwsNoCapability =
-    throwsA(new isInstanceOf<NoSuchCapabilityError>());
+    throwsA(new TypeMatcher<NoSuchCapabilityError>());
 
 void performTests(String message, reflector) {
   test("$message: reflectType", () {
     ClassMirror cm = reflector.reflectType(A);
-    expect(cm, new isInstanceOf<ClassMirror>());
+    expect(cm, new TypeMatcher<ClassMirror>());
     expect(cm.simpleName, "A");
     expect(() => reflector.reflectType(B), throwsNoCapability);
   });

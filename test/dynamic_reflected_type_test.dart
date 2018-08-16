@@ -23,7 +23,7 @@ class A {}
 @reflector
 class B<E> {}
 
-Matcher throwsUnsupported = throwsA(const isInstanceOf<UnsupportedError>());
+Matcher throwsUnsupported = throwsA(const TypeMatcher<UnsupportedError>());
 
 void testDynamicReflectedType(
     String message, ClassMirror classMirror, Type expectedType) {

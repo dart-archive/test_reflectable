@@ -59,7 +59,7 @@ class Serializer {
     if (o is String) {
       return {"type": "String", "val": o};
     }
-    Map result = {};
+    Map<String, dynamic> result = {};
     InstanceMirror im = serializable.reflect(o);
     ClassMirror classMirror = im.type;
     result["type"] = classMirror.qualifiedName;

@@ -45,7 +45,7 @@ class G extends D with M1, M2 {}
 class H = D with M1, M2;
 
 Matcher throwsNoCapability =
-    throwsA(const isInstanceOf<NoSuchCapabilityError>());
+    throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 main() {
   initializeReflectable();

@@ -105,12 +105,12 @@ main() {
     expect(f5Mirror.isStatic, isTrue);
     expect(f5Mirror.isFinal, isTrue); // Yes, a const member `isFinal`, too.
     expect(f5Mirror.isConst, isTrue);
-    expect(f5Mirror.type.reflectedType, dynamic);
+    expect(f5Mirror.type.reflectedType, String);
   });
 
   test("no field capability", () {
     ClassMirror classMirror = noFieldReflector.reflectType(A);
     expect(() => classMirror.declarations,
-        throwsA(const isInstanceOf<NoSuchCapabilityError>()));
+        throwsA(const TypeMatcher<NoSuchCapabilityError>()));
   });
 }

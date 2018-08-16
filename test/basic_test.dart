@@ -56,8 +56,8 @@ class C extends B {
   cMethod() => 'cMethod';
 }
 
-List<r.DeclarationMirror> filteredDeclarationsOf(r.ClassMirror cm, predicate) {
-  var result = [];
+List<X> filteredDeclarationsOf<X extends r.DeclarationMirror>(r.ClassMirror cm, predicate) {
+  var result = <X>[];
   cm.declarations.forEach((k, v) {
     if (predicate(v)) {
       result.add(v);
@@ -93,7 +93,7 @@ List<r.MethodMirror> methodsOf(r.ClassMirror cm) {
 
 Matcher throwsReflectableNoSuchMethod = throwsA(isReflectableNoSuchMethodError);
 Matcher isReflectableNoSuchMethodError =
-    new isInstanceOf<ReflectableNoSuchMethodError>();
+    new TypeMatcher<ReflectableNoSuchMethodError>();
 
 main() {
   initializeReflectable();

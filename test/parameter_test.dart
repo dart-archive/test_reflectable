@@ -70,7 +70,7 @@ class MyClass {
 
 class UnrelatedClass {}
 
-final throwsNoCapability = throwsA(const isInstanceOf<NoSuchCapabilityError>());
+final throwsNoCapability = throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
 void performTests(String message, Reflectable reflector) {
   ClassMirror myClassMirror = reflector.reflectType(MyClass);

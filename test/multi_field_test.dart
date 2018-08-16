@@ -48,7 +48,7 @@ class B {
 }
 
 final Matcher throwsReflectableNoMethod =
-    throwsA(new isInstanceOf<ReflectableNoSuchMethodError>());
+    throwsA(new TypeMatcher<ReflectableNoSuchMethodError>());
 
 main() {
   initializeReflectable();
