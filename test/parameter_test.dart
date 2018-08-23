@@ -7,6 +7,16 @@
 // existence, being optional, type annotations; includes checks
 // concerning method return types.
 
+// Note that this test gives rise to about 30 warnings, because the
+// quantification requested includes a `reflectedType` for some types
+// containing type variables. Apart from the fact that `reflectedType`
+// for the parameter of `add` on a `List` will then return `dynamic`
+// rather than the actual value of `E`, this does not prevent code
+// generation from completing, and it does not invalidate any other
+// feature. It may thus be an acceptable trade-off in some situations,
+// if we need the reflectedType for a few thousand type annotations,
+// and we don't want to enumerate them one by one.
+
 library test_reflectable.test.parameter_test;
 
 import 'package:reflectable/reflectable.dart';
