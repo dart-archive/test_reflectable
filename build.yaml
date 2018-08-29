@@ -1,5 +1,5 @@
 targets:
-  test_reflectable:
+  $default:
     builders:
       reflectable:
         generate_for:
