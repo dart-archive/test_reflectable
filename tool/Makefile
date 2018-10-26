@@ -6,7 +6,7 @@
 # on all platforms.
 
 PACKAGES=../.packages
-OPTIONS=--preview-dart-2
+OPTIONS=
 TEST_DIR=../test
 
 all: get clean build check test
@@ -38,15 +38,13 @@ measure_output: build
 	@./measure_output --include-js --include-source-tree --include-unminified
 
 build:
-	( cd ..; dart tool/build.dart test/*_test.dart )
+	( cd ..; pub run build_runner build test )
 
 test:
-	@echo "-------------------- test"
-	@./run_tests
+	( cd ..; pub run build_runner test )
 
 clean:
 	( rm -rf ../.dart_tool )
 	( rm -f ../test/*.reflectable.dart )
 
 .PHONY: all g u c b t ft get upgrade check measure_output build test clean
-
