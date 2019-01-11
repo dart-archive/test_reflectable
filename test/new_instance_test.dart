@@ -48,6 +48,9 @@ class A {
   // handling of name clashes for `isCheckCode`, so please do not change it.
   A.noMeta(int b) : f = b + 42;
 
+  @C()
+  factory A.aFactory() => A();
+
   int f = 0;
 }
 
@@ -83,6 +86,9 @@ void performTests(String message, Reflectable reflector) {
   test('$message: newInstance named arguments, unused', () {
     expect((classMirror.newInstance("argNamed", [1, 2]) as A).f, -49);
     expect((classMirror.newInstance("argNamed", [1, 2], {}) as A).f, -49);
+  });
+  test('$message: newInstance on factory', () {
+    expect((classMirror.newInstance("aFactory", []) as A).f, 42);
   });
 }
 
