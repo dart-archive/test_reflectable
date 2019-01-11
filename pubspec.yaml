@@ -14,5 +14,6 @@ dependencies:
   reflectable:
     git: git://github.com/dart-lang/reflectable.git
 dev_dependencies:
+  analyzer: ^0.34.0
   build_test: ^0.10.0
   test: any
