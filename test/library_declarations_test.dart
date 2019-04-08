@@ -79,5 +79,4 @@ main() {
     // expect(gMirror.reflectedType, G); // G<dynamic>?
     // expect(hMirror.reflectedType, H);
   });
-  print(libraryMirror.declarations);
 }
