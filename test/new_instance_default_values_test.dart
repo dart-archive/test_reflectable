@@ -29,7 +29,7 @@ class A {
       : f = x,
         g = y;
   A.initializingFormal([this.f = localConstant, this.g = globalConstant]);
-  A.namedInitializingFormal({this.f /*= localConstant*/, this.g /*= globalConstant*/});
+  A.namedInitializingFormal({this.f = localConstant, this.g = globalConstant});
   int f = 0;
   String g;
 }
