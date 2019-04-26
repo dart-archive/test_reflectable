@@ -22,7 +22,12 @@ const String globalConstant = "20";
 @myReflectable
 class A {
   static const localConstant = 10;
-  A.optional([int x = localConstant, String y = globalConstant]) : f = x, g = y;
+  A.optional([int x = localConstant, String y = globalConstant])
+      : f = x,
+        g = y;
+  A.namedOptional({int x = localConstant, String y = globalConstant})
+      : f = x,
+        g = y;
   int f = 0;
   String g;
 }
@@ -31,10 +36,20 @@ main() {
   initializeReflectable();
 
   ClassMirror classMirror = myReflectable.reflectType(A);
-  test('newInstance named arguments default argument, local constant', () {
-    expect((classMirror.newInstance("optional", [], {}) as A).f, 10);
+  A a = classMirror.newInstance("optional", [], {});
+
+  test('positional argument default, local constant', () {
+    expect(a.f, 10);
   });
-  test('newInstance named arguments default argument, global constant', () {
-    expect((classMirror.newInstance("optional", [], {}) as A).g, "20");
+  test('positional argument default, global constant', () {
+    expect(a.g, "20");
+  });
+
+  a = classMirror.newInstance("namedOptional", [], {});
+  test('named argument default, local constant', () {
+    expect(a.f, 10);
+  });
+  test('named argument default, global constant', () {
+    expect(a.g, "20");
   });
 }
