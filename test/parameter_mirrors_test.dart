@@ -12,7 +12,7 @@ import 'parameter_mirrors_test.reflectable.dart';
 class Reflector extends Reflectable {
   const Reflector()
       : super(instanceInvokeCapability, metadataCapability,
-            declarationsCapability);
+            newInstanceCapability, declarationsCapability);
 }
 
 class C {
@@ -25,6 +25,9 @@ class A {
   f2(int a) {}
   f3(int a, [String b, @C() String c = "ten"]) {}
   f4(int a, {@lib.D(3) A b, C c: const C()}) {}
+
+  var x;
+  A({this.x = 42});
 }
 
 main() {
@@ -40,6 +43,9 @@ main() {
     List<ParameterMirror> f3Parameters = f3.parameters;
     MethodMirror f4 = cm.declarations["f4"];
     List<ParameterMirror> f4Parameters = f4.parameters;
+    MethodMirror constructor = cm.declarations["A"];
+    List<ParameterMirror> constructorParameters = constructor.parameters;
+
     expect(f1Parameters, []);
 
     expect(f2Parameters.length, 1);
@@ -117,5 +123,19 @@ main() {
     expect(f4Parameters[2].qualifiedName,
         "test_reflectable.test.parameter_mirrors_test.A.f4.c");
     expect(f4Parameters[2].metadata, []);
+
+    expect(constructorParameters[0].isNamed, true);
+    expect(constructorParameters[0].hasDefaultValue, true);
+    expect(constructorParameters[0].defaultValue, 42);
+    expect(constructorParameters[0].isConst, false);
+    expect(constructorParameters[0].isFinal, false);
+    expect(constructorParameters[0].isStatic, false);
+    expect(constructorParameters[0].isOptional, true);
+    expect(constructorParameters[0].isTopLevel, false);
+    expect(constructorParameters[0].owner, constructor);
+    expect(constructorParameters[0].simpleName, "x");
+    expect(constructorParameters[0].qualifiedName,
+        "test_reflectable.test.parameter_mirrors_test.A..x");
+    expect(constructorParameters[0].metadata, []);
   });
 }
