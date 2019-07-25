@@ -65,17 +65,17 @@ class MyClass {
   void operator []=(int x, v) {}
 
   String get getset => "42";
-  void set getset(String string) {}
+  set getset(String string) {}
 
   static int noArguments() => null;
   static int oneArgument(String x) => null;
   static int optionalArguments(MyClass x, double y,
           [Reflector z, dynamic w = 42]) =>
       null;
-  static int namedArguments(String x, List y, {String z: "4" + "2"}) => null;
+  static int namedArguments(String x, List y, {String z = "4" + "2"}) => null;
 
   static List<List<List<C>>> get staticGetset => [];
-  static void set staticGetset(List<List<List<C>>> list) {}
+  static set staticGetset(List<List<List<C>>> list) {}
 }
 
 class UnrelatedClass {}

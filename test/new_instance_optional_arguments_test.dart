@@ -35,7 +35,7 @@ class A {
 @reflector
 class ClazzA
 {
-  ClazzA([dynamic property = null]);
+  ClazzA([dynamic property]);
 }
 
 main() {

@@ -27,8 +27,8 @@ Int2IntFunc int2int = (int x) => x;
 @reflector
 class C {
   Int2IntFunc get getter => int2int;
-  void set setter(Int2IntFunc int2int) {}
-  void method(int noNameType(int _), {Int2IntFunc int2int: null}) {}
+  set setter(Int2IntFunc int2int) {}
+  void method(int noNameType(int _), {Int2IntFunc int2int}) {}
 
   void inlineTypes(
     int Function() f1,

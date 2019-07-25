@@ -41,7 +41,7 @@ class A {
       : f = x + y + z * 42 + (w == null ? 10 : w);
 
   @C()
-  A.argNamed(int x, int y, {int z: 42, int p})
+  A.argNamed(int x, int y, {int z = 42, int p})
       : f = x + y - z - (p == null ? 10 : p);
 
   // Note that the parameter name `b` is used here in order to test the

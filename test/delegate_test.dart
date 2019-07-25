@@ -61,7 +61,7 @@ class A {
   @D()
   int get getset => getsetTarget;
 
-  void set getset(int x) {
+  set getset(int x) {
     getsetTarget = x;
   }
 

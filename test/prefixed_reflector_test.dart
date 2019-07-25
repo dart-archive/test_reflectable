@@ -24,7 +24,7 @@ class C {
 @C.reflector
 class D {
   int get getter => 24;
-  void set setter(int owtytrof) {}
+  set setter(int owtytrof) {}
 }
 
 main() {

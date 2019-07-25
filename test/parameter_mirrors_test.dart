@@ -24,7 +24,7 @@ class A {
   f1() {}
   f2(int a) {}
   f3(int a, [String b, @C() String c = "ten"]) {}
-  f4(int a, {@lib.D(3) A b, C c: const C()}) {}
+  f4(int a, {@lib.D(3) A b, C c = const C()}) {}
 
   var x;
   A({this.x = 42});

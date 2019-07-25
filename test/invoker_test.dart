@@ -24,7 +24,7 @@ class A {
   int arg0() => 42 + f;
   int arg1(int x) => x - 42 + f;
   int arg1to3(int x, int y, [int z = 0, w]) => x + y + z * 42 + f;
-  int argNamed(int x, int y, {int z: 42}) => x + y - z + f;
+  int argNamed(int x, int y, {int z = 42}) => x + y - z + f;
 }
 
 main() {

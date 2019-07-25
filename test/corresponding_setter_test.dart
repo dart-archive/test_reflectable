@@ -111,11 +111,11 @@ class B {
   @P() static int get foo => 44;
   @P() static int get foobar => 45;
 
-  static void set foo(int x) {
+  static set foo(int x) {
     field = x;
   }
 
-  static void set foobar(int x) {
+  static set foobar(int x) {
     field = x;
   }
 
@@ -131,14 +131,14 @@ int fooBarVariable = 41;
 @P()
 int get fooBar => 14;
 
-void set fooBar(int newValue) {
+set fooBar(int newValue) {
   fooBarVariable = newValue;
 }
 
 Matcher throwsReflectableNoMethod =
     throwsA(new TypeMatcher<ReflectableNoSuchMethodError>());
 
-void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad: false}) {
+void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad = false}) {
   test("Instance invocation: ${description[mirrorSystem.runtimeType]}", () {
     reflectee.reset();
     InstanceMirror instanceMirror = mirrorSystem.reflect(reflectee);
@@ -167,7 +167,7 @@ void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad: false}) {
 
 void testStatic(Reflectable mirrorSystem, Type reflectee, void classResetter(),
     int classGetter(),
-    {bool broad: false}) {
+    {bool broad = false}) {
   test("Static invocation: ${description[mirrorSystem.runtimeType]}", () {
     classResetter();
     ClassMirror classMirror = mirrorSystem.reflectType(reflectee);

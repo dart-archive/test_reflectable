@@ -35,7 +35,7 @@ final Set<String> libraryClassNames = <String>[
 ].toSet();
 
 void testPrivacyViolation(PublicClass object, String description,
-    {bool doReflect: true}) {
+    {bool doReflect = true}) {
   test("Privacy, $description", () {
     bool canReflect = privacyReflectable.canReflect(object);
     expect(canReflect, doReflect);

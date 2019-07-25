@@ -32,16 +32,16 @@ class A {
   void operator []=(int x, v) {}
 
   String get getset => "42";
-  void set getset(String string) {}
+  set getset(String string) {}
 
   static int noArguments() => null;
   static int oneArgument(String x) => null;
   static int optionalArguments(A x, double y, [Reflector z, dynamic w = 42]) =>
       null;
-  static int namedArguments(String x, List y, {String z: "4" + "2"}) => null;
+  static int namedArguments(String x, List y, {String z = "4" + "2"}) => null;
 
   static List<String> get staticGetset => ["42"];
-  static void set staticGetset(List<String> list) {}
+  static set staticGetset(List<String> list) {}
 }
 
 final throwsNoCapability = throwsA(const TypeMatcher<NoSuchCapabilityError>());

@@ -83,11 +83,11 @@ class B {
   static int foobar() => 43;
   static int get getFoo => 44;
   static int get getFoobar => 45;
-  static void set setFoo(int x) {
+  static set setFoo(int x) {
     field = x;
   }
 
-  static void set setFoobar(int x) {
+  static set setFoobar(int x) {
     field = x;
   }
 
@@ -104,11 +104,11 @@ class BImplementer implements A {
   int foobar() => 143;
   int get getFoo => 144;
   int get getFoobar => 145;
-  void set setFoo(int x) {
+  set setFoo(int x) {
     field = x + 100;
   }
 
-  void set setFoobar(int x) {
+  set setFoobar(int x) {
     field = x + 100;
   }
 
@@ -125,7 +125,7 @@ Matcher throwsReflectableNoMethod =
     throwsA(new TypeMatcher<c.ReflectableNoSuchMethodError>());
 
 void testInstance(r.Reflectable mirrorSystem, A reflectee,
-    {bool broad: false}) {
+    {bool broad = false}) {
   test("Instance invocation: ${description[mirrorSystem.runtimeType]}", () {
     reflectee.reset();
     r.InstanceMirror instanceMirror = mirrorSystem.reflect(reflectee);
@@ -164,7 +164,7 @@ void testInstance(r.Reflectable mirrorSystem, A reflectee,
 
 void testStatic(r.Reflectable mirrorSystem, Type reflectee,
     void classResetter(), int classGetter(),
-    {bool broad: false}) {
+    {bool broad = false}) {
   test("Static invocation: ${description[mirrorSystem.runtimeType]}", () {
     classResetter();
     r.ClassMirror classMirror = mirrorSystem.reflectType(reflectee);
