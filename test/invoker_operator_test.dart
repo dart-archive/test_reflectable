@@ -15,7 +15,7 @@ class MyReflectable extends Reflectable {
   const MyReflectable() : super(invokingCapability, typeCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 @myReflectable
 class A {
@@ -29,8 +29,8 @@ class A {
 main() {
   initializeReflectable();
 
-  A instance1 = new A(0);
-  A instance2 = new A(1);
+  A instance1 = A(0);
+  A instance2 = A(1);
   ClassMirror classMirror = myReflectable.reflectType(A);
   test('invoker of operator +', () {
     Function plusInvoker = classMirror.invoker("+");

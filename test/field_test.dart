@@ -21,13 +21,13 @@ class FieldReflector extends Reflectable {
             metadataCapability);
 }
 
-const fieldReflector = const FieldReflector();
+const fieldReflector = FieldReflector();
 
 class NoFieldReflector extends Reflectable {
   const NoFieldReflector() : super(invokingCapability, metadataCapability);
 }
 
-const noFieldReflector = const NoFieldReflector();
+const noFieldReflector = NoFieldReflector();
 
 @fieldReflector
 @noFieldReflector

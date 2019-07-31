@@ -17,7 +17,7 @@ class MyReflectable extends Reflectable {
       : super(newInstanceCapability, instanceInvokeCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 const int defaultX = 0x2A;
 const int _defaultY = defaultX;

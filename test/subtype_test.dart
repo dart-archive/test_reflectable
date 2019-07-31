@@ -8,9 +8,9 @@
 library test_reflectable.test.subtype_test;
 
 @GlobalQuantifyCapability(
-    r"^test_reflectable\.test\.subtype_test\..*", const Reflector())
+    r"^test_reflectable\.test\.subtype_test\..*", Reflector())
 @GlobalQuantifyCapability(
-    r"^test_reflectable\.test\.subtype_test\..*", const InsufficientReflector())
+    r"^test_reflectable\.test\.subtype_test\..*", InsufficientReflector())
 import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'subtype_test.reflectable.dart';

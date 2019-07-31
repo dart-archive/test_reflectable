@@ -16,7 +16,7 @@ class MyReflectable extends Reflectable {
       : super(superclassQuantifyCapability, typeRelationsCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 @myReflectable
 class MyClass {}

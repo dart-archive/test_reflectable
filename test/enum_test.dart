@@ -22,7 +22,7 @@ class Serializable extends Reflectable {
       typeCapability);
 }
 
-const serializable = const Serializable();
+const serializable = Serializable();
 
 enum Color { BLUE, RED, GREEN }
 
@@ -40,7 +40,7 @@ class JsonObjectStub {
 }
 
 dynamic fromJson(String jsonStr, Type clazz) {
-  if (jsonStr.startsWith("{")) return new JsonObjectStub(jsonStr);
+  if (jsonStr.startsWith("{")) return JsonObjectStub(jsonStr);
   return Color.BLUE;
 }
 

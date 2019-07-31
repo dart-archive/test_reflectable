@@ -18,7 +18,7 @@ class Reflector extends Reflectable {
             libraryCapability, declarationsCapability, typeRelationsCapability);
 }
 
-const Reflector reflector = const Reflector();
+const Reflector reflector = Reflector();
 
 @reflector
 abstract class A {}
@@ -26,7 +26,7 @@ abstract class A {}
 @reflector
 class _B {}
 
-final justToAvoidUnused_B = new _B();
+final justToAvoidUnused_B = _B();
 
 @reflector
 enum C { monday, tuesday, otherDays }
@@ -43,7 +43,7 @@ main() {
   ClassMirror bMirror = libraryMirror.declarations["_B"];
   ClassMirror cMirror = libraryMirror.declarations["C"];
   ClassMirror dMirror = libraryMirror.declarations["D"];
-  D<int> dOfInt = new D<int>();
+  D<int> dOfInt = D<int>();
   InstanceMirror dOfIntInstanceMirror = reflector.reflect(dOfInt);
   ClassMirror dOfIntMirror = dOfIntInstanceMirror.type;
 

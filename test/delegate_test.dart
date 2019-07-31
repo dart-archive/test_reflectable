@@ -25,9 +25,9 @@ class MetaReflector extends Reflectable {
       : super(delegateCapability, const InstanceInvokeMetaCapability(D));
 }
 
-const reflector = const Reflector();
-const nameReflector = const NameReflector();
-const metaReflector = const MetaReflector();
+const reflector = Reflector();
+const nameReflector = NameReflector();
+const metaReflector = MetaReflector();
 
 class D {
   const D();
@@ -82,10 +82,10 @@ Matcher throwsReflectableNoMethod =
 main() {
   initializeReflectable();
 
-  A a = new A();
-  B b = new B(reflector.reflect(a));
-  B bName = new B(nameReflector.reflect(a));
-  B bMeta = new B(metaReflector.reflect(a));
+  A a = A();
+  B b = B(reflector.reflect(a));
+  B bName = B(nameReflector.reflect(a));
+  B bMeta = B(metaReflector.reflect(a));
 
   test('Delegate method, no arguments', () {
     expect(b.arg0(), a.arg0());

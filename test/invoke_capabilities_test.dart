@@ -41,12 +41,12 @@ class StaticInvokeFrReflector extends r.Reflectable {
       : super(const c.StaticInvokeCapability(methodRegExp));
 }
 
-const invokingReflector = const InvokingReflector();
-const instanceInvokeReflector = const InstanceInvokeReflector();
-const staticInvokeReflector = const StaticInvokeReflector();
-const invokingFrReflector = const InvokingFrReflector();
-const instanceInvokeFrReflector = const InstanceInvokeFrReflector();
-const staticInvokeFrReflector = const StaticInvokeFrReflector();
+const invokingReflector = InvokingReflector();
+const instanceInvokeReflector = InstanceInvokeReflector();
+const staticInvokeReflector = StaticInvokeReflector();
+const invokingFrReflector = InvokingFrReflector();
+const instanceInvokeFrReflector = InstanceInvokeFrReflector();
+const staticInvokeFrReflector = StaticInvokeFrReflector();
 
 final Map<Type, String> description = <Type, String>{
   InvokingReflector: "Invoking",
@@ -119,10 +119,10 @@ class BImplementer implements A {
 }
 
 Matcher throwsNoCapability =
-    throwsA(new TypeMatcher<c.NoSuchCapabilityError>());
+    throwsA(TypeMatcher<c.NoSuchCapabilityError>());
 
 Matcher throwsReflectableNoMethod =
-    throwsA(new TypeMatcher<c.ReflectableNoSuchMethodError>());
+    throwsA(TypeMatcher<c.ReflectableNoSuchMethodError>());
 
 void testInstance(r.Reflectable mirrorSystem, A reflectee,
     {bool broad = false}) {
@@ -204,17 +204,17 @@ void testStatic(r.Reflectable mirrorSystem, Type reflectee,
 void testReflect(r.Reflectable mirrorSystem, B reflectee) {
   test("Can't reflect instance of subclass of annotated class", () {
     expect(() {
-      mirrorSystem.reflect(new BSubclass());
+      mirrorSystem.reflect(BSubclass());
     }, throwsNoCapability);
   });
   test("Can't reflect instance of subtype of annotated class", () {
     expect(() {
-      mirrorSystem.reflect(new BImplementer());
+      mirrorSystem.reflect(BImplementer());
     }, throwsNoCapability);
   });
   test("Can't reflect instance of unnanotated class", () {
     expect(() {
-      mirrorSystem.reflect(new Object());
+      mirrorSystem.reflect(Object());
     }, throwsNoCapability);
   });
 }
@@ -222,7 +222,7 @@ void testReflect(r.Reflectable mirrorSystem, B reflectee) {
 void main() {
   initializeReflectable();
 
-  A a = new A();
+  A a = A();
   testInstance(invokingReflector, a, broad: true);
   testInstance(instanceInvokeReflector, a, broad: true);
   testInstance(invokingFrReflector, a);

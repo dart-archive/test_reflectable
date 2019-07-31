@@ -24,7 +24,7 @@ class Reflector extends Reflectable {
             reflectedTypeCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class M<E> {
@@ -47,14 +47,14 @@ main() {
     ClassMirror bMirror = reflector.reflectType(B);
     ClassMirror bmMirror = bMirror.superclass;
     DeclarationMirror beMirror = bmMirror.instanceMembers['e'];
-    expect(beMirror, new TypeMatcher<MethodMirror>());
+    expect(beMirror, TypeMatcher<MethodMirror>());
     MethodMirror beMethodMirror = beMirror;
     if (beMethodMirror.hasReflectedReturnType) {
       expect(beMethodMirror.reflectedReturnType, int);
     } else {
       expect(() => beMethodMirror.reflectedReturnType, throwsUnsupportedError);
     }
-    ClassMirror cMirror = reflector.reflectType(new C<A>().runtimeType);
+    ClassMirror cMirror = reflector.reflectType(C<A>().runtimeType);
     ClassMirror cmMirror = cMirror.superclass;
     expect(cMirror.typeArguments.length, 1);
     expect(cMirror.typeArguments[0].hasReflectedType, isTrue);
@@ -63,7 +63,7 @@ main() {
     expect(cmMirror.typeArguments[0].hasReflectedType, isTrue);
     expect(cmMirror.typeArguments[0].reflectedType, A);
     DeclarationMirror ceMirror = cmMirror.instanceMembers['e'];
-    expect(ceMirror, new TypeMatcher<MethodMirror>());
+    expect(ceMirror, TypeMatcher<MethodMirror>());
     MethodMirror ceMethodMirror = ceMirror;
     if (ceMethodMirror.hasReflectedReturnType) {
       expect(ceMethodMirror.reflectedReturnType, A);

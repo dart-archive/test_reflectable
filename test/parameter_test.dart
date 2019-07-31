@@ -36,7 +36,7 @@ class Reflector extends Reflectable {
             typeRelationsCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 class DeepReflector extends Reflectable {
   const DeepReflector()
@@ -48,7 +48,7 @@ class DeepReflector extends Reflectable {
             typeRelationsCapability);
 }
 
-const deepReflector = const DeepReflector();
+const deepReflector = DeepReflector();
 
 class C {}
 

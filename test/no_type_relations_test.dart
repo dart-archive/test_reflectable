@@ -14,7 +14,7 @@ class Reflector extends Reflectable {
       : super(declarationsCapability, superclassQuantifyCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class Foo {}

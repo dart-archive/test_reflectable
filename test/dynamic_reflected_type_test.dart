@@ -15,7 +15,7 @@ class Reflector extends Reflectable {
   const Reflector() : super(typeCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class A {}
@@ -41,7 +41,7 @@ main() {
 
   ClassMirror aMirror = reflector.reflectType(A);
   ClassMirror bMirror = reflector.reflectType(B);
-  ClassMirror bInstantiationMirror = reflector.reflect(new B<int>()).type;
+  ClassMirror bInstantiationMirror = reflector.reflect(B<int>()).type;
   testDynamicReflectedType('non-generic class', aMirror, A);
   testDynamicReflectedType('generic class', bMirror, B);
   testDynamicReflectedType('generic instantiation', bInstantiationMirror, B);

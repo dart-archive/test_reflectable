@@ -23,10 +23,10 @@ class _PrivateClass2 implements PublicClass {
 
 class PublicSubclass2 extends _PrivateClass2 {}
 
-PublicClass func1() => new _PrivateClass1();
+PublicClass func1() => _PrivateClass1();
 
-PublicClass func2() => new _PrivateClass2();
+PublicClass func2() => _PrivateClass2();
 
-PublicClass func3() => new PublicSubclass1();
+PublicClass func3() => PublicSubclass1();
 
-PublicClass func4() => new PublicSubclass2();
+PublicClass func4() => PublicSubclass2();

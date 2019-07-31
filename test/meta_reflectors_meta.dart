@@ -12,7 +12,7 @@
 library test_reflectable.test.meta_reflectors_meta;
 
 @GlobalQuantifyCapability(r"^reflectable.reflectable.Reflectable$",
-    const AllReflectorsMetaReflector())
+    AllReflectorsMetaReflector())
 import 'package:reflectable/reflectable.dart';
 
 /// Used to provide access to reflectors associated with a given scope,
@@ -26,7 +26,7 @@ class ScopeMetaReflector extends Reflectable {
       : super(const TopLevelInvokeMetaCapability(ScopeMetaReflector),
             declarationsCapability, libraryCapability);
   Set<Reflectable> reflectablesOfScope(String scope) {
-    Set<Reflectable> result = new Set<Reflectable>();
+    Set<Reflectable> result = Set<Reflectable>();
     for (LibraryMirror library in libraries.values) {
       for (DeclarationMirror declaration in library.declarations.values) {
         if (declaration is MethodMirror) {
@@ -44,7 +44,7 @@ class AllReflectorsMetaReflector extends Reflectable {
       : super(subtypeQuantifyCapability, newInstanceCapability);
 
   Set<Reflectable> get reflectors {
-    Set<Reflectable> result = new Set<Reflectable>();
+    Set<Reflectable> result = Set<Reflectable>();
     annotatedClasses.forEach((ClassMirror classMirror) {
       if (classMirror.isAbstract) return;
       Reflectable reflector =

@@ -15,13 +15,13 @@ class Reflector extends Reflectable {
   const Reflector() : super(newInstanceCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 class MetaReflector extends Reflectable {
   const MetaReflector() : super(const NewInstanceMetaCapability(C));
 }
 
-const metaReflector = const MetaReflector();
+const metaReflector = MetaReflector();
 
 class C {
   const C();

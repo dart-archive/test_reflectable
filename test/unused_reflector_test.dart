@@ -16,7 +16,7 @@ class Reflector extends Reflectable {
   const Reflector() : super(invokingCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 Matcher throwsNoCapability =
     throwsA(const TypeMatcher<NoSuchCapabilityError>());

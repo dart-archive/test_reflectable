@@ -14,7 +14,7 @@ import 'serialize_test.reflectable.dart';
 class A {
   var a;
   var b;
-  // The default constructor will be used for creating new instances when
+  // The default constructor will be used for creating instances when
   // deserializing.
   A();
 
@@ -66,10 +66,10 @@ class B extends A {
 main() {
   initializeReflectable();
 
-  Serializer serializer = new Serializer();
+  Serializer serializer = Serializer();
   test("Round trip test", () {
-    var input = new A.fromValues(
-        "one", new A.fromValues(2, [3, new A.fromValues(4, 5)]));
+    var input = A.fromValues(
+        "one", A.fromValues(2, [3, A.fromValues(4, 5)]));
     var out = serializer.serialize(input);
     // Assert that the output of the serialization is equals to
     // the expected map:
@@ -103,7 +103,7 @@ main() {
     expect(serializer.deserialize(out), input);
   });
   test("Serialize subtype", () {
-    var input = new A.fromValues(1, new B.fromValues(1, 2, 3));
+    var input = A.fromValues(1, B.fromValues(1, 2, 3));
     var output = serializer.serialize(input);
     expect(output, {
       "type": "test_reflectable.test.serialize_test.A",

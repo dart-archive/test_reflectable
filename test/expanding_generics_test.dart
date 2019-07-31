@@ -17,7 +17,7 @@ class Reflector extends Reflectable {
   const Reflector() : super(typeCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class C<X> {
@@ -25,7 +25,7 @@ class C<X> {
 }
 
 class Typer<X> { Type get type => X; }
-final Type COfInt = new Typer<C<int>>().type;
+final Type COfInt = Typer<C<int>>().type;
 
 void runTest(String message, ClassMirror classMirror) {
   test("Obtain mirror for expanding generic $message", () {
@@ -41,6 +41,6 @@ main() {
   test('Reject reflection directly on instantiated generic class', () {
     expect(reflector.canReflectType(COfInt), false);
   });
-  InstanceMirror instanceMirror = reflector.reflect(new C<int>());
+  InstanceMirror instanceMirror = reflector.reflect(C<int>());
   runTest('using `reflect`, then `type`.', instanceMirror.type);
 }

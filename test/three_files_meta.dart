@@ -14,4 +14,4 @@ class MyReflectable extends Reflectable {
   const MyReflectable() : super();
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();

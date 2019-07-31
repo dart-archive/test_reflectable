@@ -21,7 +21,7 @@ class Reflector extends Reflectable {
       : super(newInstanceCapability, declarationsCapability, libraryCapability);
 }
 
-const Reflector reflector = const Reflector();
+const Reflector reflector = Reflector();
 
 void main() {
   initializeReflectable();

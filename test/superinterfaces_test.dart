@@ -36,7 +36,7 @@ class F extends C implements B, D, E {}
 @Reflector()
 class G {}
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 void main() {
   initializeReflectable();

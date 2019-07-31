@@ -18,7 +18,7 @@ class Reflector extends Reflectable {
 }
 
 class C {
-  static const reflector = const Reflector();
+  static const reflector = Reflector();
 }
 
 @C.reflector

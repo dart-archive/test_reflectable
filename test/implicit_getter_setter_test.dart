@@ -16,14 +16,14 @@ class Reflector extends Reflectable {
       : super(declarationsCapability, const InvokingCapability("f"));
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class A {
   A f1;
   final A f2;
   static A f3;
-  static final A f4 = new A(null);
+  static final A f4 = A(null);
   static const dynamic f5 = 542;
   A(this.f2);
 }

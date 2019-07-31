@@ -20,11 +20,11 @@ main() {
   initializeReflectable();
 
   test('reflect local', () {
-    InstanceMirror instanceMirror = myReflectable.reflect(new A());
+    InstanceMirror instanceMirror = myReflectable.reflect(A());
     expect(instanceMirror == null, isFalse);
   });
   test('reflect imported', () {
-    InstanceMirror instanceMirror = myReflectable.reflect(new B());
+    InstanceMirror instanceMirror = myReflectable.reflect(B());
     expect(instanceMirror == null, isFalse);
   });
 }

@@ -18,19 +18,17 @@ class MyReflectable extends Reflectable {
             staticInvokeCapability, declarationsCapability, libraryCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 class MyReflectable2 extends Reflectable {
   const MyReflectable2()
       : super(instanceInvokeCapability, staticInvokeCapability);
 }
 
-const myReflectable2 = const MyReflectable2();
+const myReflectable2 = MyReflectable2();
 
 const b = 13;
-const c = const [
-  const Bar(const {"a": 14})
-];
+const c = [Bar({"a": 14})];
 const d = true;
 
 class K {
@@ -38,9 +36,9 @@ class K {
 }
 
 @myReflectable
-@Bar(const {
+@Bar({
   b: deprecated,
-  c: const Deprecated("tomorrow"),
+  c: Deprecated("tomorrow"),
   1 + 2: (d ? 3 : 4),
   identical(1, 2): "s",
   K.p: 6
@@ -48,8 +46,8 @@ class K {
 @b
 @c
 class Foo {
-  @Bar(const {})
-  @Bar.namedConstructor(const {})
+  @Bar({})
+  @Bar.namedConstructor({})
   @b
   @c
   foo() {}
@@ -59,13 +57,13 @@ class Foo {
 }
 
 @myReflectable2
-@Bar(const {})
-@Bar.namedConstructor(const {})
+@Bar({})
+@Bar.namedConstructor({})
 @b
 @c
 class Foo2 {
-  @Bar(const {})
-  @Bar.namedConstructor(const {})
+  @Bar({})
+  @Bar.namedConstructor({})
   @b
   @c
   foo() {}
@@ -83,28 +81,24 @@ main() {
 
   test("metadata on class", () {
     expect(myReflectable.reflectType(Foo).metadata, const [
-      const MyReflectable(),
-      const Bar(const {
+      MyReflectable(),
+      Bar({
         b: deprecated,
-        c: const Deprecated("tomorrow"),
+        c: Deprecated("tomorrow"),
         3: 3,
         false: "s",
         2: 6
       }),
       13,
-      const [
-        const Bar(const {"a": 14})
-      ]
+      [Bar({"a": 14})],
     ]);
 
     ClassMirror fooMirror = myReflectable.reflectType(Foo);
     expect(fooMirror.declarations["foo"].metadata, const [
-      const Bar(const {}),
-      const Bar(const {}),
+      Bar({}),
+      Bar({}),
       13,
-      const [
-        const Bar(const {"a": 14})
-      ]
+      [Bar({"a": 14})],
     ]);
 
     expect(fooMirror.declarations["x"].metadata, [b]);

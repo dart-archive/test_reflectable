@@ -17,13 +17,13 @@ class Reflector extends Reflectable {
             declarationsCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 class C {
   const C();
 }
 
-const c = const C();
+const c = C();
 
 class MetaReflector extends Reflectable {
   const MetaReflector()
@@ -31,7 +31,7 @@ class MetaReflector extends Reflectable {
             declarationsCapability);
 }
 
-const metaReflector = const MetaReflector();
+const metaReflector = MetaReflector();
 
 @reflector
 class A {
@@ -48,13 +48,13 @@ class B {
 }
 
 final Matcher throwsReflectableNoMethod =
-    throwsA(new TypeMatcher<ReflectableNoSuchMethodError>());
+    throwsA(TypeMatcher<ReflectableNoSuchMethodError>());
 
 main() {
   initializeReflectable();
 
-  A theA = new A();
-  B theB = new B();
+  A theA = A();
+  B theB = B();
   InstanceMirror aInstanceMirror = reflector.reflect(theA),
       bInstanceMirror = metaReflector.reflect(theB);
   ClassMirror aClassMirror = aInstanceMirror.type,

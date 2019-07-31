@@ -15,7 +15,7 @@ class MyReflectable extends Reflectable {
   const MyReflectable() : super(newInstanceCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 const String globalConstant = "20";
 

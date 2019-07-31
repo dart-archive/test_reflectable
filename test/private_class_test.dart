@@ -24,7 +24,7 @@ class PrivacyReflectable extends Reflectable {
             libraryCapability);
 }
 
-const privacyReflectable = const PrivacyReflectable();
+const privacyReflectable = PrivacyReflectable();
 
 final Set<String> libraryClassNames = <String>[
   "PublicClass",

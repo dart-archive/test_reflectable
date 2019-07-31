@@ -15,7 +15,7 @@ class MyReflectable extends Reflectable {
   const MyReflectable() : super(invokingCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 @myReflectable
 class A {
@@ -40,7 +40,7 @@ class A {
 main() {
   initializeReflectable();
 
-  A instance = new A();
+  A instance = A();
   InstanceMirror instanceMirror = myReflectable.reflect(instance);
   test('invoke with no arguments', () {
     expect(instanceMirror.invoke("arg0", []), 42);

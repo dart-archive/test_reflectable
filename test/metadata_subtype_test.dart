@@ -17,7 +17,7 @@ class MyReflectable extends Reflectable {
             const StaticInvokeMetaCapability(D), declarationsCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 class D {
   const D();
@@ -72,7 +72,7 @@ main() {
     expect(declarations['staticBar'], isNotNull);
     expect(declarations['staticBaz'], isNull);
   });
-  InstanceMirror instanceMirror = myReflectable.reflect(new C());
+  InstanceMirror instanceMirror = myReflectable.reflect(C());
   test("Proper subtypes as metadata, invocation", () {
     expect(instanceMirror.invoke('foo', []), 24);
     expect(instanceMirror.invoke('bar', []), 24);

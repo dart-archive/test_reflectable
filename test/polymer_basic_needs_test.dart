@@ -45,7 +45,7 @@ ThinDeclarationMirror makeThin(DeclarationMirror declaration) {
 
   bool isMethod() => !isField() && !isProperty();
 
-  return new ThinDeclarationMirror(declaration.simpleName,
+  return ThinDeclarationMirror(declaration.simpleName,
       declaration is VariableMirror, isProperty(), isFinal(), isMethod());
 }
 
@@ -54,7 +54,7 @@ class MyReflectable extends Reflectable {
       : super(instanceInvokeCapability, declarationsCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 List<DeclarationMirror> _query(Type dartType) {
   ClassMirror mirror = myReflectable.reflectType(dartType);
@@ -113,7 +113,7 @@ main() {
     }
 
     // Check other methods from `polymer_basic_needs_lib`.
-    A a = new A();
+    A a = A();
     write(a, "i", 7);
     expect(read(a, "i"), 7);
     invoke(a, "bar", [42]);

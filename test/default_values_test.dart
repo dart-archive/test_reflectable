@@ -16,7 +16,7 @@ class MyReflectable extends Reflectable {
   const MyReflectable() : super(newInstanceCapability, typeCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 const String globalConstant = "20";
 
@@ -33,13 +33,7 @@ class A {
       [int x = prefix.A.localConstant + 31,
       bool y = identical(globalConstant, globalConstant),
       z = prefix.globalConstant + prefix.globalConstant,
-      w = const [
-    String,
-    null,
-    myReflectable,
-    const B(named: 24),
-    const <int, Type>{1: A}
-  ]])
+      w = const [String, null, myReflectable, B(named: 24), <int, Type>{1: A}]])
       : f = x,
         g = y,
         h = z,

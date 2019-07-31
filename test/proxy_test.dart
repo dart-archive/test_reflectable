@@ -16,7 +16,7 @@ class ProxyReflectable extends Reflectable {
       : super(instanceInvokeCapability, declarationsCapability);
 }
 
-const proxyReflectable = const ProxyReflectable();
+const proxyReflectable = ProxyReflectable();
 
 @proxyReflectable
 class A {
@@ -46,7 +46,7 @@ Map<Symbol, Function> createMethodMap(Type T) {
     DeclarationMirror declaration = declarations[name];
     if (declaration is MethodMirror) {
       methodMapForT.putIfAbsent(
-          new Symbol(name),
+          Symbol(name),
           () => (forwardee) {
                 InstanceMirror instanceMirror =
                     proxyReflectable.reflect(forwardee);
@@ -64,8 +64,8 @@ main() {
   Map<Symbol, Function> methodMapForA = createMethodMap(A);
 
   // Set up a single proxy for a single instance.
-  final A a = new A();
-  Proxy proxy = new Proxy(a, methodMapForA);
+  final A a = A();
+  Proxy proxy = Proxy(a, methodMapForA);
 
   // Use it.
   test("Using proxy", () {

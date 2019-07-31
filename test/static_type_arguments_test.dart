@@ -16,7 +16,7 @@ class Reflector extends Reflectable {
       typeCapability, typeRelationsCapability, reflectedTypeCapability);
 }
 
-const Reflector reflector = const Reflector();
+const Reflector reflector = Reflector();
 
 @reflector
 class SecurityService {}
@@ -35,7 +35,7 @@ class MyGenericService<X extends SecurityService> {
 }
 
 Matcher throwsUnimplemented = throwsA(isUnimplementedError);
-Matcher isUnimplementedError = new TypeMatcher<UnimplementedError>();
+Matcher isUnimplementedError = TypeMatcher<UnimplementedError>();
 
 main() {
   initializeReflectable();

@@ -14,7 +14,7 @@ class Reflector extends Reflectable {
             typeRelationsCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class A {
@@ -50,34 +50,34 @@ main() {
 
   test("Subtype quantification supports annotated class", () {
     expect(reflector.canReflectType(A), true);
-    expect(reflector.canReflect(new A()), true);
+    expect(reflector.canReflect(A()), true);
     expect(reflector.reflectType(A), isClassMirror);
-    expect(reflector.reflect(new A()).invoke("foo", []), 42);
+    expect(reflector.reflect(A()).invoke("foo", []), 42);
   });
 
   test("Subtype quantification supports subclass", () {
     expect(reflector.canReflectType(B), true);
-    expect(reflector.canReflect(new B()), true);
+    expect(reflector.canReflect(B()), true);
     expect(reflector.reflectType(B), isClassMirror);
-    expect(reflector.reflect(new B()).invoke("foo", []), 43);
+    expect(reflector.reflect(B()).invoke("foo", []), 43);
   });
 
   test("Subtype quantification supports subtype", () {
     expect(reflector.canReflectType(C), true);
-    expect(reflector.canReflect(new C()), true);
+    expect(reflector.canReflect(C()), true);
     expect(reflector.reflectType(C), isClassMirror);
-    expect(reflector.reflect(new C()).invoke("foo", []), 44);
+    expect(reflector.reflect(C()).invoke("foo", []), 44);
   });
 
   test("Subtype quantification supports mixins", () {
     expect(reflector.canReflectType(D), true);
-    expect(reflector.canReflect(new D()), true);
+    expect(reflector.canReflect(D()), true);
     expect(reflector.reflectType(D), isClassMirror);
-    expect(reflector.reflect(new D()).invoke("foo", []), 45);
+    expect(reflector.reflect(D()).invoke("foo", []), 45);
     expect(reflector.canReflectType(E), true);
-    expect(reflector.canReflect(new E()), true);
+    expect(reflector.canReflect(E()), true);
     expect(reflector.reflectType(E), isClassMirror);
-    expect(reflector.reflect(new E()).invoke("foo", []), 46);
+    expect(reflector.reflect(E()).invoke("foo", []), 46);
   });
 
   test("Subtype quantification supports mixin applications", () {
@@ -88,8 +88,8 @@ main() {
 
   test("Subtype quantification does not support unrelated class", () {
     expect(reflector.canReflectType(F), false);
-    expect(reflector.canReflect(new F()), false);
+    expect(reflector.canReflect(F()), false);
     expect(() => reflector.reflectType(F), throwsNoSuchCapabilityError);
-    expect(() => reflector.reflect(new F()), throwsNoSuchCapabilityError);
+    expect(() => reflector.reflect(F()), throwsNoSuchCapabilityError);
   });
 }

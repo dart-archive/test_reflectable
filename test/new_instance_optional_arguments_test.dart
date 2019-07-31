@@ -15,7 +15,7 @@ class Reflector extends Reflectable {
   const Reflector(): super(newInstanceCapability);
 }
 
-const Reflector reflector = const Reflector();
+const Reflector reflector = Reflector();
 
 @reflector
 class A {

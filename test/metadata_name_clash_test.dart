@@ -18,7 +18,7 @@ class Bar {
   const Bar();
 }
 
-const Reflectable reflector = const Reflector();
+const Reflectable reflector = Reflector();
 
 @reflector
 @Bar()

@@ -18,7 +18,7 @@ class Reflector extends Reflectable {
             declarationsCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class A {

@@ -18,7 +18,7 @@ class Reflector extends Reflectable {
             declarationsCapability, reflectedTypeCapability, libraryCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 abstract class A {}

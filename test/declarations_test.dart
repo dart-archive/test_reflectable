@@ -21,7 +21,7 @@ abstract class A {
   A();
   A.redirecting() : this();
   factory A.factory() {
-    return new B();
+    return B();
   }
   const factory A.redirectingFactory() = B.c;
   const A.c();
@@ -49,7 +49,7 @@ class B extends A {
 main() {
   initializeReflectable();
 
-  const reflector = const Reflector();
+  const reflector = Reflector();
   ClassMirror aMirror = reflector.reflectType(A);
   ClassMirror bMirror = reflector.reflectType(B);
   Map<String, DeclarationMirror> declarationsA = aMirror.declarations;
@@ -58,7 +58,7 @@ main() {
   test("declarations", () {
     expect(
         declarationsA.values.map((x) => x.simpleName),
-        new Set.from([
+        Set.from([
           "foo",
           "getter1",
           "getter2",
@@ -72,7 +72,7 @@ main() {
         ]));
 
     expect(declarationsB.values.map((x) => x.simpleName),
-        new Set.from(["bar", "getter1", "getter2", "setter2=", "B.c", "B"]));
+        Set.from(["bar", "getter1", "getter2", "setter2=", "B.c", "B"]));
   });
 
   test("MethodMirror properties", () {
@@ -173,7 +173,7 @@ main() {
     Map<String, DeclarationMirror> instanceMembersA = aMirror.instanceMembers;
     expect(
         instanceMembersA.values.map((x) => x.simpleName),
-        new Set.from([
+        Set.from([
           "toString",
           "hashCode",
           "==",
@@ -188,7 +188,7 @@ main() {
     Map<String, DeclarationMirror> instanceMembersB = bMirror.instanceMembers;
     expect(
         instanceMembersB.values.map((x) => x.simpleName),
-        new Set.from([
+        Set.from([
           "toString",
           "hashCode",
           "==",

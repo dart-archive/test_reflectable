@@ -14,11 +14,11 @@
 /// dynamically.
 library test_reflectable.test.meta_reflectors_test;
 
-@GlobalQuantifyCapability(r"\.(M1|M2|M3|A|B|C|D)$", const Reflector())
-@GlobalQuantifyCapability(r"\.(M1|M2|M3|B|C|D)$", const Reflector2())
-@GlobalQuantifyCapability(r"\.(C|D)$", const ReflectorUpwardsClosed())
-@GlobalQuantifyCapability(r"\.(C|D)$", const ReflectorUpwardsClosedToA())
-@GlobalQuantifyCapability(r"\.(C|D)$", const ReflectorUpwardsClosedUntilA())
+@GlobalQuantifyCapability(r"\.(M1|M2|M3|A|B|C|D)$", Reflector())
+@GlobalQuantifyCapability(r"\.(M1|M2|M3|B|C|D)$", Reflector2())
+@GlobalQuantifyCapability(r"\.(C|D)$",ReflectorUpwardsClosed())
+@GlobalQuantifyCapability(r"\.(C|D)$", ReflectorUpwardsClosedToA())
+@GlobalQuantifyCapability(r"\.(C|D)$", ReflectorUpwardsClosedUntilA())
 import "package:reflectable/reflectable.dart";
 import "meta_reflectors_domain_definer.dart";
 import "meta_reflectors_definer.dart";
@@ -26,9 +26,9 @@ import "meta_reflectors_meta.dart";
 import 'meta_reflectors_test.reflectable.dart';
 import "meta_reflectors_user.dart";
 
-Map<String, Iterable<Reflectable>> scopeMap = <String, Iterable<Reflectable>>{
-  "polymer": <Reflectable>[const Reflector(), const ReflectorUpwardsClosed()],
-  "observe": <Reflectable>[const Reflector2(), const ReflectorUpwardsClosed()]
+const Map<String, Iterable<Reflectable>> scopeMap = {
+  "polymer": <Reflectable>[Reflector(), ReflectorUpwardsClosed()],
+  "observe": <Reflectable>[Reflector2(), ReflectorUpwardsClosed()]
 };
 
 @ScopeMetaReflector()

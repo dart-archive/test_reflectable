@@ -20,7 +20,7 @@ class Reflector extends Reflectable {
             reflectedTypeCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class M<E> {
@@ -46,18 +46,18 @@ main() {
   initializeReflectable();
 
   test('Generic mixin, instance', () {
-    InstanceMirror bMirror = reflector.reflect(new B());
+    InstanceMirror bMirror = reflector.reflect(B());
     expect(bMirror.invokeGetter("e"), null);
-    InstanceMirror cMirror = reflector.reflect(new C<int>());
+    InstanceMirror cMirror = reflector.reflect(C<int>());
     expect(cMirror.invokeGetter("e"), null);
-    InstanceMirror dMirror = reflector.reflect(new D<int>());
+    InstanceMirror dMirror = reflector.reflect(D<int>());
     expect(dMirror.invokeGetter("e"), null);
   });
 
   test('Generic mixin, super of plain class', () {
     ClassMirror bMirror = reflector.reflectType(B);
     DeclarationMirror eMirror = bMirror.instanceMembers['e'];
-    expect(eMirror, new TypeMatcher<MethodMirror>());
+    expect(eMirror, TypeMatcher<MethodMirror>());
     MethodMirror eMethodMirror = eMirror;
     if (eMethodMirror.hasReflectedReturnType) {
       expect(eMethodMirror.reflectedReturnType, int);
@@ -67,9 +67,9 @@ main() {
   });
 
   test('Generic mixin, super of generic class', () {
-    ClassMirror cMirror = reflector.reflect(new C<num>()).type;
+    ClassMirror cMirror = reflector.reflect(C<num>()).type;
     DeclarationMirror ceMirror = cMirror.instanceMembers['e'];
-    expect(ceMirror, new TypeMatcher<MethodMirror>());
+    expect(ceMirror, TypeMatcher<MethodMirror>());
     MethodMirror ceMethodMirror = ceMirror;
     if (ceMethodMirror.hasReflectedReturnType) {
       expect(ceMethodMirror.reflectedReturnType, num);
@@ -79,9 +79,9 @@ main() {
   });
 
   test('Generic mixin, named super of generic class', () {
-    ClassMirror dMirror = reflector.reflect(new D<num>()).type;
+    ClassMirror dMirror = reflector.reflect(D<num>()).type;
     DeclarationMirror deMirror = dMirror.instanceMembers['e'];
-    expect(deMirror, new TypeMatcher<MethodMirror>());
+    expect(deMirror, TypeMatcher<MethodMirror>());
     MethodMirror deMethodMirror = deMirror;
     if (deMethodMirror.hasReflectedReturnType) {
       expect(deMethodMirror.reflectedReturnType, num);

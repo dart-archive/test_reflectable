@@ -17,7 +17,7 @@ class Reflector extends Reflectable {
   const Reflector() : super(instanceInvokeCapability, declarationsCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 class A {
   int x;
@@ -33,6 +33,6 @@ main() {
 
   test('Variable inherited from non-covered class', () {
     expect(
-        reflector.reflect(new C()).type.instanceMembers['x'].simpleName, 'x');
+        reflector.reflect(C()).type.instanceMembers['x'].simpleName, 'x');
   });
 }

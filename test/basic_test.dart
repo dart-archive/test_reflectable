@@ -93,7 +93,7 @@ List<r.MethodMirror> methodsOf(r.ClassMirror cm) {
 
 Matcher throwsReflectableNoSuchMethod = throwsA(isReflectableNoSuchMethodError);
 Matcher isReflectableNoSuchMethodError =
-    new TypeMatcher<ReflectableNoSuchMethodError>();
+    TypeMatcher<ReflectableNoSuchMethodError>();
 
 main() {
   initializeReflectable();

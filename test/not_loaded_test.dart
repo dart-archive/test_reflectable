@@ -18,7 +18,7 @@ class Reflector extends Reflectable {
   const Reflector() : super(libraryCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 main() {
   test('get non-loaded library', () {

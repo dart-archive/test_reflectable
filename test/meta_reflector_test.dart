@@ -11,7 +11,7 @@
 library test_reflectable.test.meta_reflector_test;
 
 @GlobalQuantifyCapability(
-    r"^reflectable.reflectable.Reflectable$", const MetaReflector())
+    r"^reflectable.reflectable.Reflectable$", MetaReflector())
 import "package:reflectable/reflectable.dart";
 import "package:test/test.dart";
 import 'meta_reflector_test.reflectable.dart';
@@ -25,7 +25,7 @@ class MetaReflector extends Reflectable {
   const MetaReflector()
       : super(subtypeQuantifyCapability, newInstanceCapability);
   Set<Reflectable> get allReflectors {
-    Set<Reflectable> result = new Set<Reflectable>();
+    Set<Reflectable> result = Set<Reflectable>();
     annotatedClasses.forEach((ClassMirror classMirror) {
       if (classMirror.isAbstract) return;
       Reflectable reflector = classMirror.newInstance("", []);
@@ -37,7 +37,7 @@ class MetaReflector extends Reflectable {
   }
 }
 
-Set<String> setOf(String s) => new Set<String>.from(<String>[s]);
+Set<String> setOf(String s) => Set<String>.from(<String>[s]);
 
 class Reflector extends Reflectable implements AllReflectorsCapable {
   const Reflector()
@@ -70,7 +70,7 @@ class ReflectorUpwardsClosedToA extends Reflectable
       : super(const SuperclassQuantifyCapability(A), invokingCapability,
             declarationsCapability, typeRelationsCapability);
   Reflectable get self => const ReflectorUpwardsClosedToA();
-  Set<String> get scopes => new Set<String>();
+  Set<String> get scopes => Set<String>();
 }
 
 class ReflectorUpwardsClosedUntilA extends Reflectable
@@ -82,7 +82,7 @@ class ReflectorUpwardsClosedUntilA extends Reflectable
             declarationsCapability,
             typeRelationsCapability);
   Reflectable get self => const ReflectorUpwardsClosedUntilA();
-  Set<String> get scopes => new Set<String>();
+  Set<String> get scopes => Set<String>();
 }
 
 @Reflector()

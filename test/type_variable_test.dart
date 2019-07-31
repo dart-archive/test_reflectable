@@ -28,9 +28,9 @@ class Reflector extends Reflectable {
             libraryCapability, typeRelationsCapability, metadataCapability);
 }
 
-const Reflectable noTypeVariablesReflector = const NoTypeVariablesReflector();
-const Reflectable noBoundsReflector = const NoBoundsReflector();
-const Reflectable reflector = const Reflector();
+const Reflectable noTypeVariablesReflector = NoTypeVariablesReflector();
+const Reflectable noBoundsReflector = NoBoundsReflector();
+const Reflectable reflector = Reflector();
 
 class A {}
 
@@ -109,7 +109,7 @@ Matcher throwsANoSuchCapabilityException =
 main() {
   initializeReflectable();
 
-  B<int, A> b = new B<int, A>();
+  B<int, A> b = B<int, A>();
 
   test('Type variables, no type variable capability', () {
     ClassMirror classMirror = noTypeVariablesReflector.reflect(b).type;
@@ -133,8 +133,8 @@ main() {
 
   runTest(
       'dynamic',
-      reflector.reflect(new B<int, A>()).type,
-      reflector.reflect(new C<A>()).type,
-      reflector.reflect(new D<E>()).type,
-      reflector.reflect(new E()).type);
+      reflector.reflect(B<int, A>()).type,
+      reflector.reflect(C<A>()).type,
+      reflector.reflect(D<E>()).type,
+      reflector.reflect(E()).type);
 }

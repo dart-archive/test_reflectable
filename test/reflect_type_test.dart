@@ -12,14 +12,14 @@ class Reflector extends Reflectable {
   const Reflector() : super(typeCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 class BroadReflector extends Reflectable {
   const BroadReflector()
       : super.fromList(const <ReflectCapability>[typingCapability]);
 }
 
-const broadReflector = const BroadReflector();
+const broadReflector = BroadReflector();
 
 @reflector
 @broadReflector
@@ -28,18 +28,18 @@ class A {}
 class B {}
 
 final Matcher throwsNoCapability =
-    throwsA(new TypeMatcher<NoSuchCapabilityError>());
+    throwsA(TypeMatcher<NoSuchCapabilityError>());
 
 void performTests(String message, reflector) {
   test("$message: reflectType", () {
     ClassMirror cm = reflector.reflectType(A);
-    expect(cm, new TypeMatcher<ClassMirror>());
+    expect(cm, TypeMatcher<ClassMirror>());
     expect(cm.simpleName, "A");
     expect(() => reflector.reflectType(B), throwsNoCapability);
   });
   test("$message: InstanceMirror.type", () {
     ClassMirror cm = reflector.reflectType(A);
-    ClassMirror cm2 = reflector.reflect(new A()).type;
+    ClassMirror cm2 = reflector.reflect(A()).type;
     expect(cm.qualifiedName, cm2.qualifiedName);
   });
 }

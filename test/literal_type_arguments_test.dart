@@ -17,7 +17,7 @@ class Reflector extends Reflectable {
             declarationsCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 class ListMetadata {
   final List<int> theList;
@@ -31,9 +31,9 @@ class MapMetadata {
 
 @reflector
 class C {
-  @ListMetadata(const <int>[1, 2])
+  @ListMetadata(<int>[1, 2])
   int get foo => 42;
-  @MapMetadata(const <int, Reflector>{3: reflector})
+  @MapMetadata(<int, Reflector>{3: reflector})
   int get bar => 43;
 }
 

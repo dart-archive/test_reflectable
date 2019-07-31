@@ -23,7 +23,7 @@ class StaticReflector extends r.Reflectable {
             c.declarationsCapability);
 }
 
-const staticReflector = const StaticReflector();
+const staticReflector = StaticReflector();
 
 class ABase {
   static int notIncluded() => 48;
@@ -57,7 +57,7 @@ class InstanceReflector extends r.Reflectable {
             c.declarationsCapability);
 }
 
-const instanceReflector = const InstanceReflector();
+const instanceReflector = InstanceReflector();
 
 class BBase {
   @C()
@@ -99,9 +99,9 @@ class BImplementer implements B {
 }
 
 Matcher throwsNoCapability =
-    throwsA(new TypeMatcher<c.NoSuchCapabilityError>());
+    throwsA(TypeMatcher<c.NoSuchCapabilityError>());
 Matcher throwsReflectableNoMethod =
-    throwsA(new TypeMatcher<c.ReflectableNoSuchMethodError>());
+    throwsA(TypeMatcher<c.ReflectableNoSuchMethodError>());
 
 void testDynamic(B o, String description) {
   test("Dynamic invocation $description", () {
@@ -141,30 +141,30 @@ void main() {
         ["foo", "setFoo=", "getFoo", "boo"].toSet());
     expect(classMirror.invoke("boo", []), 47);
   });
-  testDynamic(new B(), "Annotated");
+  testDynamic(B(), "Annotated");
 
   test("Declarations", () {
-    expect(instanceReflector.reflect(new B()).type.declarations.keys,
+    expect(instanceReflector.reflect(B()).type.declarations.keys,
         ["foo", "setFoo=", "getFoo", "boo"].toSet());
   });
 
   test("Can't reflect subclass of annotated", () {
-    expect(instanceReflector.canReflect(new BSubclass()), false);
+    expect(instanceReflector.canReflect(BSubclass()), false);
     expect(instanceReflector.canReflectType(BSubclass), false);
     expect(
-        () => instanceReflector.reflect(new BSubclass()), throwsNoCapability);
+        () => instanceReflector.reflect(BSubclass()), throwsNoCapability);
   });
 
   test("Can't reflect subtype of annotated", () {
-    expect(instanceReflector.canReflect(new BImplementer()), false);
+    expect(instanceReflector.canReflect(BImplementer()), false);
     expect(instanceReflector.canReflectType(BImplementer), false);
-    expect(() => instanceReflector.reflect(new BImplementer()),
+    expect(() => instanceReflector.reflect(BImplementer()),
         throwsNoCapability);
   });
 
   test("Can't reflect unnanotated", () {
-    expect(instanceReflector.canReflect(new C()), false);
+    expect(instanceReflector.canReflect(C()), false);
     expect(instanceReflector.canReflectType(C), false);
-    expect(() => instanceReflector.reflect(new C()), throwsNoCapability);
+    expect(() => instanceReflector.reflect(C()), throwsNoCapability);
   });
 }

@@ -10,7 +10,7 @@ class Reflector extends Reflectable {
   const Reflector() : super(typeCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class C {}

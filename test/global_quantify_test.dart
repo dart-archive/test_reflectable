@@ -16,7 +16,7 @@ class Reflector extends Reflectable {
       : super(typeCapability, const InstanceInvokeCapability("foo"));
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 class Mark {
   const Mark();
@@ -47,21 +47,21 @@ main() {
 
   test("GlobalQuantifyCapability", () {
     expect(reflector.canReflectType(A), true);
-    expect(reflector.canReflect(new A()), true);
+    expect(reflector.canReflect(A()), true);
     expect(reflector.reflectType(A), const TypeMatcher<ClassMirror>());
-    expect(reflector.reflect(new A()).invoke("foo", []), 42);
+    expect(reflector.reflect(A()).invoke("foo", []), 42);
     expect(reflector.canReflectType(B), true);
-    expect(reflector.canReflect(new B()), true);
+    expect(reflector.canReflect(B()), true);
     expect(reflector.reflectType(B), const TypeMatcher<ClassMirror>());
-    expect(reflector.reflect(new B()).invoke("foo", []), 43);
+    expect(reflector.reflect(B()).invoke("foo", []), 43);
     expect(reflector.canReflectType(C), false);
-    expect(reflector.canReflect(new C()), false);
+    expect(reflector.canReflect(C()), false);
     expect(() => reflector.reflectType(C), throwsNoSuchCapabilityError);
-    expect(() => reflector.reflect(new C()), throwsNoSuchCapabilityError);
+    expect(() => reflector.reflect(C()), throwsNoSuchCapabilityError);
   });
   test("GlobalQuantifyMetaCapability", () {
     expect(reflector.canReflectType(D), true);
-    expect(reflector.canReflect(new D()), true);
-    expect(reflector.reflect(new D()).invoke("foo", []), 45);
+    expect(reflector.canReflect(D()), true);
+    expect(reflector.reflect(D()).invoke("foo", []), 45);
   });
 }

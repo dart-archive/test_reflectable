@@ -14,7 +14,7 @@ class MyReflectable extends r.Reflectable {
             const r.InstanceInvokeCapability("nonExisting"));
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 @myReflectable
 class A {}
@@ -26,7 +26,7 @@ main() {
   initializeReflectable();
 
   test('reflect', () {
-    r.InstanceMirror instanceMirror = myReflectable.reflect(new A());
+    r.InstanceMirror instanceMirror = myReflectable.reflect(A());
     expect(() => instanceMirror.invoke("foo", []),
         throwsA(const TypeMatcher<r.ReflectableNoSuchMethodError>()));
     r.ClassMirror classMirror = myReflectable.reflectType(A);

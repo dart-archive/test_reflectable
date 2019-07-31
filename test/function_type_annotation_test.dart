@@ -18,7 +18,7 @@ class Reflector extends Reflectable {
             declarationsCapability, reflectedTypeCapability, libraryCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 typedef int Int2IntFunc(int _);
 
@@ -103,15 +103,15 @@ main() {
       classMirror.declarations["inlineTypes"];
   List<ParameterMirror> parameterMirrors = inlineTypesMirror.parameters;
   List<Type> expectedTypes = [
-    new TypeValue<int Function()>().type,
-    new TypeValue<int Function(int)>().type,
-    new TypeValue<int Function(int, int)>().type,
-    new TypeValue<int Function(int, [int])>().type,
-    new TypeValue<int Function([int, int])>().type,
-    new TypeValue<int Function(int, [int, int])>().type,
-    new TypeValue<int Function(int, {int a})>().type,
-    new TypeValue<int Function({int a, int b})>().type,
-    new TypeValue<int Function(int, {int a, int b})>().type,
+    TypeValue<int Function()>().type,
+    TypeValue<int Function(int)>().type,
+    TypeValue<int Function(int, int)>().type,
+    TypeValue<int Function(int, [int])>().type,
+    TypeValue<int Function([int, int])>().type,
+    TypeValue<int Function(int, [int, int])>().type,
+    TypeValue<int Function(int, {int a})>().type,
+    TypeValue<int Function({int a, int b})>().type,
+    TypeValue<int Function(int, {int a, int b})>().type,
     // The following types cannot be recognized (SDK issue #32625):
     // typeF10, typeF11, typeF12, typeF13, typeF14, typeF15, typeF16, typeF17
   ];

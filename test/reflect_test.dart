@@ -15,7 +15,7 @@ class MyReflectable extends Reflectable {
   const MyReflectable();
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 @myReflectable
 class A {}
@@ -24,7 +24,7 @@ main() {
   initializeReflectable();
 
   test('reflect', () {
-    InstanceMirror instanceMirror = myReflectable.reflect(new A());
+    InstanceMirror instanceMirror = myReflectable.reflect(A());
     expect(instanceMirror == null, isFalse);
   });
 }

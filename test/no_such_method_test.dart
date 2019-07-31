@@ -17,7 +17,7 @@ class Reflector extends Reflectable {
       : super(typeCapability, invokingCapability, libraryCapability);
 }
 
-const reflector = const Reflector();
+const reflector = Reflector();
 
 @reflector
 class A {
@@ -39,7 +39,7 @@ Matcher throwsReflectableNoSuchMethod =
 main() {
   initializeReflectable();
 
-  InstanceMirror aMirror = reflector.reflect(new A());
+  InstanceMirror aMirror = reflector.reflect(A());
   LibraryMirror libraryMirror =
       reflector.findLibrary("test_reflectable.test.no_such_method_test");
 
@@ -117,8 +117,8 @@ main() {
   // Check that we can distinguish a reflectable invocation failure from a
   // `NoSuchMethodError` thrown by a normal, non-reflectable invocation.
   test('No such method, natively', () {
-    expect(() => new A().deepThrow(new Object()), throwsNoSuchMethodError);
-    expect(() => aMirror.invoke("deepThrow", [new Object()]),
+    expect(() => A().deepThrow(Object()), throwsNoSuchMethodError);
+    expect(() => aMirror.invoke("deepThrow", [Object()]),
         throwsNoSuchMethodError);
   });
 }

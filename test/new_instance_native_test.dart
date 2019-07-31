@@ -19,7 +19,7 @@ class Reflector extends Reflectable {
       libraryCapability);
 }
 
-const Reflector reflector = const Reflector();
+const Reflector reflector = Reflector();
 
 void main() {
   initializeReflectable();

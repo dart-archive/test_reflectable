@@ -7,10 +7,10 @@
 /// the set of reflectors themselves.
 library test_reflectable.test.reflectors_test;
 
-@GlobalQuantifyCapability(r".(A|B)$", const Reflector3())
-@GlobalQuantifyMetaCapability(P, const Reflector4())
+@GlobalQuantifyCapability(r".(A|B)$", Reflector3())
+@GlobalQuantifyMetaCapability(P, Reflector4())
 @GlobalQuantifyCapability(r"^reflectable.reflectable.Reflectable$",
-    const AllReflectorsMetaReflector())
+    AllReflectorsMetaReflector())
 import "package:reflectable/reflectable.dart";
 import "package:test/test.dart";
 import 'reflectors_test.reflectable.dart';
@@ -21,7 +21,7 @@ class AllReflectorsMetaReflector extends Reflectable {
       : super(subtypeQuantifyCapability, newInstanceCapability);
 
   Set<Reflectable> get reflectors {
-    Set<Reflectable> result = new Set<Reflectable>();
+    Set<Reflectable> result = Set<Reflectable>();
     annotatedClasses.forEach((ClassMirror classMirror) {
       if (classMirror.isAbstract) return;
       Reflectable reflector =
@@ -122,15 +122,15 @@ main() {
   test("Mixin, superclasses not included", () {
     expect(
         reflectors,
-        [
-          const Reflector(),
-          const Reflector2(),
-          const Reflector3(),
-          const Reflector4(),
-          const ReflectorUpwardsClosed(),
-          const ReflectorUpwardsClosedToA(),
-          const ReflectorUpwardsClosedUntilA(),
-          const AllReflectorsMetaReflector()
+        const [
+          Reflector(),
+          Reflector2(),
+          Reflector3(),
+          Reflector4(),
+          ReflectorUpwardsClosed(),
+          ReflectorUpwardsClosedToA(),
+          ReflectorUpwardsClosedUntilA(),
+          AllReflectorsMetaReflector(),
         ].toSet());
   });
 }

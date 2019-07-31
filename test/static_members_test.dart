@@ -15,11 +15,11 @@ class MyReflectable extends Reflectable {
   const MyReflectable() : super(staticInvokeCapability, declarationsCapability);
 }
 
-const myReflectable = const MyReflectable();
+const myReflectable = MyReflectable();
 
 @myReflectable
 class A {
-  static const List<String> foo = const ["apple"];
+  static const List<String> foo = ["apple"];
 }
 
 main() {

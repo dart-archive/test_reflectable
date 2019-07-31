@@ -24,9 +24,9 @@ class MyReflectable3 extends Reflectable {
   const MyReflectable3() : super(const InstanceInvokeMetaCapability(Bar));
 }
 
-const myReflectable = const MyReflectable();
-const myReflectable2 = const MyReflectable2();
-const myReflectable3 = const MyReflectable3();
+const myReflectable = MyReflectable();
+const myReflectable2 = MyReflectable2();
+const myReflectable3 = MyReflectable3();
 
 class Bar {
   const Bar();
@@ -72,7 +72,7 @@ main() {
   initializeReflectable();
 
   test("invokingCapability", () {
-    Foo foo = new Foo();
+    Foo foo = Foo();
     InstanceMirror fooMirror = myReflectable.reflect(foo);
     expect(fooMirror.invokeGetter("a"), 1);
     expect(fooMirror.invokeSetter("a", 11), 11);
@@ -87,7 +87,7 @@ main() {
   });
 
   test('InstanceInvokeCapability("x")', () {
-    Foo2 foo = new Foo2();
+    Foo2 foo = Foo2();
     InstanceMirror fooMirror = myReflectable2.reflect(foo);
     expect(() => fooMirror.invokeGetter("a"), throwsReflectableNoMethod);
     expect(() => fooMirror.invokeSetter("a", 11), throwsReflectableNoMethod);
@@ -95,13 +95,13 @@ main() {
     expect(fooMirror.invokeSetter("b", 12), 12);
     expect(fooMirror.invokeGetter("b"), 12);
 
-    expect(myReflectable2.reflect(new Foo2()).invoke("x", []), 42);
-    expect(() => myReflectable2.reflect(new Foo2()).invoke("y", [3]),
+    expect(myReflectable2.reflect(Foo2()).invoke("x", []), 42);
+    expect(() => myReflectable2.reflect(Foo2()).invoke("y", [3]),
         throwsReflectableNoMethod);
   });
 
   test("InstanceInvokeMetaCapability(Bar)", () {
-    Foo3 foo = new Foo3();
+    Foo3 foo = Foo3();
     InstanceMirror fooMirror = myReflectable3.reflect(foo);
     expect(() => fooMirror.invokeGetter("a"), throwsReflectableNoMethod);
     expect(() => fooMirror.invokeSetter("a", 11), throwsReflectableNoMethod);
@@ -112,8 +112,8 @@ main() {
     expect(fooMirror.invokeSetter("c", 13), 13);
     expect(fooMirror.invokeGetter("c"), 13);
 
-    expect(() => myReflectable3.reflect(new Foo3()).invoke("x", []),
+    expect(() => myReflectable3.reflect(Foo3()).invoke("x", []),
         throwsReflectableNoMethod);
-    expect(myReflectable3.reflect(new Foo3()).invoke("y", [3]), "Hello 3");
+    expect(myReflectable3.reflect(Foo3()).invoke("y", [3]), "Hello 3");
   });
 }

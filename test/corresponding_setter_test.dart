@@ -63,14 +63,14 @@ class TopLevelInvokeFrReflector extends Reflectable {
             const TopLevelInvokeCapability(methodRegExp), libraryCapability);
 }
 
-const invokingMetaReflector = const InvokingMetaReflector();
-const instanceInvokeMetaReflector = const InstanceInvokeMetaReflector();
-const staticInvokeMetaReflector = const StaticInvokeMetaReflector();
-const topLevelInvokeMetaReflector = const TopLevelInvokeMetaReflector();
-const invokingFrReflector = const InvokingFrReflector();
-const instanceInvokeFrReflector = const InstanceInvokeFrReflector();
-const staticInvokeFrReflector = const StaticInvokeFrReflector();
-const topLevelInvokeFrReflector = const TopLevelInvokeFrReflector();
+const invokingMetaReflector = InvokingMetaReflector();
+const instanceInvokeMetaReflector = InstanceInvokeMetaReflector();
+const staticInvokeMetaReflector = StaticInvokeMetaReflector();
+const topLevelInvokeMetaReflector = TopLevelInvokeMetaReflector();
+const invokingFrReflector = InvokingFrReflector();
+const instanceInvokeFrReflector = InstanceInvokeFrReflector();
+const staticInvokeFrReflector = StaticInvokeFrReflector();
+const topLevelInvokeFrReflector = TopLevelInvokeFrReflector();
 
 final Map<Type, String> description = <Type, String>{
   InvokingMetaReflector: "Invoking",
@@ -136,7 +136,7 @@ set fooBar(int newValue) {
 }
 
 Matcher throwsReflectableNoMethod =
-    throwsA(new TypeMatcher<ReflectableNoSuchMethodError>());
+    throwsA(TypeMatcher<ReflectableNoSuchMethodError>());
 
 void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad = false}) {
   test("Instance invocation: ${description[mirrorSystem.runtimeType]}", () {
@@ -208,7 +208,7 @@ void testTopLevel(Reflectable mirrorSystem) {
 void main() {
   initializeReflectable();
 
-  A a = new A();
+  A a = A();
   testInstance(invokingMetaReflector, a, broad: true);
   testInstance(instanceInvokeMetaReflector, a, broad: true);
   testInstance(invokingFrReflector, a);
