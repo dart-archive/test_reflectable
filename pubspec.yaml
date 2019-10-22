@@ -7,18 +7,18 @@ description: >
   package. It is not intended to be useful for other purposes than
   testing package reflectable.
 environment:
-  sdk: '>=1.12.0 <3.0.0'
+  sdk: '>=2.3.0 <3.0.0'
 dependencies:
   build_runner: any
-  glob: ^1.1.0
+  glob: ^1.2.0
   reflectable:
     git: git://github.com/dart-lang/reflectable.git
     # git:
     #   url: git://github.com/dart-lang/reflectable.git
-    #   ref: some_branch
+    #   ref: use_pedantic_jul19
     # path: ../reflectable
-  pedantic: ^1.8.0
 dev_dependencies:
-  analyzer: '>=0.36.0 <0.38.0'
+  analyzer: '>=0.36.0 <0.39.0'
   build_test: ^0.10.0
+  pedantic: any
   test: any
