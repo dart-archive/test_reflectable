@@ -9,7 +9,7 @@ PACKAGES=../.packages
 OPTIONS=
 TEST_DIR=../test
 
-all: get clean build check test
+all: clean get build check test
 
 g: get
 
@@ -23,7 +23,7 @@ b: build
 
 t: test
 
-cb: clean build
+cb: clean get build
 
 get:
 	( cd ..; pub get )
