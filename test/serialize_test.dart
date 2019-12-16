@@ -21,7 +21,8 @@ class A {
   // This is just a convenience constructor for making the test data.
   A.fromValues(this.a, this.b);
 
-  toString() => 'A(a = $a, b = $b)';
+  @override
+  String toString() => 'A(a = $a, b = $b)';
 
   /// Special case lists.
   _equalsHandlingLists(dynamic x, dynamic y) {
@@ -37,10 +38,12 @@ class A {
 
   // The == operator is defined for testing if the reconstructed object is the
   // same as the original.
+  @override
   bool operator ==(other) {
     return _equalsHandlingLists(a, other.a) && _equalsHandlingLists(b, other.b);
   }
 
+  @override
   int get hashCode => a.hashCode ^ b.hashCode;
 }
 
@@ -54,12 +57,14 @@ class B extends A {
   // The == operator is defined for testing if the reconstructed object is the
   // same as the original.
   // This is defined for easier testing.
+  @override
   bool operator ==(other) {
     return _equalsHandlingLists(a, other.a) &&
         _equalsHandlingLists(b, other.b) &&
         _equalsHandlingLists(c, other.c);
   }
 
+  @override
   int get hashCode => super.hashCode ^ c.hashCode;
 }
 

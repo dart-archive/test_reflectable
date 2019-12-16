@@ -63,21 +63,21 @@ runTests() {
       const AllReflectorsMetaReflector().reflectors.toList();
 
   test('MetaReflector, set of reflectors', () {
-    expect(
+      expect(
         getNames(reflectors).toSet(),
-        [
+        {
           'Reflector',
           'Reflector2',
           'ReflectorUpwardsClosed',
           'ReflectorUpwardsClosedToA',
           'ReflectorUpwardsClosedUntilA',
           'ScopeMetaReflector',
-          'AllReflectorsMetaReflector'
-        ].toSet());
+          'AllReflectorsMetaReflector',
+      });
     expect(getNames(const ScopeMetaReflector().reflectablesOfScope('polymer')),
-        ['Reflector', 'ReflectorUpwardsClosed'].toSet());
+      {'Reflector', 'ReflectorUpwardsClosed'});
     expect(getNames(const ScopeMetaReflector().reflectablesOfScope('observe')),
-        ['Reflector2', 'ReflectorUpwardsClosed'].toSet());
+      {'Reflector2', 'ReflectorUpwardsClosed'});
   });
 
   const ScopeMetaReflector().reflectablesOfScope('polymer').forEach(

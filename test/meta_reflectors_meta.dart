@@ -26,7 +26,7 @@ class ScopeMetaReflector extends Reflectable {
       : super(const TopLevelInvokeMetaCapability(ScopeMetaReflector),
             declarationsCapability, libraryCapability);
   Set<Reflectable> reflectablesOfScope(String scope) {
-    Set<Reflectable> result = Set<Reflectable>();
+    var result = <Reflectable>{};
     for (LibraryMirror library in libraries.values) {
       for (DeclarationMirror declaration in library.declarations.values) {
         if (declaration is MethodMirror) {
@@ -44,7 +44,7 @@ class AllReflectorsMetaReflector extends Reflectable {
       : super(subtypeQuantifyCapability, newInstanceCapability);
 
   Set<Reflectable> get reflectors {
-    Set<Reflectable> result = Set<Reflectable>();
+    var result = <Reflectable>{};
     annotatedClasses.forEach((ClassMirror classMirror) {
       if (classMirror.isAbstract) return;
       Reflectable reflector =

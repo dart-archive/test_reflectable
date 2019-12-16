@@ -25,7 +25,7 @@ class MetaReflector extends Reflectable {
   const MetaReflector()
       : super(subtypeQuantifyCapability, newInstanceCapability);
   Set<Reflectable> get allReflectors {
-    Set<Reflectable> result = Set<Reflectable>();
+    var result = <Reflectable>{};
     annotatedClasses.forEach((ClassMirror classMirror) {
       if (classMirror.isAbstract) return;
       Reflectable reflector = classMirror.newInstance('', []);
@@ -37,13 +37,17 @@ class MetaReflector extends Reflectable {
   }
 }
 
-Set<String> setOf(String s) => Set<String>.from(<String>[s]);
+Set<String> setOf(String s) => {s};
 
 class Reflector extends Reflectable implements AllReflectorsCapable {
   const Reflector()
       : super(invokingCapability, declarationsCapability,
             typeRelationsCapability, libraryCapability);
+
+  @override
   Reflectable get self => const Reflector();
+
+  @override
   Set<String> get scopes => setOf('polymer');
 }
 
@@ -51,7 +55,11 @@ class Reflector2 extends Reflectable implements AllReflectorsCapable {
   const Reflector2()
       : super(invokingCapability, metadataCapability, typeRelationsCapability,
             libraryCapability);
+
+  @override
   Reflectable get self => const Reflector2();
+
+  @override
   Set<String> get scopes => setOf('observe');
 }
 
@@ -60,7 +68,11 @@ class ReflectorUpwardsClosed extends Reflectable
   const ReflectorUpwardsClosed()
       : super(superclassQuantifyCapability, invokingCapability,
             declarationsCapability, typeRelationsCapability);
+
+  @override
   Reflectable get self => const ReflectorUpwardsClosed();
+
+  @override
   Set<String> get scopes => setOf('polymer')..add('observe');
 }
 
@@ -69,8 +81,12 @@ class ReflectorUpwardsClosedToA extends Reflectable
   const ReflectorUpwardsClosedToA()
       : super(const SuperclassQuantifyCapability(A), invokingCapability,
             declarationsCapability, typeRelationsCapability);
+
+  @override
   Reflectable get self => const ReflectorUpwardsClosedToA();
-  Set<String> get scopes => Set<String>();
+
+  @override
+  Set<String> get scopes => {};
 }
 
 class ReflectorUpwardsClosedUntilA extends Reflectable
@@ -81,8 +97,12 @@ class ReflectorUpwardsClosedUntilA extends Reflectable
             invokingCapability,
             declarationsCapability,
             typeRelationsCapability);
+
+  @override
   Reflectable get self => const ReflectorUpwardsClosedUntilA();
-  Set<String> get scopes => Set<String>();
+
+  @override
+  Set<String> get scopes => {};
 }
 
 @Reflector()
@@ -174,23 +194,23 @@ void main() {
   test('MetaReflector, set of reflectors', () {
     expect(
         allReflectors,
-        [
+        {
           const Reflector(),
           const Reflector2(),
           const ReflectorUpwardsClosed(),
           const ReflectorUpwardsClosedToA(),
-          const ReflectorUpwardsClosedUntilA()
-        ].toSet());
+          const ReflectorUpwardsClosedUntilA(),
+      });
     expect(
         allReflectors.where((Reflectable reflector) =>
             reflector is AllReflectorsCapable &&
             reflector.scopes.contains('polymer')),
-        [const Reflector(), const ReflectorUpwardsClosed()].toSet());
+          {const Reflector(), const ReflectorUpwardsClosed()});
     expect(
         allReflectors.where((Reflectable reflector) =>
             reflector is AllReflectorsCapable &&
             reflector.scopes.contains('observe')),
-        [const Reflector2(), const ReflectorUpwardsClosed()].toSet());
+          {const Reflector2(), const ReflectorUpwardsClosed()});
   });
 
   allReflectors

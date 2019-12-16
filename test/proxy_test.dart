@@ -31,8 +31,10 @@ class Proxy implements A {
   final forwardee;
   final Map<Symbol, Function> methodMap;
   const Proxy(this.forwardee, this.methodMap);
+
+  @override
   noSuchMethod(Invocation invocation) {
-    return Function.apply(methodMap[invocation.memberName](this.forwardee),
+    return Function.apply(methodMap[invocation.memberName](forwardee),
         invocation.positionalArguments, invocation.namedArguments);
   }
 }

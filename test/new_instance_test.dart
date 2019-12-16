@@ -37,12 +37,10 @@ class A {
   A.positional(int x) : f = x - 42;
 
   @C()
-  A.optional(int x, int y, [int z = 1, w])
-      : f = x + y + z * 42 + (w == null ? 10 : w);
+  A.optional(int x, int y, [int z = 1, w]): f = x + y + z * 42 + (w ?? 10);
 
   @C()
-  A.argNamed(int x, int y, {int z = 42, int p})
-      : f = x + y - z - (p == null ? 10 : p);
+  A.argNamed(int x, int y, {int z = 42, int p}): f = x + y - z - (p ?? 10);
 
   // Note that the parameter name `b` is used here in order to test the
   // handling of name clashes for `isCheckCode`, so please do not change it.

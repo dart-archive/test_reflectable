@@ -165,8 +165,8 @@ void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad = false}) {
   });
 }
 
-void testStatic(Reflectable mirrorSystem, Type reflectee, void classResetter(),
-    int classGetter(),
+void testStatic(Reflectable mirrorSystem, Type reflectee, void Function() classResetter,
+  int Function() classGetter,
     {bool broad = false}) {
   test('Static invocation: ${description[mirrorSystem.runtimeType]}', () {
     classResetter();

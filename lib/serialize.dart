@@ -5,11 +5,11 @@
 /// Only serializes public fields.
 library test_reflectable.serialize;
 
-import "package:reflectable/reflectable.dart";
+import 'package:reflectable/reflectable.dart';
 
 class Serializable extends Reflectable {
   const Serializable()
-      : super(instanceInvokeCapability, const NewInstanceCapability(r"^$"),
+      : super(instanceInvokeCapability, const NewInstanceCapability(r'^$'),
             declarationsCapability);
 }
 
@@ -51,40 +51,40 @@ class Serializer {
 
   Map<String, dynamic> serialize(Object o) {
     if (o is num) {
-      return {"type": "num", "val": o};
+      return {'type': 'num', 'val': o};
     }
     if (o is List) {
-      return {"type": "List", "val": o.map(serialize).toList()};
+      return {'type': 'List', 'val': o.map(serialize).toList()};
     }
     if (o is String) {
-      return {"type": "String", "val": o};
+      return {'type': 'String', 'val': o};
     }
     Map<String, dynamic> result = {};
     InstanceMirror im = serializable.reflect(o);
     ClassMirror classMirror = im.type;
-    result["type"] = classMirror.qualifiedName;
-    result["fields"] = {};
+    result['type'] = classMirror.qualifiedName;
+    result['fields'] = {};
     for (String fieldName in _getPublicFieldNames(classMirror)) {
-      result["fields"][fieldName] = serialize(im.invokeGetter(fieldName));
+      result['fields'][fieldName] = serialize(im.invokeGetter(fieldName));
     }
     return result;
   }
 
   Object deserialize(Map<String, dynamic> m) {
-    if (m["type"] == "num") {
-      return m["val"];
+    if (m['type'] == 'num') {
+      return m['val'];
     }
-    if (m["type"] == "String") {
-      return m["val"];
+    if (m['type'] == 'String') {
+      return m['val'];
     }
-    if (m["type"] == "List") {
-      return m["val"].map(deserialize).toList();
+    if (m['type'] == 'List') {
+      return m['val'].map(deserialize).toList();
     }
 
-    ClassMirror classMirror = classes[m["type"]];
-    Object instance = classMirror.newInstance("", []);
+    ClassMirror classMirror = classes[m['type']];
+    Object instance = classMirror.newInstance('', []);
     InstanceMirror im = serializable.reflect(instance);
-    m["fields"].forEach((name, value) {
+    m['fields'].forEach((name, value) {
       im.invokeSetter(name, deserialize(value));
     });
     return instance;

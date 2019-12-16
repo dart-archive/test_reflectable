@@ -31,9 +31,16 @@ class A {
 
 @MyReflectable()
 class B extends A {
+  @override
   get foo => 'B:get field';
+
+  @override
   instanceMethod(x) => 'B:instanceMethod($x)';
+
+  @override
   get accessor => 'B:get accessor';
+
+  @override
   set accessor(x) {
     accessorBackingStorageB = x;
   }
@@ -43,12 +50,18 @@ class B extends A {
 
 @MyReflectable()
 class C extends B {
+  @override
   set foo(x) {
     fooBackingStorageC = x;
   }
 
+  @override
   instanceMethod(x) => 'C:instanceMethod($x)';
+
+  @override
   get accessor => 'C:get accessor';
+
+  @override
   set accessor(x) {
     accessorBackingStorageC = x;
   }
@@ -183,17 +196,17 @@ void main() {
   test('getters and setters', () {
     expect(gettersOf(aClass).map((x) => x.simpleName), ['accessor']);
     expect(gettersOf(bClass).map((x) => x.simpleName),
-        ['accessor', 'foo'].toSet());
+      {'accessor', 'foo'});
     expect(gettersOf(cClass).map((x) => x.simpleName), ['accessor']);
     expect(settersOf(aClass).map((x) => x.simpleName), ['accessor=']);
-    expect(settersOf(bClass).map((x) => x.simpleName), ['accessor='].toSet());
+    expect(settersOf(bClass).map((x) => x.simpleName), {'accessor='});
     expect(settersOf(cClass).map((x) => x.simpleName),
-        ['accessor=', 'foo='].toSet());
+      {'accessor=', 'foo='});
     expect(methodsOf(aClass).map((x) => x.simpleName),
-        ['instanceMethod', 'aMethod'].toSet());
+      {'instanceMethod', 'aMethod'});
     expect(methodsOf(bClass).map((x) => x.simpleName),
-        ['instanceMethod', 'bMethod'].toSet());
+      {'instanceMethod', 'bMethod'});
     expect(methodsOf(cClass).map((x) => x.simpleName),
-        ['instanceMethod', 'cMethod'].toSet());
+      {'instanceMethod', 'cMethod'});
   });
 }

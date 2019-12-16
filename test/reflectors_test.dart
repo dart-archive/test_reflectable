@@ -21,7 +21,7 @@ class AllReflectorsMetaReflector extends Reflectable {
       : super(subtypeQuantifyCapability, newInstanceCapability);
 
   Set<Reflectable> get reflectors {
-    Set<Reflectable> result = Set<Reflectable>();
+    var result = <Reflectable>{};
     annotatedClasses.forEach((ClassMirror classMirror) {
       if (classMirror.isAbstract) return;
       Reflectable reflector =
@@ -120,9 +120,9 @@ void main() {
       const AllReflectorsMetaReflector().reflectors.toList();
 
   test('Mixin, superclasses not included', () {
-    expect(
+      expect(
         reflectors,
-        const [
+        const {
           Reflector(),
           Reflector2(),
           Reflector3(),
@@ -131,6 +131,6 @@ void main() {
           ReflectorUpwardsClosedToA(),
           ReflectorUpwardsClosedUntilA(),
           AllReflectorsMetaReflector(),
-        ].toSet());
+      });
   });
 }

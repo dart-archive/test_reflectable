@@ -75,26 +75,45 @@ class B extends BBase {
   int field = 46;
   @C()
   int boo() => 47;
+
   // Tricky case! Not included for invocation by `instanceReflector`: No
   // regexp match, and no matching metadata. So we can invoke it because
   // of the declaration in `BBase` (which is visible for invocation and
   // `instanceMembers` even though `BBase` is not covered). But we still
   // get this _implementation_ at runtime.
   // TODO(eernst) implement: Test the same situation with a mixin.
+  @override
   int includedByInvokeInBBase() => 49;
 }
 
 class BSubclass extends B {}
 
 class BImplementer implements B {
+  @override
   int foo() => 42;
+
+  @override
   int bar() => 43;
+
+  @override
   int get getFoo => 44;
+
+  @override
   int get getBar => 45;
+
+  @override
   set setFoo(int x) => field = x;
+
+  @override
   set setBar(int x) => field = x;
+
+  @override
   int field = 46;
+
+  @override
   int boo() => 47;
+
+  @override
   int includedByInvokeInBBase() => 48;
 }
 
@@ -138,14 +157,14 @@ void main() {
     expect(() => classMirror.invokeSetter('setBar=', 100),
         throwsReflectableNoMethod);
     expect(classMirror.declarations.keys,
-        ['foo', 'setFoo=', 'getFoo', 'boo'].toSet());
+      {'foo', 'setFoo=', 'getFoo', 'boo'});
     expect(classMirror.invoke('boo', []), 47);
   });
   testDynamic(B(), 'Annotated');
 
   test('Declarations', () {
     expect(instanceReflector.reflect(B()).type.declarations.keys,
-        ['foo', 'setFoo=', 'getFoo', 'boo'].toSet());
+      {'foo', 'setFoo=', 'getFoo', 'boo'});
   });
 
   test("Can't reflect subclass of annotated", () {

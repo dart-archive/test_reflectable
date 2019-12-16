@@ -27,7 +27,7 @@ abstract class A {}
 class B extends A {}
 
 @reflector
-typedef void F(int i);
+typedef F = void Function(int);
 
 @reflector
 typedef G<X> = double Function(X);

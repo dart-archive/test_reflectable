@@ -100,19 +100,32 @@ class B {
 class BSubclass extends A {}
 
 class BImplementer implements A {
+  @override
   int foo() => 142;
+
+  @override
   int foobar() => 143;
+
+  @override
   int get getFoo => 144;
+
+  @override
   int get getFoobar => 145;
+
+  @override
   set setFoo(int x) {
     field = x + 100;
   }
 
+  @override
   set setFoobar(int x) {
     field = x + 100;
   }
 
+  @override
   int field = 146;
+
+  @override
   void reset() {
     field = 146;
   }
@@ -163,7 +176,7 @@ void testInstance(r.Reflectable mirrorSystem, A reflectee,
 }
 
 void testStatic(r.Reflectable mirrorSystem, Type reflectee,
-    void classResetter(), int classGetter(),
+  void Function() classResetter, int Function() classGetter,
     {bool broad = false}) {
   test('Static invocation: ${description[mirrorSystem.runtimeType]}', () {
     classResetter();

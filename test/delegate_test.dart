@@ -71,7 +71,9 @@ class A {
 class B implements A {
   final InstanceMirror _instanceMirror;
   B(this._instanceMirror);
-  noSuchMethod(Invocation invocation) {
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) {
     return _instanceMirror.delegate(invocation);
   }
 }

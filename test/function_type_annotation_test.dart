@@ -20,7 +20,7 @@ class Reflector extends Reflectable {
 
 const reflector = Reflector();
 
-typedef int Int2IntFunc(int _);
+typedef Int2IntFunc = int Function(int);
 
 Int2IntFunc int2int = (int x) => x;
 
@@ -28,7 +28,7 @@ Int2IntFunc int2int = (int x) => x;
 class C {
   Int2IntFunc get getter => int2int;
   set setter(Int2IntFunc int2int) {}
-  void method(int noNameType(int _), {Int2IntFunc int2int}) {}
+  void method(int Function(int) noNameType, {Int2IntFunc int2int}) {}
 
   void inlineTypes(
     int Function() f1,

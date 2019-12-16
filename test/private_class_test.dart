@@ -26,13 +26,13 @@ class PrivacyReflectable extends Reflectable {
 
 const privacyReflectable = PrivacyReflectable();
 
-final Set<String> libraryClassNames = <String>[
+final Set<String> libraryClassNames = {
   'PublicClass',
   '_PrivateClass1',
   '_PrivateClass2',
   'PublicSubclass1',
-  'PublicSubclass2'
-].toSet();
+  'PublicSubclass2',
+};
 
 void testPrivacyViolation(PublicClass object, String description,
     {bool doReflect = true}) {

@@ -17,7 +17,9 @@ class _PrivateClass1 extends PublicClass {
 class PublicSubclass1 extends _PrivateClass1 {}
 
 class _PrivateClass2 implements PublicClass {
+  @override
   int publicMethod() => 43;
+
   int supposedlyPrivateToo() => -43;
 }
 

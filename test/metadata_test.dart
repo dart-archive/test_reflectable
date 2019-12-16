@@ -73,7 +73,9 @@ class Bar {
   final Map<Object, Object> m;
   const Bar(this.m);
   const Bar.namedConstructor(this.m);
-  toString() => 'Bar($m)';
+
+  @override
+  String toString() => 'Bar($m)';
 }
 
 void main() {

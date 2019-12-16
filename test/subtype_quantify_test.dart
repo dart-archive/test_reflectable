@@ -22,10 +22,12 @@ class A {
 }
 
 class B extends A {
+  @override
   foo() => 43;
 }
 
 class C implements A {
+  @override
   foo() => 44;
 }
 
@@ -36,6 +38,7 @@ class M {
 class D = C with M;
 
 class E extends C with M {
+  @override
   foo() => 46;
 }
 

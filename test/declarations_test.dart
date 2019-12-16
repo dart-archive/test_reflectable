@@ -58,7 +58,7 @@ void main() {
   test('declarations', () {
     expect(
         declarationsA.values.map((x) => x.simpleName),
-        Set.from([
+        {
           'foo',
           'getter1',
           'getter2',
@@ -68,11 +68,11 @@ void main() {
           'A.redirecting',
           'A.factory',
           'A.redirectingFactory',
-          'A.c'
-        ]));
+          'A.c',
+      });
 
     expect(declarationsB.values.map((x) => x.simpleName),
-        Set.from(['bar', 'getter1', 'getter2', 'setter2=', 'B.c', 'B']));
+      {'bar', 'getter1', 'getter2', 'setter2=', 'B.c', 'B'});
   });
 
   test('MethodMirror properties', () {
@@ -173,7 +173,7 @@ void main() {
     Map<String, DeclarationMirror> instanceMembersA = aMirror.instanceMembers;
     expect(
         instanceMembersA.values.map((x) => x.simpleName),
-        Set.from([
+        {
           'toString',
           'hashCode',
           '==',
@@ -182,13 +182,13 @@ void main() {
           'foo',
           'getter1',
           'setter1=',
-          '+'
-        ]));
+          '+',
+      });
     ClassMirror bMirror = reflector.reflectType(B);
     Map<String, DeclarationMirror> instanceMembersB = bMirror.instanceMembers;
     expect(
         instanceMembersB.values.map((x) => x.simpleName),
-        Set.from([
+        {
           'toString',
           'hashCode',
           '==',
@@ -200,7 +200,7 @@ void main() {
           'getter2',
           'setter1=',
           'setter2=',
-          '+'
-        ]));
+          '+',
+      });
   });
 }

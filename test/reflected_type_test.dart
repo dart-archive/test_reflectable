@@ -38,6 +38,8 @@ class A {
   static int oneArgument(String x) => null;
   static int optionalArguments(A x, double y, [Reflector z, dynamic w = 42]) =>
       null;
+
+  // ignore: prefer_adjacent_string_concatenation
   static int namedArguments(String x, List y, {String z = '4' + '2'}) => null;
 
   static List<String> get staticGetset => ['42'];
