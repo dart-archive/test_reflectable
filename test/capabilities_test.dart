@@ -148,21 +148,21 @@ void main() {
         ['foo', 'setFoo=', 'getFoo', 'boo'].toSet());
   });
 
-  test('Can't reflect subclass of annotated', () {
+  test("Can't reflect subclass of annotated", () {
     expect(instanceReflector.canReflect(BSubclass()), false);
     expect(instanceReflector.canReflectType(BSubclass), false);
     expect(
         () => instanceReflector.reflect(BSubclass()), throwsNoCapability);
   });
 
-  test('Can't reflect subtype of annotated', () {
+  test("Can't reflect subtype of annotated", () {
     expect(instanceReflector.canReflect(BImplementer()), false);
     expect(instanceReflector.canReflectType(BImplementer), false);
     expect(() => instanceReflector.reflect(BImplementer()),
         throwsNoCapability);
   });
 
-  test('Can't reflect unnanotated', () {
+  test("Can't reflect unnanotated", () {
     expect(instanceReflector.canReflect(C()), false);
     expect(instanceReflector.canReflectType(C), false);
     expect(() => instanceReflector.reflect(C()), throwsNoCapability);
