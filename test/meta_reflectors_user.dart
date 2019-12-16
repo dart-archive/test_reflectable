@@ -17,7 +17,7 @@ import 'package:test/test.dart';
 import 'meta_reflectors_meta.dart';
 import 'meta_reflectors_domain.dart';
 
-testReflector(Reflectable reflector, String desc) {
+void testReflector(Reflectable reflector, String desc) {
   test('Mixin, $desc', () {
     ClassMirror aMirror = reflector.reflectType(A);
     ClassMirror bMirror = reflector.reflectType(B);
@@ -58,7 +58,7 @@ Iterable<String> getNames(Iterable<Reflectable> reflectables) {
   });
 }
 
-runTests() {
+void runTests() {
   List<Reflectable> reflectors =
       const AllReflectorsMetaReflector().reflectors.toList();
 

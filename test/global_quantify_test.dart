@@ -23,20 +23,20 @@ class Mark {
 }
 
 class A {
-  foo() => 42;
+  int foo() => 42;
 }
 
 class B {
-  foo() => 43;
+  int foo() => 43;
 }
 
 class C {
-  foo() => 44;
+  int foo() => 44;
 }
 
 @Mark()
 class D {
-  foo() => 45;
+  int foo() => 45;
 }
 
 Matcher throwsNoSuchCapabilityError =

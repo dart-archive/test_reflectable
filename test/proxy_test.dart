@@ -33,7 +33,7 @@ class Proxy implements A {
   const Proxy(this.forwardee, this.methodMap);
 
   @override
-  noSuchMethod(Invocation invocation) {
+  dynamic noSuchMethod(Invocation invocation) {
     return Function.apply(methodMap[invocation.memberName](forwardee),
         invocation.positionalArguments, invocation.namedArguments);
   }

@@ -72,9 +72,9 @@ class ReflectorUpwardsClosedUntilA extends Reflectable {
 @Reflector2()
 @P()
 class M1 {
-  foo() {}
+  void foo() {}
   var field;
-  static staticFoo(x) {}
+  static void staticFoo(x) {}
 }
 
 class P {
@@ -91,10 +91,10 @@ class M3 {}
 
 @Reflector()
 class A {
-  foo() {}
+  void foo() {}
   var field;
-  static staticFoo(x) {}
-  static staticBar() {}
+  static void staticFoo(x) {}
+  static void staticBar() {}
 }
 
 @Reflector()

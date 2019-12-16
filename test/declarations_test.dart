@@ -25,18 +25,18 @@ abstract class A {
   }
   const factory A.redirectingFactory() = B.c;
   const A.c();
-  foo() {}
+  void foo() {}
   int get getter1 => 10;
   int get getter2;
   set setter1(x) => null;
-  operator +(Object other) {
+  A operator +(Object other) {
     return this;
   }
 }
 
 @Reflector()
 class B extends A {
-  bar() {}
+  void bar() {}
   set setter2(x) => null;
   @override
   int get getter1 => 11;

@@ -18,28 +18,28 @@ const reflector = Reflector();
 
 @reflector
 class A {
-  foo() => 42;
+  int foo() => 42;
 }
 
 class B extends A {
   @override
-  foo() => 43;
+  int foo() => 43;
 }
 
 class C implements A {
   @override
-  foo() => 44;
+  int foo() => 44;
 }
 
 class M {
-  foo() => 45;
+  int foo() => 45;
 }
 
 class D = C with M;
 
 class E extends C with M {
   @override
-  foo() => 46;
+  int foo() => 46;
 }
 
 class F {}

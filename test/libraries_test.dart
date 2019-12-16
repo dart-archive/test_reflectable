@@ -56,7 +56,7 @@ const int q = 11;
 set setter(x) => p = x + 1;
 
 @Test()
-get getter => '10';
+String get getter => '10';
 
 final Matcher throwsNoCapability =
     throwsA(const TypeMatcher<NoSuchCapabilityError>());

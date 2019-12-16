@@ -50,7 +50,7 @@ class Foo {
   @Bar.namedConstructor({})
   @b
   @c
-  foo() {}
+  void foo() {}
 
   @b
   var x = 10;
@@ -66,7 +66,7 @@ class Foo2 {
   @Bar.namedConstructor({})
   @b
   @c
-  foo() {}
+  void foo() {}
 }
 
 class Bar {

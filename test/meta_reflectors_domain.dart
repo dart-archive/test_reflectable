@@ -17,9 +17,9 @@ class P {
 
 @P()
 class M1 {
-  foo() {}
+  void foo() {}
   var field;
-  static staticFoo(x) {}
+  static void staticFoo(x) {}
 }
 
 class M2 {}
@@ -27,10 +27,10 @@ class M2 {}
 class M3 {}
 
 class A {
-  foo() {}
+  void foo() {}
   var field;
-  static staticFoo(x) {}
-  static staticBar() {}
+  static void staticFoo(x) {}
+  static void staticBar() {}
 }
 
 class B extends A with M1 {}

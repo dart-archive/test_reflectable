@@ -36,16 +36,16 @@ class Bar {
 class Foo {
   var a = 1;
   var b = 2;
-  x() => 42;
-  y(int n) => 'Hello $n';
+  int x() => 42;
+  String y(int n) => 'Hello $n';
 }
 
 @myReflectable2
 class Foo2 {
   var a = 1;
   var b = 2;
-  x() => 42;
-  y(int n) => 'Hello $n';
+  int x() => 42;
+  String y(int n) => 'Hello $n';
   var z;
 }
 
@@ -59,9 +59,9 @@ class Foo3 extends Foo3Base {
   var a = 1;
   @Bar()
   var b = 2;
-  x() => 42;
+  int x() => 42;
   @Bar()
-  y(int n) => 'Hello $n';
+  String y(int n) => 'Hello $n';
   var z;
 }
 
@@ -86,7 +86,7 @@ void main() {
     expect(fooMirror.invoke('y', [1]), 'Hello 1');
   });
 
-  test('InstanceInvokeCapability('x')', () {
+  test("InstanceInvokeCapability('x')", () {
     Foo2 foo = Foo2();
     InstanceMirror fooMirror = myReflectable2.reflect(foo);
     expect(() => fooMirror.invokeGetter('a'), throwsReflectableNoMethod);

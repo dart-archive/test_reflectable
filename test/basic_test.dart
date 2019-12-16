@@ -20,32 +20,32 @@ class MyReflectable extends r.Reflectable {
 @MyReflectable()
 class A {
   var foo;
-  instanceMethod(x) => 'A:instanceMethod($x)';
-  get accessor => 'A:get accessor';
+  String instanceMethod(x) => 'A:instanceMethod($x)';
+  String get accessor => 'A:get accessor';
   set accessor(x) {
     accessorBackingStorageA = x;
   }
 
-  aMethod() => 'aMethod';
+  String aMethod() => 'aMethod';
 }
 
 @MyReflectable()
 class B extends A {
   @override
-  get foo => 'B:get field';
+  String get foo => 'B:get field';
 
   @override
-  instanceMethod(x) => 'B:instanceMethod($x)';
+  String instanceMethod(x) => 'B:instanceMethod($x)';
 
   @override
-  get accessor => 'B:get accessor';
+  String get accessor => 'B:get accessor';
 
   @override
   set accessor(x) {
     accessorBackingStorageB = x;
   }
 
-  bMethod() => 'bMethod';
+  String bMethod() => 'bMethod';
 }
 
 @MyReflectable()
@@ -56,17 +56,17 @@ class C extends B {
   }
 
   @override
-  instanceMethod(x) => 'C:instanceMethod($x)';
+  String instanceMethod(x) => 'C:instanceMethod($x)';
 
   @override
-  get accessor => 'C:get accessor';
+  String get accessor => 'C:get accessor';
 
   @override
   set accessor(x) {
     accessorBackingStorageC = x;
   }
 
-  cMethod() => 'cMethod';
+  String cMethod() => 'cMethod';
 }
 
 List<X> filteredDeclarationsOf<X extends r.DeclarationMirror>(r.ClassMirror cm, predicate) {

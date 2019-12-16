@@ -25,7 +25,7 @@ class A {
   String toString() => 'A(a = $a, b = $b)';
 
   /// Special case lists.
-  _equalsHandlingLists(dynamic x, dynamic y) {
+  bool _equalsHandlingLists(dynamic x, dynamic y) {
     if (x is List) {
       if (y is! List) return false;
       for (int i = 0; i < x.length; i++) {

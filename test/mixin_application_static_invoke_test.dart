@@ -16,17 +16,17 @@ class Reflector extends Reflectable {
 
 @Reflector()
 class M {
-  static staticFoo(x) => x + 1;
+  static dynamic staticFoo(x) => x + 1;
 }
 
 @Reflector()
 class A {
-  static staticFoo(x) => x + 2;
+  static dynamic staticFoo(x) => x + 2;
 }
 
 @Reflector()
 class B extends A with M {
-  static staticFoo(x) => x + 3;
+  static dynamic staticFoo(x) => x + 3;
 }
 
 Matcher throwsReflectableNoMethod =
