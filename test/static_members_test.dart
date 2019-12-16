@@ -19,10 +19,10 @@ const myReflectable = MyReflectable();
 
 @myReflectable
 class A {
-  static const List<String> foo = ["apple"];
+  static const List<String> foo = ['apple'];
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = myReflectable.reflectType(A);

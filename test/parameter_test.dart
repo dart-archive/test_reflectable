@@ -64,7 +64,7 @@ class MyClass {
   int operator [](int x) => null;
   void operator []=(int x, v) {}
 
-  String get getset => "42";
+  String get getset => '42';
   set getset(String string) {}
 
   static int noArguments() => null;
@@ -72,7 +72,7 @@ class MyClass {
   static int optionalArguments(MyClass x, double y,
           [Reflector z, dynamic w = 42]) =>
       null;
-  static int namedArguments(String x, List y, {String z = "4" + "2"}) => null;
+  static int namedArguments(String x, List y, {String z = '4' + '2'}) => null;
 
   static List<List<List<C>>> get staticGetset => [];
   static set staticGetset(List<List<List<C>>> list) {}
@@ -86,21 +86,21 @@ void performTests(String message, Reflectable reflector) {
   ClassMirror myClassMirror = reflector.reflectType(MyClass);
   Map<String, DeclarationMirror> declarations = myClassMirror.declarations;
 
-  MethodMirror arg0Mirror = declarations["arg0"];
-  MethodMirror arg1Mirror = declarations["arg1"];
-  MethodMirror arg2to4Mirror = declarations["arg2to4"];
-  MethodMirror argNamedMirror = declarations["argNamed"];
-  MethodMirror opPlusMirror = declarations["+"];
-  MethodMirror opBracketMirror = declarations["[]"];
-  MethodMirror opBracketEqualsMirror = declarations["[]="];
-  MethodMirror getsetMirror = declarations["getset"];
-  MethodMirror getsetEqualsMirror = declarations["getset="];
-  MethodMirror noArgumentsMirror = declarations["noArguments"];
-  MethodMirror oneArgumentMirror = declarations["oneArgument"];
-  MethodMirror optionalArgumentsMirror = declarations["optionalArguments"];
-  MethodMirror namedArgumentsMirror = declarations["namedArguments"];
-  MethodMirror staticGetsetMirror = declarations["staticGetset"];
-  MethodMirror staticGetsetEqualsMirror = declarations["staticGetset="];
+  MethodMirror arg0Mirror = declarations['arg0'];
+  MethodMirror arg1Mirror = declarations['arg1'];
+  MethodMirror arg2to4Mirror = declarations['arg2to4'];
+  MethodMirror argNamedMirror = declarations['argNamed'];
+  MethodMirror opPlusMirror = declarations['+'];
+  MethodMirror opBracketMirror = declarations['[]'];
+  MethodMirror opBracketEqualsMirror = declarations['[]='];
+  MethodMirror getsetMirror = declarations['getset'];
+  MethodMirror getsetEqualsMirror = declarations['getset='];
+  MethodMirror noArgumentsMirror = declarations['noArguments'];
+  MethodMirror oneArgumentMirror = declarations['oneArgument'];
+  MethodMirror optionalArgumentsMirror = declarations['optionalArguments'];
+  MethodMirror namedArgumentsMirror = declarations['namedArguments'];
+  MethodMirror staticGetsetMirror = declarations['staticGetset'];
+  MethodMirror staticGetsetEqualsMirror = declarations['staticGetset='];
 
   test('$message reflector: parameter list properties, instance methods', () {
     expect(arg0Mirror.parameters.length, 0);
@@ -219,12 +219,12 @@ void performTests(String message, Reflectable reflector) {
     expect(namedArgumentsParameter1.isOptional, false);
     expect(namedArgumentsType1.isOriginalDeclaration, false);
     expect(namedArgumentsType1.hasReflectedType, true);
-    expect(namedArgumentsClass1.simpleName, "List");
+    expect(namedArgumentsClass1.simpleName, 'List');
     expect(namedArgumentsParameter2.isOptional, true);
     expect(namedArgumentsParameter2.isNamed, true);
     expect(namedArgumentsParameter2.type.reflectedType, String);
     expect(namedArgumentsParameter2.hasDefaultValue, true);
-    expect(namedArgumentsParameter2.defaultValue, "42");
+    expect(namedArgumentsParameter2.defaultValue, '42');
   });
 
   test('$message reflector: parameter list properties, getters and setters',
@@ -236,10 +236,10 @@ void performTests(String message, Reflectable reflector) {
     TypeMirror staticGetsetEqualsType0 = staticGetsetEqualsParameter0.type;
     expect(staticGetsetEqualsParameter0.isOptional, false);
     expect(staticGetsetEqualsType0.isOriginalDeclaration, false);
-    expect(staticGetsetEqualsType0.originalDeclaration.simpleName, "List");
+    expect(staticGetsetEqualsType0.originalDeclaration.simpleName, 'List');
   });
 
-  test("$message reflector: method return types", () {
+  test('$message reflector: method return types', () {
     expect(arg0Mirror.returnType.reflectedType, int);
     expect(arg1Mirror.returnType.reflectedType, int);
     expect(arg2to4Mirror.returnType.reflectedType, int);
@@ -248,9 +248,9 @@ void performTests(String message, Reflectable reflector) {
     expect(opBracketMirror.returnType.reflectedType, int);
     // TODO(eernst) implement: Find a better way to test for the `void`
     // type other than looking at its name!
-    expect(opBracketEqualsMirror.returnType.simpleName, "void");
+    expect(opBracketEqualsMirror.returnType.simpleName, 'void');
     expect(getsetMirror.returnType.reflectedType, String);
-    expect(getsetEqualsMirror.returnType.simpleName, "void");
+    expect(getsetEqualsMirror.returnType.simpleName, 'void');
     expect(getsetEqualsMirror.returnType.hasReflectedType, false);
     expect(noArgumentsMirror.returnType.reflectedType, int);
     expect(oneArgumentMirror.returnType.reflectedType, int);
@@ -258,12 +258,12 @@ void performTests(String message, Reflectable reflector) {
     expect(namedArgumentsMirror.returnType.reflectedType, int);
     TypeMirror staticGetsetReturnType = staticGetsetMirror.returnType;
     expect(staticGetsetReturnType.isOriginalDeclaration, false);
-    expect(staticGetsetReturnType.originalDeclaration.simpleName, "List");
-    expect(staticGetsetEqualsMirror.returnType.simpleName, "void");
+    expect(staticGetsetReturnType.originalDeclaration.simpleName, 'List');
+    expect(staticGetsetEqualsMirror.returnType.simpleName, 'void');
   });
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   performTests('Shallow', reflector);

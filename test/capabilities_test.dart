@@ -15,10 +15,10 @@ import 'capabilities_test.reflectable.dart';
 class StaticReflector extends r.Reflectable {
   const StaticReflector()
       : super(
-            const c.StaticInvokeCapability("foo"),
-            const c.StaticInvokeCapability("getFoo"),
-            const c.StaticInvokeCapability("setFoo="),
-            const c.StaticInvokeCapability("nonExisting"),
+            const c.StaticInvokeCapability('foo'),
+            const c.StaticInvokeCapability('getFoo'),
+            const c.StaticInvokeCapability('setFoo='),
+            const c.StaticInvokeCapability('nonExisting'),
             const c.StaticInvokeMetaCapability(C),
             c.declarationsCapability);
 }
@@ -49,10 +49,10 @@ class C {
 class InstanceReflector extends r.Reflectable {
   const InstanceReflector()
       : super(
-            const c.InstanceInvokeCapability("foo"),
-            const c.InstanceInvokeCapability("getFoo"),
-            const c.InstanceInvokeCapability("setFoo="),
-            const c.InstanceInvokeCapability("nonExisting"),
+            const c.InstanceInvokeCapability('foo'),
+            const c.InstanceInvokeCapability('getFoo'),
+            const c.InstanceInvokeCapability('setFoo='),
+            const c.InstanceInvokeCapability('nonExisting'),
             const c.InstanceInvokeMetaCapability(C),
             c.declarationsCapability);
 }
@@ -104,65 +104,65 @@ Matcher throwsReflectableNoMethod =
     throwsA(TypeMatcher<c.ReflectableNoSuchMethodError>());
 
 void testDynamic(B o, String description) {
-  test("Dynamic invocation $description", () {
+  test('Dynamic invocation $description', () {
     expect(instanceReflector.canReflect(o), true);
     expect(instanceReflector.canReflectType(o.runtimeType), true);
     r.InstanceMirror instanceMirror = instanceReflector.reflect(o);
-    expect(instanceMirror.invoke("foo", []), 42);
-    expect(instanceMirror.invoke("boo", []), 47);
-    expect(() => instanceMirror.invoke("bar", []), throwsReflectableNoMethod);
-    expect(instanceMirror.invokeGetter("getFoo"), 44);
+    expect(instanceMirror.invoke('foo', []), 42);
+    expect(instanceMirror.invoke('boo', []), 47);
+    expect(() => instanceMirror.invoke('bar', []), throwsReflectableNoMethod);
+    expect(instanceMirror.invokeGetter('getFoo'), 44);
     expect(
-        () => instanceMirror.invokeGetter("getBar"), throwsReflectableNoMethod);
+        () => instanceMirror.invokeGetter('getBar'), throwsReflectableNoMethod);
     expect(o.field, 46);
-    expect(instanceMirror.invokeSetter("setFoo=", 100), 100);
+    expect(instanceMirror.invokeSetter('setFoo=', 100), 100);
     expect(o.field, 100);
-    expect(() => instanceMirror.invokeSetter("setBar=", 100),
+    expect(() => instanceMirror.invokeSetter('setBar=', 100),
         throwsReflectableNoMethod);
-    expect(instanceMirror.invoke("includedByInvokeInBBase", []), 49);
+    expect(instanceMirror.invoke('includedByInvokeInBBase', []), 49);
   });
 }
 
 void main() {
   initializeReflectable();
 
-  test("Static invocation", () {
+  test('Static invocation', () {
     r.ClassMirror classMirror = staticReflector.reflectType(A);
-    expect(classMirror.invoke("foo", []), 42);
-    expect(() => classMirror.invoke("bar", []), throwsReflectableNoMethod);
-    expect(classMirror.invokeGetter("getFoo"), 44);
-    expect(() => classMirror.invokeGetter("getBar"), throwsReflectableNoMethod);
+    expect(classMirror.invoke('foo', []), 42);
+    expect(() => classMirror.invoke('bar', []), throwsReflectableNoMethod);
+    expect(classMirror.invokeGetter('getFoo'), 44);
+    expect(() => classMirror.invokeGetter('getBar'), throwsReflectableNoMethod);
     expect(A.field, 46);
-    expect(classMirror.invokeSetter("setFoo=", 100), 100);
+    expect(classMirror.invokeSetter('setFoo=', 100), 100);
     expect(A.field, 100);
-    expect(() => classMirror.invokeSetter("setBar=", 100),
+    expect(() => classMirror.invokeSetter('setBar=', 100),
         throwsReflectableNoMethod);
     expect(classMirror.declarations.keys,
-        ["foo", "setFoo=", "getFoo", "boo"].toSet());
-    expect(classMirror.invoke("boo", []), 47);
+        ['foo', 'setFoo=', 'getFoo', 'boo'].toSet());
+    expect(classMirror.invoke('boo', []), 47);
   });
-  testDynamic(B(), "Annotated");
+  testDynamic(B(), 'Annotated');
 
-  test("Declarations", () {
+  test('Declarations', () {
     expect(instanceReflector.reflect(B()).type.declarations.keys,
-        ["foo", "setFoo=", "getFoo", "boo"].toSet());
+        ['foo', 'setFoo=', 'getFoo', 'boo'].toSet());
   });
 
-  test("Can't reflect subclass of annotated", () {
+  test('Can't reflect subclass of annotated', () {
     expect(instanceReflector.canReflect(BSubclass()), false);
     expect(instanceReflector.canReflectType(BSubclass), false);
     expect(
         () => instanceReflector.reflect(BSubclass()), throwsNoCapability);
   });
 
-  test("Can't reflect subtype of annotated", () {
+  test('Can't reflect subtype of annotated', () {
     expect(instanceReflector.canReflect(BImplementer()), false);
     expect(instanceReflector.canReflectType(BImplementer), false);
     expect(() => instanceReflector.reflect(BImplementer()),
         throwsNoCapability);
   });
 
-  test("Can't reflect unnanotated", () {
+  test('Can't reflect unnanotated', () {
     expect(instanceReflector.canReflect(C()), false);
     expect(instanceReflector.canReflectType(C), false);
     expect(() => instanceReflector.reflect(C()), throwsNoCapability);

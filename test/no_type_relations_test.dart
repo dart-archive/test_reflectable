@@ -32,11 +32,11 @@ void expectCapabilityMessage(f()) {
   } on NoSuchCapabilityError catch (exc) {
     // Test in lower case to eliminate the distinction between the class and
     // object name.
-    expect("$exc".toLowerCase().contains('typerelationscapability'), isTrue);
+    expect('$exc'.toLowerCase().contains('typerelationscapability'), isTrue);
   }
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = reflector.reflectType(Bar);

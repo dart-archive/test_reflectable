@@ -26,24 +26,24 @@ class A {
   void operator []=(x, v) { f = x + v + f; }
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   A instance1 = A(0);
   A instance2 = A(1);
   ClassMirror classMirror = myReflectable.reflectType(A);
   test('invoker of operator +', () {
-    Function plusInvoker = classMirror.invoker("+");
+    Function plusInvoker = classMirror.invoker('+');
     expect(plusInvoker(instance1)(42), 84);
     expect(plusInvoker(instance2)(42), 85);
   });
   test('invoker of operator []', () {
-    Function bracketInvoker = classMirror.invoker("[]");
+    Function bracketInvoker = classMirror.invoker('[]');
     expect(bracketInvoker(instance1)(42), 84);
     expect(bracketInvoker(instance2)(42), 85);
   });
   test('invoker of operator []=', () {
-    Function bracketEqualsInvoker = classMirror.invoker("[]=");
+    Function bracketEqualsInvoker = classMirror.invoker('[]=');
     bracketEqualsInvoker(instance1)(1, 2);
     bracketEqualsInvoker(instance2)(1, 2);
     expect(instance1.f, 3);

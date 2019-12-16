@@ -7,12 +7,12 @@
 /// the set of reflectors themselves.
 library test_reflectable.test.reflectors_test;
 
-@GlobalQuantifyCapability(r".(A|B)$", Reflector3())
+@GlobalQuantifyCapability(r'.(A|B)$', Reflector3())
 @GlobalQuantifyMetaCapability(P, Reflector4())
-@GlobalQuantifyCapability(r"^reflectable.reflectable.Reflectable$",
+@GlobalQuantifyCapability(r'^reflectable.reflectable.Reflectable$',
     AllReflectorsMetaReflector())
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'reflectors_test.reflectable.dart';
 
 /// Used to get access to all reflectors.
@@ -113,13 +113,13 @@ class C extends B with M2, M3 {}
 @ReflectorUpwardsClosedToA()
 class D = A with M1;
 
-main() {
+void main() {
   initializeReflectable();
 
   List<Reflectable> reflectors =
       const AllReflectorsMetaReflector().reflectors.toList();
 
-  test("Mixin, superclasses not included", () {
+  test('Mixin, superclasses not included', () {
     expect(
         reflectors,
         const [

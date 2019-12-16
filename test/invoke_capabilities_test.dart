@@ -49,12 +49,12 @@ const instanceInvokeFrReflector = InstanceInvokeFrReflector();
 const staticInvokeFrReflector = StaticInvokeFrReflector();
 
 final Map<Type, String> description = <Type, String>{
-  InvokingReflector: "Invoking",
-  InstanceInvokeReflector: "InstanceInvoke",
-  StaticInvokeReflector: "StaticInvoke",
-  InvokingFrReflector: "InvokingFr",
-  InstanceInvokeFrReflector: "InstanceInvokeFr",
-  StaticInvokeFrReflector: "StaticInvokeFr"
+  InvokingReflector: 'Invoking',
+  InstanceInvokeReflector: 'InstanceInvoke',
+  StaticInvokeReflector: 'StaticInvoke',
+  InvokingFrReflector: 'InvokingFr',
+  InstanceInvokeFrReflector: 'InstanceInvokeFr',
+  StaticInvokeFrReflector: 'StaticInvokeFr'
 };
 
 @invokingReflector
@@ -126,38 +126,38 @@ Matcher throwsReflectableNoMethod =
 
 void testInstance(r.Reflectable mirrorSystem, A reflectee,
     {bool broad = false}) {
-  test("Instance invocation: ${description[mirrorSystem.runtimeType]}", () {
+  test('Instance invocation: ${description[mirrorSystem.runtimeType]}', () {
     reflectee.reset();
     r.InstanceMirror instanceMirror = mirrorSystem.reflect(reflectee);
     if (broad) {
-      expect(instanceMirror.invoke("foo", []), 42);
+      expect(instanceMirror.invoke('foo', []), 42);
     } else {
       expect(() {
-        instanceMirror.invoke("foo", []);
+        instanceMirror.invoke('foo', []);
       }, throwsReflectableNoMethod);
     }
-    expect(instanceMirror.invoke("foobar", []), 43);
+    expect(instanceMirror.invoke('foobar', []), 43);
     if (broad) {
-      expect(instanceMirror.invokeGetter("getFoo"), 44);
+      expect(instanceMirror.invokeGetter('getFoo'), 44);
     } else {
       expect(() {
-        instanceMirror.invokeGetter("getFoo");
+        instanceMirror.invokeGetter('getFoo');
       }, throwsReflectableNoMethod);
     }
-    expect(instanceMirror.invokeGetter("getFoobar"), 45);
+    expect(instanceMirror.invokeGetter('getFoobar'), 45);
     expect(reflectee.field, 46);
     if (broad) {
-      expect(instanceMirror.invokeSetter("setFoo=", 100), 100);
+      expect(instanceMirror.invokeSetter('setFoo=', 100), 100);
       expect(reflectee.field, 100);
     } else {
       expect(() {
-        instanceMirror.invokeSetter("setFoo=", 100);
+        instanceMirror.invokeSetter('setFoo=', 100);
       }, throwsReflectableNoMethod);
       expect(reflectee.field, 46);
     }
-    expect(instanceMirror.invokeSetter("setFoobar=", 100), 100);
+    expect(instanceMirror.invokeSetter('setFoobar=', 100), 100);
     expect(reflectee.field, 100);
-    expect(() => instanceMirror.invoke("nonExisting", []),
+    expect(() => instanceMirror.invoke('nonExisting', []),
         throwsReflectableNoMethod);
   });
 }
@@ -165,39 +165,39 @@ void testInstance(r.Reflectable mirrorSystem, A reflectee,
 void testStatic(r.Reflectable mirrorSystem, Type reflectee,
     void classResetter(), int classGetter(),
     {bool broad = false}) {
-  test("Static invocation: ${description[mirrorSystem.runtimeType]}", () {
+  test('Static invocation: ${description[mirrorSystem.runtimeType]}', () {
     classResetter();
     r.ClassMirror classMirror = mirrorSystem.reflectType(reflectee);
     if (broad) {
-      expect(classMirror.invoke("foo", []), 42);
+      expect(classMirror.invoke('foo', []), 42);
     } else {
       expect(() {
-        classMirror.invoke("foo", []);
+        classMirror.invoke('foo', []);
       }, throwsReflectableNoMethod);
     }
-    expect(classMirror.invoke("foobar", []), 43);
+    expect(classMirror.invoke('foobar', []), 43);
     if (broad) {
-      expect(classMirror.invokeGetter("getFoo"), 44);
+      expect(classMirror.invokeGetter('getFoo'), 44);
     } else {
       expect(() {
-        classMirror.invokeGetter("getFoo");
+        classMirror.invokeGetter('getFoo');
       }, throwsReflectableNoMethod);
     }
-    expect(classMirror.invokeGetter("getFoobar"), 45);
+    expect(classMirror.invokeGetter('getFoobar'), 45);
     expect(B.field, 46);
     if (broad) {
-      expect(classMirror.invokeSetter("setFoo=", 100), 100);
+      expect(classMirror.invokeSetter('setFoo=', 100), 100);
       expect(classGetter(), 100);
     } else {
       expect(() {
-        classMirror.invokeSetter("setFoo=", 100);
+        classMirror.invokeSetter('setFoo=', 100);
       }, throwsReflectableNoMethod);
       expect(classGetter(), 46);
     }
-    expect(classMirror.invokeSetter("setFoobar=", 100), 100);
+    expect(classMirror.invokeSetter('setFoobar=', 100), 100);
     expect(classGetter(), 100);
     expect(
-        () => classMirror.invoke("nonExisting", []), throwsReflectableNoMethod);
+        () => classMirror.invoke('nonExisting', []), throwsReflectableNoMethod);
   });
 }
 

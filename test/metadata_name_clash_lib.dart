@@ -4,7 +4,7 @@
 
 library test_reflectable.test.metadata_name_clash_lib;
 
-import "package:reflectable/reflectable.dart";
+import 'package:reflectable/reflectable.dart';
 
 class Reflector2 extends Reflectable {
   const Reflector2() : super(metadataCapability);

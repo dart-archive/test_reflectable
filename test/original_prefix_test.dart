@@ -26,15 +26,15 @@ const int _defaultY = defaultX;
 class C {
   final String s;
   C([int x = defaultX, int y = _defaultY]) : s =
-    "${x.toString().length+2}${y ~/ 15}";
+    '${x.toString().length+2}${y ~/ 15}';
 }
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("Original prefix", () {
+  test('Original prefix', () {
     ClassMirror classMirror = myReflectable.reflectType(C);
-    C c = classMirror.newInstance("", []);
-    expect(c.s, "42");
+    C c = classMirror.newInstance('', []);
+    expect(c.s, '42');
   });
 }

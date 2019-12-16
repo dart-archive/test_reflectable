@@ -53,9 +53,9 @@ void runTestNoBounds(String message, ClassMirror classMirror) {
     expect(classMirror.typeVariables.length, 2);
 
     TypeVariableMirror xMirror = classMirror.typeVariables[0];
-    expect(xMirror.simpleName, "X");
+    expect(xMirror.simpleName, 'X');
     expect(
-        xMirror.qualifiedName, "test_reflectable.test.type_variable_test.B.X");
+        xMirror.qualifiedName, 'test_reflectable.test.type_variable_test.B.X');
     expect(xMirror.owner, classMirror.originalDeclaration);
     expect(xMirror.isPrivate, false);
     expect(xMirror.isTopLevel, false);
@@ -64,9 +64,9 @@ void runTestNoBounds(String message, ClassMirror classMirror) {
     expect(xMirror.isStatic, false);
 
     TypeVariableMirror yMirror = classMirror.typeVariables[1];
-    expect(yMirror.simpleName, "Y");
+    expect(yMirror.simpleName, 'Y');
     expect(
-        yMirror.qualifiedName, "test_reflectable.test.type_variable_test.B.Y");
+        yMirror.qualifiedName, 'test_reflectable.test.type_variable_test.B.Y');
     expect(yMirror.owner, classMirror.originalDeclaration);
     expect(yMirror.isPrivate, false);
     expect(yMirror.isTopLevel, false);
@@ -106,7 +106,7 @@ void runTest(String message, ClassMirror bMirror, ClassMirror cMirror,
 Matcher throwsANoSuchCapabilityException =
     throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   B<int, A> b = B<int, A>();
@@ -117,19 +117,19 @@ main() {
   });
 
   LibraryMirror noBoundsLibraryMirror =
-      noBoundsReflector.findLibrary("test_reflectable.test.type_variable_test");
-  runTestNoBounds('generic class', noBoundsLibraryMirror.declarations["B"]);
+      noBoundsReflector.findLibrary('test_reflectable.test.type_variable_test');
+  runTestNoBounds('generic class', noBoundsLibraryMirror.declarations['B']);
   runTestNoBounds(
       'instantiated generic class', noBoundsReflector.reflect(b).type);
 
   LibraryMirror libraryMirror =
-      reflector.findLibrary("test_reflectable.test.type_variable_test");
+      reflector.findLibrary('test_reflectable.test.type_variable_test');
   runTest(
       'static',
-      libraryMirror.declarations["B"],
-      libraryMirror.declarations["C"],
-      libraryMirror.declarations["D"],
-      libraryMirror.declarations["E"]);
+      libraryMirror.declarations['B'],
+      libraryMirror.declarations['C'],
+      libraryMirror.declarations['D'],
+      libraryMirror.declarations['E']);
 
   runTest(
       'dynamic',

@@ -21,7 +21,7 @@ const reflector = Reflector();
 Matcher throwsNoCapability =
     throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   test('Unused reflector', () {

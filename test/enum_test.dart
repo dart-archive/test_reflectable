@@ -29,18 +29,18 @@ enum Color { BLUE, RED, GREEN }
 class JsonObjectStub {
   Color color;
   JsonObjectStub(String jsonStr) {
-    if (jsonStr.contains("0")) {
+    if (jsonStr.contains('0')) {
       color = Color.BLUE;
-    } else if (jsonStr.contains("1")) {
+    } else if (jsonStr.contains('1')) {
       color = Color.RED;
-    } else if (jsonStr.contains("2")) {
+    } else if (jsonStr.contains('2')) {
       color = Color.GREEN;
     }
   }
 }
 
 dynamic fromJson(String jsonStr, Type clazz) {
-  if (jsonStr.startsWith("{")) return JsonObjectStub(jsonStr);
+  if (jsonStr.startsWith('{')) return JsonObjectStub(jsonStr);
   return Color.BLUE;
 }
 
@@ -49,15 +49,15 @@ class ObjectWithEnum {
   Color color;
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   test('deserialize enum', () {
     expect(fromJson('0', Color), Color.BLUE);
   });
   test('deserialize object with enum', () {
-    expect(fromJson('{"color":0}', ObjectWithEnum).color, Color.BLUE);
-    expect(fromJson('{"color":1}', ObjectWithEnum).color, Color.RED);
-    expect(fromJson('{"color":2}', ObjectWithEnum).color, Color.GREEN);
+    expect(fromJson('{'color':0}', ObjectWithEnum).color, Color.BLUE);
+    expect(fromJson('{'color':1}', ObjectWithEnum).color, Color.RED);
+    expect(fromJson('{'color':2}', ObjectWithEnum).color, Color.GREEN);
   });
 }

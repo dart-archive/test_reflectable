@@ -7,8 +7,8 @@
 
 library test_reflectable.test.multi_field_test;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'multi_field_test.reflectable.dart';
 
 class Reflector extends Reflectable {
@@ -50,7 +50,7 @@ class B {
 final Matcher throwsReflectableNoMethod =
     throwsA(TypeMatcher<ReflectableNoSuchMethodError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   A theA = A();
@@ -61,31 +61,31 @@ main() {
       bClassMirror = bInstanceMirror.type;
 
   test('multiple declarations with one type annotation, read', () {
-    expect(aInstanceMirror.invokeGetter("i"), 1 + 42 / theA.i);
-    expect(aInstanceMirror.invokeGetter("j"), 42 - (theA.i * (theA.j - 2)));
-    expect(aClassMirror.invokeGetter("k"), 294);
-    expect(aClassMirror.invokeGetter("l"), 343);
+    expect(aInstanceMirror.invokeGetter('i'), 1 + 42 / theA.i);
+    expect(aInstanceMirror.invokeGetter('j'), 42 - (theA.i * (theA.j - 2)));
+    expect(aClassMirror.invokeGetter('k'), 294);
+    expect(aClassMirror.invokeGetter('l'), 343);
 
-    expect(bInstanceMirror.invokeGetter("i"), 1 + 42 / theB.i);
-    expect(bInstanceMirror.invokeGetter("j"), 42 - (theB.i * (theB.j - 2)));
-    expect(bClassMirror.invokeGetter("k"), 294);
-    expect(bClassMirror.invokeGetter("l"), 343);
+    expect(bInstanceMirror.invokeGetter('i'), 1 + 42 / theB.i);
+    expect(bInstanceMirror.invokeGetter('j'), 42 - (theB.i * (theB.j - 2)));
+    expect(bClassMirror.invokeGetter('k'), 294);
+    expect(bClassMirror.invokeGetter('l'), 343);
     expect(
-        () => bInstanceMirror.invokeGetter("notI"), throwsReflectableNoMethod);
+        () => bInstanceMirror.invokeGetter('notI'), throwsReflectableNoMethod);
     expect(
-        () => bInstanceMirror.invokeGetter("notJ"), throwsReflectableNoMethod);
-    expect(() => bClassMirror.invokeGetter("notK"), throwsReflectableNoMethod);
-    expect(() => bClassMirror.invokeGetter("notL"), throwsReflectableNoMethod);
+        () => bInstanceMirror.invokeGetter('notJ'), throwsReflectableNoMethod);
+    expect(() => bClassMirror.invokeGetter('notK'), throwsReflectableNoMethod);
+    expect(() => bClassMirror.invokeGetter('notL'), throwsReflectableNoMethod);
   });
 
   test('multiple declarations with one type annotation, write', () {
-    aInstanceMirror.invokeSetter("i", 5);
+    aInstanceMirror.invokeSetter('i', 5);
     expect(theA.i, 5);
-    aInstanceMirror.invokeSetter("j", 50);
+    aInstanceMirror.invokeSetter('j', 50);
     expect(theA.j, 50);
-    aClassMirror.invokeSetter("k", 500);
+    aClassMirror.invokeSetter('k', 500);
     expect(A.k, 500);
-    aClassMirror.invokeSetter("l", 5000);
+    aClassMirror.invokeSetter('l', 5000);
     expect(A.l, 5000);
   });
 
@@ -93,19 +93,19 @@ main() {
     Map<String, DeclarationMirror> declarations = aClassMirror.declarations;
     // Four visible declarations, one implicit default constructor.
     expect(declarations.length, 5);
-    DeclarationMirror iDeclaration = declarations["i"];
+    DeclarationMirror iDeclaration = declarations['i'];
     expect(iDeclaration is VariableMirror && iDeclaration.reflectedType == int,
         true);
     expect(iDeclaration is VariableMirror && iDeclaration.isStatic, false);
-    DeclarationMirror jDeclaration = declarations["j"];
+    DeclarationMirror jDeclaration = declarations['j'];
     expect(jDeclaration is VariableMirror && jDeclaration.reflectedType == int,
         true);
     expect(jDeclaration is VariableMirror && jDeclaration.isStatic, false);
-    DeclarationMirror kDeclaration = declarations["k"];
+    DeclarationMirror kDeclaration = declarations['k'];
     expect(kDeclaration is VariableMirror && kDeclaration.isStatic, true);
     expect(kDeclaration is VariableMirror && kDeclaration.reflectedType == int,
         true);
-    DeclarationMirror lDeclaration = declarations["l"];
+    DeclarationMirror lDeclaration = declarations['l'];
     expect(lDeclaration is VariableMirror && lDeclaration.isStatic, true);
     expect(lDeclaration is VariableMirror && lDeclaration.reflectedType == int,
         true);

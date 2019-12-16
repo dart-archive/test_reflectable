@@ -17,7 +17,7 @@ class MyReflectable extends Reflectable {
 
 const myReflectable = MyReflectable();
 
-const String globalConstant = "20";
+const String globalConstant = '20';
 
 @myReflectable
 class A {
@@ -34,45 +34,45 @@ class A {
   String g;
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = myReflectable.reflectType(A);
   A a;
 
   test('positional argument default, local constant', () {
-    a = classMirror.newInstance("optional", [], {});
+    a = classMirror.newInstance('optional', [], {});
     expect(a.f, 10);
   });
   test('positional argument default, global constant', () {
-    a = classMirror.newInstance("optional", [], {});
-    expect(a.g, "20");
+    a = classMirror.newInstance('optional', [], {});
+    expect(a.g, '20');
   });
 
   test('named argument default, local constant', () {
-    a = classMirror.newInstance("namedOptional", [], {});
+    a = classMirror.newInstance('namedOptional', [], {});
     expect(a.f, 10);
   });
   test('named argument default, global constant', () {
-    a = classMirror.newInstance("namedOptional", [], {});
-    expect(a.g, "20");
+    a = classMirror.newInstance('namedOptional', [], {});
+    expect(a.g, '20');
   });
 
   test('initializing formal default, local constant', () {
-    a = classMirror.newInstance("initializingFormal", [], {});
+    a = classMirror.newInstance('initializingFormal', [], {});
     expect(a.f, 10);
   });
   test('initializing formal default, global constant', () {
-    a = classMirror.newInstance("initializingFormal", [], {});
-    expect(a.g, "20");
+    a = classMirror.newInstance('initializingFormal', [], {});
+    expect(a.g, '20');
   });
 
   test('named initializing formal default, local constant', () {
-    a = classMirror.newInstance("namedInitializingFormal", [], {});
+    a = classMirror.newInstance('namedInitializingFormal', [], {});
     expect(a.f, 10);
   });
   test('named initializing formal default, global constant', () {
-    a = classMirror.newInstance("namedInitializingFormal", [], {});
-    expect(a.g, "20");
+    a = classMirror.newInstance('namedInitializingFormal', [], {});
+    expect(a.g, '20');
   });
 }

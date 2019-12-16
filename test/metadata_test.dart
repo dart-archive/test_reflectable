@@ -28,7 +28,7 @@ class MyReflectable2 extends Reflectable {
 const myReflectable2 = MyReflectable2();
 
 const b = 13;
-const c = [Bar({"a": 14})];
+const c = [Bar({'a': 14})];
 const d = true;
 
 class K {
@@ -38,9 +38,9 @@ class K {
 @myReflectable
 @Bar({
   b: deprecated,
-  c: Deprecated("tomorrow"),
+  c: Deprecated('tomorrow'),
   1 + 2: (d ? 3 : 4),
-  identical(1, 2): "s",
+  identical(1, 2): 's',
   K.p: 6
 })
 @b
@@ -73,49 +73,49 @@ class Bar {
   final Map<Object, Object> m;
   const Bar(this.m);
   const Bar.namedConstructor(this.m);
-  toString() => "Bar($m)";
+  toString() => 'Bar($m)';
 }
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("metadata on class", () {
+  test('metadata on class', () {
     expect(myReflectable.reflectType(Foo).metadata, const [
       MyReflectable(),
       Bar({
         b: deprecated,
-        c: Deprecated("tomorrow"),
+        c: Deprecated('tomorrow'),
         3: 3,
-        false: "s",
+        false: 's',
         2: 6
       }),
       13,
-      [Bar({"a": 14})],
+      [Bar({'a': 14})],
     ]);
 
     ClassMirror fooMirror = myReflectable.reflectType(Foo);
-    expect(fooMirror.declarations["foo"].metadata, const [
+    expect(fooMirror.declarations['foo'].metadata, const [
       Bar({}),
       Bar({}),
       13,
-      [Bar({"a": 14})],
+      [Bar({'a': 14})],
     ]);
 
-    expect(fooMirror.declarations["x"].metadata, [b]);
+    expect(fooMirror.declarations['x'].metadata, [b]);
 
     // The synthetic accessors do not have metadata.
-    expect(fooMirror.instanceMembers["x"].metadata, []);
-    expect(fooMirror.instanceMembers["x="].metadata, []);
+    expect(fooMirror.instanceMembers['x'].metadata, []);
+    expect(fooMirror.instanceMembers['x='].metadata, []);
 
     // Test metadata on libraries
     expect(myReflectable.reflectType(Foo).owner.metadata, [c]);
   });
-  test("metadata without capability", () {
+  test('metadata without capability', () {
     ClassMirror foo2Mirror = myReflectable2.reflectType(Foo2);
     expect(() => foo2Mirror.metadata,
         throwsA(const TypeMatcher<NoSuchCapabilityError>()));
 
-    expect(() => foo2Mirror.declarations["foo"].metadata,
+    expect(() => foo2Mirror.declarations['foo'].metadata,
         throwsA(const TypeMatcher<NoSuchCapabilityError>()));
   });
 }

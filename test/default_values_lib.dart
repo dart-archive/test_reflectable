@@ -7,7 +7,7 @@
 // where a default value which is already imported is moved to a third
 // file and must be imported from there.
 
-const String globalConstant = "21";
+const String globalConstant = '21';
 
 class A {
   static const localConstant = 11;

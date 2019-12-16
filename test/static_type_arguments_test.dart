@@ -37,7 +37,7 @@ class MyGenericService<X extends SecurityService> {
 Matcher throwsUnimplemented = throwsA(isUnimplementedError);
 Matcher isUnimplementedError = TypeMatcher<UnimplementedError>();
 
-main() {
+void main() {
   initializeReflectable();
 
   test('get type arguments', () {

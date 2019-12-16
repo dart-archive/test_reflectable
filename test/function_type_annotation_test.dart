@@ -60,16 +60,16 @@ typedef typeF15 = X Function<X>(X, {X a});
 typedef typeF16 = X Function<X>({X a, X b});
 typedef typeF17 = X Function<X>(X, {X a, X b});
 
-main() {
+void main() {
   initializeReflectable();
 
   LibraryMirror libraryMirror = reflector
-      .findLibrary("test_reflectable.test.function_type_annotation_test");
-  VariableMirror variableMirror = libraryMirror.declarations["int2int"];
+      .findLibrary('test_reflectable.test.function_type_annotation_test');
+  VariableMirror variableMirror = libraryMirror.declarations['int2int'];
   ClassMirror classMirror = reflector.reflectType(C);
-  MethodMirror getterMirror = classMirror.declarations["getter"];
-  MethodMirror setterMirror = classMirror.declarations["setter="];
-  MethodMirror methodMirror = classMirror.declarations["method"];
+  MethodMirror getterMirror = classMirror.declarations['getter'];
+  MethodMirror setterMirror = classMirror.declarations['setter='];
+  MethodMirror methodMirror = classMirror.declarations['method'];
   ParameterMirror setterArgumentMirror = setterMirror.parameters[0];
   ParameterMirror methodArgument0Mirror = methodMirror.parameters[0];
   ParameterMirror methodArgument1Mirror = methodMirror.parameters[1];
@@ -100,7 +100,7 @@ main() {
   });
 
   MethodMirror inlineTypesMirror =
-      classMirror.declarations["inlineTypes"];
+      classMirror.declarations['inlineTypes'];
   List<ParameterMirror> parameterMirrors = inlineTypesMirror.parameters;
   List<Type> expectedTypes = [
     TypeValue<int Function()>().type,

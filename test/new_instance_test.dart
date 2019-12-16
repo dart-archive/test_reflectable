@@ -59,53 +59,53 @@ void performTests(String message, Reflectable reflector) {
 
   ClassMirror classMirror = reflector.reflectType(A);
   test('$message: newInstance unnamed constructor, no arguments', () {
-    expect((classMirror.newInstance("", []) as A).f, 42);
+    expect((classMirror.newInstance('', []) as A).f, 42);
   });
   test('$message: newInstance named constructor, simple argument list, '
       'one argument',
       () {
-    expect((classMirror.newInstance("positional", [84]) as A).f, 42);
+    expect((classMirror.newInstance('positional', [84]) as A).f, 42);
   });
   test('$message: newInstance optional arguments, all used', () {
-    expect((classMirror.newInstance("optional", [1, 2, 3, 4]) as A).f, 133);
+    expect((classMirror.newInstance('optional', [1, 2, 3, 4]) as A).f, 133);
   });
   test('$message: newInstance optional arguments, none used', () {
-    expect((classMirror.newInstance("optional", [1, 2]) as A).f, 55);
+    expect((classMirror.newInstance('optional', [1, 2]) as A).f, 55);
   });
   test('$message: newInstance optional arguments, some used', () {
-    expect((classMirror.newInstance("optional", [1, 2, 3]) as A).f, 139);
+    expect((classMirror.newInstance('optional', [1, 2, 3]) as A).f, 139);
   });
   test('$message: newInstance named arguments, all used', () {
-    expect((classMirror.newInstance("argNamed", [1, 2], {#z: 3, #p: 0}) as A).f,
+    expect((classMirror.newInstance('argNamed', [1, 2], {#z: 3, #p: 0}) as A).f,
         0);
   });
   test('$message: newInstance named arguments, some used', () {
-    expect((classMirror.newInstance("argNamed", [1, 2], {#z: 3}) as A).f, -10);
-    expect((classMirror.newInstance("argNamed", [1, 2], {#p: 3}) as A).f, -42);
+    expect((classMirror.newInstance('argNamed', [1, 2], {#z: 3}) as A).f, -10);
+    expect((classMirror.newInstance('argNamed', [1, 2], {#p: 3}) as A).f, -42);
   });
   test('$message: newInstance named arguments, unused', () {
-    expect((classMirror.newInstance("argNamed", [1, 2]) as A).f, -49);
-    expect((classMirror.newInstance("argNamed", [1, 2], {}) as A).f, -49);
+    expect((classMirror.newInstance('argNamed', [1, 2]) as A).f, -49);
+    expect((classMirror.newInstance('argNamed', [1, 2], {}) as A).f, -49);
   });
   test('$message: newInstance on factory', () {
-    expect((classMirror.newInstance("aFactory", []) as A).f, 42);
+    expect((classMirror.newInstance('aFactory', []) as A).f, 42);
   });
 }
 
 final throwsReflectableNoMethod =
     throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
-main() {
+void main() {
   performTests('reflector', reflector);
   performTests('metaReflector', metaReflector);
 
   test('newInstance named constructor, no metadata, none required', () {
     ClassMirror classMirror = reflector.reflectType(A);
-    expect((classMirror.newInstance("noMeta", [0]) as A).f, 42);
+    expect((classMirror.newInstance('noMeta', [0]) as A).f, 42);
   });
   test('newInstance named constructor, no metadata, rejected', () {
     ClassMirror classMirror = metaReflector.reflectType(A);
-    expect(() => classMirror.newInstance("noMeta", [0]),
+    expect(() => classMirror.newInstance('noMeta', [0]),
         throwsReflectableNoMethod);
   });
 }

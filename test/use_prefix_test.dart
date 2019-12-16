@@ -21,7 +21,7 @@ const myReflectable = MyReflectable();
 @myReflectable
 class A {}
 
-main() {
+void main() {
   initializeReflectable();
 
   test('reflect', () {

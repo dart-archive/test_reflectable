@@ -17,7 +17,7 @@ class Reflector extends Reflectable {
 
 class NameReflector extends Reflectable {
   const NameReflector()
-      : super(delegateCapability, const InstanceInvokeCapability("arg0"));
+      : super(delegateCapability, const InstanceInvokeCapability('arg0'));
 }
 
 class MetaReflector extends Reflectable {
@@ -79,7 +79,7 @@ class B implements A {
 Matcher throwsReflectableNoMethod =
     throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   A a = A();

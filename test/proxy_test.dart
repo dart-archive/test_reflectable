@@ -21,7 +21,7 @@ const proxyReflectable = ProxyReflectable();
 @proxyReflectable
 class A {
   int i = 0;
-  String foo() => i == 42 ? "OK!" : "Error!";
+  String foo() => i == 42 ? 'OK!' : 'Error!';
   void bar(int i) {
     this.i = i;
   }
@@ -57,7 +57,7 @@ Map<Symbol, Function> createMethodMap(Type T) {
   return methodMapForT;
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   // Set up support for proxying A instances.
@@ -68,9 +68,9 @@ main() {
   Proxy proxy = Proxy(a, methodMapForA);
 
   // Use it.
-  test("Using proxy", () {
+  test('Using proxy', () {
     proxy.bar(42);
     expect(a.i, 42);
-    expect(proxy.foo(), "OK!");
+    expect(proxy.foo(), 'OK!');
   });
 }

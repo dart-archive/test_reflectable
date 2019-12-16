@@ -28,14 +28,14 @@ class Typer<X> { Type get type => X; }
 final Type COfInt = Typer<C<int>>().type;
 
 void runTest(String message, ClassMirror classMirror) {
-  test("Obtain mirror for expanding generic $message", () {
+  test('Obtain mirror for expanding generic $message', () {
     expect(classMirror, isNotNull);
     expect(classMirror.hasReflectedType, true);
     expect(classMirror.reflectedType, COfInt);
   });
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   test('Reject reflection directly on instantiated generic class', () {

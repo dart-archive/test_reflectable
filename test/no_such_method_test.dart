@@ -36,81 +36,81 @@ class A {
 Matcher throwsReflectableNoSuchMethod =
     throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   InstanceMirror aMirror = reflector.reflect(A());
   LibraryMirror libraryMirror =
-      reflector.findLibrary("test_reflectable.test.no_such_method_test");
+      reflector.findLibrary('test_reflectable.test.no_such_method_test');
 
   // Check that reflectable invocations of non-existing methods causes
   // a `ReflectableNoSuchMethodError`.
   test('No such method', () {
-    expect(() => aMirror.invoke("doesNotExist", []),
+    expect(() => aMirror.invoke('doesNotExist', []),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("doesNotExist", [0]),
+    expect(() => aMirror.invoke('doesNotExist', [0]),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("doesNotExist", [0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('doesNotExist', [0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg0", [0]), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg0", [], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg0', [0]), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('arg0', [], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg0", [0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg0', [0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg1", []), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg1", [], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg1', []), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('arg1', [], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg1", [0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg1', [0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg1", [0, 0]), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg1", [0, 0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg1', [0, 0]), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('arg1', [0, 0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg2to4", [0]), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg2to4", [0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg2to4', [0]), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('arg2to4', [0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg2to4", [0, 0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg2to4', [0, 0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg2to4", [0, 0, 0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg2to4', [0, 0, 0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg2to4", [0, 0, 0, 0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg2to4', [0, 0, 0, 0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg2to4", [0, 0, 0, 0, 0]),
+    expect(() => aMirror.invoke('arg2to4', [0, 0, 0, 0, 0]),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("arg2to4", [0, 0, 0, 0, 0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('arg2to4', [0, 0, 0, 0, 0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("+", []), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("+", [], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('+', []), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('+', [], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("+", [0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('+', [0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("+", [0, 0]), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("+", [0, 0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('+', [0, 0]), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('+', [0, 0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("[]", []), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("[]", [], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('[]', []), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('[]', [], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("[]", [0], {#doesNotExist: 0}),
+    expect(() => aMirror.invoke('[]', [0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("[]", [0, 0]), throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invoke("[]", [0, 0], {#doesNotExist: 0}),
-        throwsReflectableNoSuchMethod);
-
-    expect(() => aMirror.invokeGetter("doesNotExist"),
-        throwsReflectableNoSuchMethod);
-    expect(() => aMirror.invokeSetter("doesNotExist", 0),
+    expect(() => aMirror.invoke('[]', [0, 0]), throwsReflectableNoSuchMethod);
+    expect(() => aMirror.invoke('[]', [0, 0], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
 
-    expect(() => libraryMirror.invoke("doesNotExist", []),
+    expect(() => aMirror.invokeGetter('doesNotExist'),
         throwsReflectableNoSuchMethod);
-    expect(() => libraryMirror.invoke("doesNotExist", [], {#doesNotExist: 0}),
+    expect(() => aMirror.invokeSetter('doesNotExist', 0),
         throwsReflectableNoSuchMethod);
-    expect(() => libraryMirror.invoke("doesNotExist", [0]),
+
+    expect(() => libraryMirror.invoke('doesNotExist', []),
         throwsReflectableNoSuchMethod);
-    expect(() => libraryMirror.invoke("doesNotExist", [0], {#doesNotExist: 0}),
+    expect(() => libraryMirror.invoke('doesNotExist', [], {#doesNotExist: 0}),
         throwsReflectableNoSuchMethod);
-    expect(() => libraryMirror.invokeGetter("doesNotExist"),
+    expect(() => libraryMirror.invoke('doesNotExist', [0]),
         throwsReflectableNoSuchMethod);
-    expect(() => libraryMirror.invokeSetter("doesNotExist", 0),
+    expect(() => libraryMirror.invoke('doesNotExist', [0], {#doesNotExist: 0}),
+        throwsReflectableNoSuchMethod);
+    expect(() => libraryMirror.invokeGetter('doesNotExist'),
+        throwsReflectableNoSuchMethod);
+    expect(() => libraryMirror.invokeSetter('doesNotExist', 0),
         throwsReflectableNoSuchMethod);
   });
 
@@ -118,7 +118,7 @@ main() {
   // `NoSuchMethodError` thrown by a normal, non-reflectable invocation.
   test('No such method, natively', () {
     expect(() => A().deepThrow(Object()), throwsNoSuchMethodError);
-    expect(() => aMirror.invoke("deepThrow", [Object()]),
+    expect(() => aMirror.invoke('deepThrow', [Object()]),
         throwsNoSuchMethodError);
   });
 }

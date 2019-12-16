@@ -34,15 +34,15 @@ enum C { monday, tuesday, otherDays }
 @reflector
 class D<X> {}
 
-main() {
+void main() {
   initializeReflectable();
 
   LibraryMirror libraryMirror =
-      reflector.findLibrary("test_reflectable.test.class_property_test");
-  ClassMirror aMirror = libraryMirror.declarations["A"];
-  ClassMirror bMirror = libraryMirror.declarations["_B"];
-  ClassMirror cMirror = libraryMirror.declarations["C"];
-  ClassMirror dMirror = libraryMirror.declarations["D"];
+      reflector.findLibrary('test_reflectable.test.class_property_test');
+  ClassMirror aMirror = libraryMirror.declarations['A'];
+  ClassMirror bMirror = libraryMirror.declarations['_B'];
+  ClassMirror cMirror = libraryMirror.declarations['C'];
+  ClassMirror dMirror = libraryMirror.declarations['D'];
   D<int> dOfInt = D<int>();
   InstanceMirror dOfIntInstanceMirror = reflector.reflect(dOfInt);
   ClassMirror dOfIntMirror = dOfIntInstanceMirror.type;

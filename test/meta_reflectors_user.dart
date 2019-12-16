@@ -12,13 +12,13 @@
 
 library test_reflectable.test.meta_reflectors_user;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
-import "meta_reflectors_meta.dart";
-import "meta_reflectors_domain.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
+import 'meta_reflectors_meta.dart';
+import 'meta_reflectors_domain.dart';
 
 testReflector(Reflectable reflector, String desc) {
-  test("Mixin, $desc", () {
+  test('Mixin, $desc', () {
     ClassMirror aMirror = reflector.reflectType(A);
     ClassMirror bMirror = reflector.reflectType(B);
     ClassMirror cMirror = reflector.reflectType(C);
@@ -38,9 +38,9 @@ testReflector(Reflectable reflector, String desc) {
     expect(cMirror.superclass.superclass.superclass, bMirror);
     expect(dMirror.mixin, m1Mirror);
     expect(dMirror.superclass.mixin, aMirror);
-    expect(bMirror.superclass.declarations["foo"].owner, m1Mirror);
-    expect(bMirror.superclass.declarations["field"].owner, m1Mirror);
-    expect(bMirror.superclass.declarations["staticBar"], null);
+    expect(bMirror.superclass.declarations['foo'].owner, m1Mirror);
+    expect(bMirror.superclass.declarations['field'].owner, m1Mirror);
+    expect(bMirror.superclass.declarations['staticBar'], null);
     expect(bMirror.superclass.hasReflectedType, true);
     expect(bMirror.superclass.reflectedType, const TypeMatcher<Type>());
     expect(bMirror.superclass.superclass.reflectedType,
@@ -62,30 +62,30 @@ runTests() {
   List<Reflectable> reflectors =
       const AllReflectorsMetaReflector().reflectors.toList();
 
-  test("MetaReflector, set of reflectors", () {
+  test('MetaReflector, set of reflectors', () {
     expect(
         getNames(reflectors).toSet(),
         [
-          "Reflector",
-          "Reflector2",
-          "ReflectorUpwardsClosed",
-          "ReflectorUpwardsClosedToA",
-          "ReflectorUpwardsClosedUntilA",
-          "ScopeMetaReflector",
-          "AllReflectorsMetaReflector"
+          'Reflector',
+          'Reflector2',
+          'ReflectorUpwardsClosed',
+          'ReflectorUpwardsClosedToA',
+          'ReflectorUpwardsClosedUntilA',
+          'ScopeMetaReflector',
+          'AllReflectorsMetaReflector'
         ].toSet());
-    expect(getNames(const ScopeMetaReflector().reflectablesOfScope("polymer")),
-        ["Reflector", "ReflectorUpwardsClosed"].toSet());
-    expect(getNames(const ScopeMetaReflector().reflectablesOfScope("observe")),
-        ["Reflector2", "ReflectorUpwardsClosed"].toSet());
+    expect(getNames(const ScopeMetaReflector().reflectablesOfScope('polymer')),
+        ['Reflector', 'ReflectorUpwardsClosed'].toSet());
+    expect(getNames(const ScopeMetaReflector().reflectablesOfScope('observe')),
+        ['Reflector2', 'ReflectorUpwardsClosed'].toSet());
   });
 
-  const ScopeMetaReflector().reflectablesOfScope("polymer").forEach(
-      (Reflectable reflector) => testReflector(reflector, "$reflector"));
+  const ScopeMetaReflector().reflectablesOfScope('polymer').forEach(
+      (Reflectable reflector) => testReflector(reflector, '$reflector'));
 
-  test("MetaReflector, select by name", () {
+  test('MetaReflector, select by name', () {
     var reflector2 = reflectors
-        .firstWhere((Reflectable reflector) => "$reflector".contains("2"));
+        .firstWhere((Reflectable reflector) => '$reflector'.contains('2'));
     ClassMirror bMirror = reflector2.reflectType(B);
     ClassMirror cMirror = reflector2.reflectType(C);
     ClassMirror dMirror = reflector2.reflectType(D);
@@ -112,7 +112,7 @@ runTests() {
     expect(() => dMirror.superclass, throwsANoSuchCapabilityException);
   });
 
-  test("MetaReflector, select by capability", () {
+  test('MetaReflector, select by capability', () {
     var reflector = reflectors.firstWhere((Reflectable reflector) {
       return (reflector.capabilities.any((ReflectCapability capability) =>
           capability is SuperclassQuantifyCapability &&

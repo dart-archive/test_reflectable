@@ -28,7 +28,7 @@ class B extends A {}
 @reflector
 class C extends B {}
 
-main() {
+void main() {
   initializeReflectable();
 
   test('Variable inherited from non-covered class', () {

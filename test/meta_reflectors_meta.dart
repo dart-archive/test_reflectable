@@ -11,7 +11,7 @@
 /// depending on reflectable.
 library test_reflectable.test.meta_reflectors_meta;
 
-@GlobalQuantifyCapability(r"^reflectable.reflectable.Reflectable$",
+@GlobalQuantifyCapability(r'^reflectable.reflectable.Reflectable$',
     AllReflectorsMetaReflector())
 import 'package:reflectable/reflectable.dart';
 

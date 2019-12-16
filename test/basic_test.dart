@@ -95,7 +95,7 @@ Matcher throwsReflectableNoSuchMethod = throwsA(isReflectableNoSuchMethodError);
 Matcher isReflectableNoSuchMethodError =
     TypeMatcher<ReflectableNoSuchMethodError>();
 
-main() {
+void main() {
   initializeReflectable();
 
   var unnamed = '';
@@ -135,7 +135,7 @@ main() {
   });
 
   test('field variables', () {
-    expect(variablesOf(aClass).map((x) => x.simpleName), ["foo"]);
+    expect(variablesOf(aClass).map((x) => x.simpleName), ['foo']);
     expect(variablesOf(bClass), []);
     expect(variablesOf(cClass), []);
   });
@@ -153,9 +153,9 @@ main() {
   });
 
   test('setters', () {
-    expect(aM.invokeSetter(accessorSetter, "foo"), 'foo');
-    expect(bM.invokeSetter(accessorSetter, "bar"), 'bar');
-    expect(cM.invokeSetter(accessorSetter, "baz"), 'baz');
+    expect(aM.invokeSetter(accessorSetter, 'foo'), 'foo');
+    expect(bM.invokeSetter(accessorSetter, 'bar'), 'bar');
+    expect(cM.invokeSetter(accessorSetter, 'baz'), 'baz');
 
     expect(accessorBackingStorageA, 'foo');
     expect(accessorBackingStorageB, 'bar');
@@ -163,37 +163,37 @@ main() {
   });
 
   test('aMethod', () {
-    expect(aM.invoke(aMethod, []), "aMethod");
-    expect(bM.invoke(aMethod, []), "aMethod");
-    expect(cM.invoke(aMethod, []), "aMethod");
+    expect(aM.invoke(aMethod, []), 'aMethod');
+    expect(bM.invoke(aMethod, []), 'aMethod');
+    expect(cM.invoke(aMethod, []), 'aMethod');
   });
 
   test('bMethod', () {
     expect(() => aM.invoke(bMethod, []), throwsReflectableNoSuchMethod);
-    expect(bM.invoke(bMethod, []), "bMethod");
-    expect(cM.invoke(bMethod, []), "bMethod");
+    expect(bM.invoke(bMethod, []), 'bMethod');
+    expect(cM.invoke(bMethod, []), 'bMethod');
   });
 
   test('cMethod', () {
     expect(() => aM.invoke(cMethod, []), throwsReflectableNoSuchMethod);
     expect(() => bM.invoke(cMethod, []), throwsReflectableNoSuchMethod);
-    expect(cM.invoke(cMethod, []), "cMethod");
+    expect(cM.invoke(cMethod, []), 'cMethod');
   });
 
   test('getters and setters', () {
-    expect(gettersOf(aClass).map((x) => x.simpleName), ["accessor"]);
+    expect(gettersOf(aClass).map((x) => x.simpleName), ['accessor']);
     expect(gettersOf(bClass).map((x) => x.simpleName),
-        ["accessor", "foo"].toSet());
-    expect(gettersOf(cClass).map((x) => x.simpleName), ["accessor"]);
-    expect(settersOf(aClass).map((x) => x.simpleName), ["accessor="]);
-    expect(settersOf(bClass).map((x) => x.simpleName), ["accessor="].toSet());
+        ['accessor', 'foo'].toSet());
+    expect(gettersOf(cClass).map((x) => x.simpleName), ['accessor']);
+    expect(settersOf(aClass).map((x) => x.simpleName), ['accessor=']);
+    expect(settersOf(bClass).map((x) => x.simpleName), ['accessor='].toSet());
     expect(settersOf(cClass).map((x) => x.simpleName),
-        ["accessor=", "foo="].toSet());
+        ['accessor=', 'foo='].toSet());
     expect(methodsOf(aClass).map((x) => x.simpleName),
-        ["instanceMethod", "aMethod"].toSet());
+        ['instanceMethod', 'aMethod'].toSet());
     expect(methodsOf(bClass).map((x) => x.simpleName),
-        ["instanceMethod", "bMethod"].toSet());
+        ['instanceMethod', 'bMethod'].toSet());
     expect(methodsOf(cClass).map((x) => x.simpleName),
-        ["instanceMethod", "cMethod"].toSet());
+        ['instanceMethod', 'cMethod'].toSet());
   });
 }

@@ -14,27 +14,27 @@
 /// dynamically.
 library test_reflectable.test.meta_reflectors_test;
 
-@GlobalQuantifyCapability(r"\.(M1|M2|M3|A|B|C|D)$", Reflector())
-@GlobalQuantifyCapability(r"\.(M1|M2|M3|B|C|D)$", Reflector2())
-@GlobalQuantifyCapability(r"\.(C|D)$",ReflectorUpwardsClosed())
-@GlobalQuantifyCapability(r"\.(C|D)$", ReflectorUpwardsClosedToA())
-@GlobalQuantifyCapability(r"\.(C|D)$", ReflectorUpwardsClosedUntilA())
-import "package:reflectable/reflectable.dart";
-import "meta_reflectors_domain_definer.dart";
-import "meta_reflectors_definer.dart";
-import "meta_reflectors_meta.dart";
+@GlobalQuantifyCapability(r'\.(M1|M2|M3|A|B|C|D)$', Reflector())
+@GlobalQuantifyCapability(r'\.(M1|M2|M3|B|C|D)$', Reflector2())
+@GlobalQuantifyCapability(r'\.(C|D)$',ReflectorUpwardsClosed())
+@GlobalQuantifyCapability(r'\.(C|D)$', ReflectorUpwardsClosedToA())
+@GlobalQuantifyCapability(r'\.(C|D)$', ReflectorUpwardsClosedUntilA())
+import 'package:reflectable/reflectable.dart';
+import 'meta_reflectors_domain_definer.dart';
+import 'meta_reflectors_definer.dart';
+import 'meta_reflectors_meta.dart';
 import 'meta_reflectors_test.reflectable.dart';
-import "meta_reflectors_user.dart";
+import 'meta_reflectors_user.dart';
 
 const Map<String, Iterable<Reflectable>> scopeMap = {
-  "polymer": <Reflectable>[Reflector(), ReflectorUpwardsClosed()],
-  "observe": <Reflectable>[Reflector2(), ReflectorUpwardsClosed()]
+  'polymer': <Reflectable>[Reflector(), ReflectorUpwardsClosed()],
+  'observe': <Reflectable>[Reflector2(), ReflectorUpwardsClosed()]
 };
 
 @ScopeMetaReflector()
 Iterable<Reflectable> reflectablesOfScope(String scope) => scopeMap[scope];
 
-main() {
+void main() {
   initializeReflectable();
 
   runTests();

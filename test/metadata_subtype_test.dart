@@ -42,7 +42,7 @@ class C {
   int bar() => 24.0.floor();
 
   // Does not have the required metadata.
-  int baz() => int.parse("2" "4");
+  int baz() => int.parse('2' '4');
 
   // Annotated by metadata instance of subclass.
   @E()
@@ -53,18 +53,18 @@ class C {
   static int staticBar() => 24.0.ceil();
 
   // Does not have the required metadata.
-  static int staticBaz() => int.parse(" 2" "4 ".substring(1, 2));
+  static int staticBaz() => int.parse(' 2' '4 '.substring(1, 2));
 }
 
 final Matcher throwsReflectableNoMethod =
     throwsA(const TypeMatcher<ReflectableNoSuchMethodError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = myReflectable.reflectType(C);
   Map<String, DeclarationMirror> declarations = classMirror.declarations;
-  test("Proper subtypes as metadata, declarations", () {
+  test('Proper subtypes as metadata, declarations', () {
     expect(declarations['foo'], isNotNull);
     expect(declarations['bar'], isNotNull);
     expect(declarations['baz'], isNull);
@@ -73,7 +73,7 @@ main() {
     expect(declarations['staticBaz'], isNull);
   });
   InstanceMirror instanceMirror = myReflectable.reflect(C());
-  test("Proper subtypes as metadata, invocation", () {
+  test('Proper subtypes as metadata, invocation', () {
     expect(instanceMirror.invoke('foo', []), 24);
     expect(instanceMirror.invoke('bar', []), 24);
     expect(() => instanceMirror.invoke('baz', []), throwsReflectableNoMethod);

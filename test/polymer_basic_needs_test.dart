@@ -30,7 +30,7 @@ bool _hasSetter(ClassMirror cls, MethodMirror getter) {
   return mirror is MethodMirror && mirror.isSetter;
 }
 
-String _setterName(String getter) => "$getter=";
+String _setterName(String getter) => '$getter=';
 
 ThinDeclarationMirror makeThin(DeclarationMirror declaration) {
   bool isField() => declaration is VariableMirror;
@@ -84,39 +84,39 @@ Object invoke(Object instance, String name, List<Object> newArgs) {
 @myReflectable
 class A {
   int i = 0;
-  String foo() => i == 42 ? "OK!" : "Error!";
+  String foo() => i == 42 ? 'OK!' : 'Error!';
   void bar(int i) {
     this.i = i;
   }
 }
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("Polymer basic needs", () {
+  test('Polymer basic needs', () {
     List<ThinDeclarationMirror> thinDeclarations = buildMirrors(A);
 
     // Check in a few ways that the thin declarations are as expected.
     expect(thinDeclarations.length, 3);
     for (ThinDeclarationMirror thinDeclaration in thinDeclarations) {
-      if (thinDeclaration.name == "i") {
+      if (thinDeclaration.name == 'i') {
         expect(thinDeclaration.isField, isTrue);
         expect(thinDeclaration.isFinal, isFalse);
-      } else if (thinDeclaration.name == "foo") {
+      } else if (thinDeclaration.name == 'foo') {
         expect(thinDeclaration.isMethod, isTrue);
         expect(thinDeclaration.isFinal, isFalse);
         expect(thinDeclaration.isField, isFalse);
       } else {
         String name = thinDeclaration.name;
-        expect(name == "bar" || name == "A", isTrue);
+        expect(name == 'bar' || name == 'A', isTrue);
       }
     }
 
     // Check other methods from `polymer_basic_needs_lib`.
     A a = A();
-    write(a, "i", 7);
-    expect(read(a, "i"), 7);
-    invoke(a, "bar", [42]);
-    expect(invoke(a, "foo", []), "OK!");
+    write(a, 'i', 7);
+    expect(read(a, 'i'), 7);
+    invoke(a, 'bar', [42]);
+    expect(invoke(a, 'foo', []), 'OK!');
   });
 }

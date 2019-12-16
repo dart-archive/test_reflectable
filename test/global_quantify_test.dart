@@ -5,15 +5,15 @@
 library test_reflectable.test.global_quantify_test;
 
 @GlobalQuantifyCapability(
-    r"^test_reflectable.test.global_quantify_test.(A|B)$", reflector)
+    r'^test_reflectable.test.global_quantify_test.(A|B)$', reflector)
 @GlobalQuantifyMetaCapability(Mark, reflector)
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'global_quantify_test.reflectable.dart';
 
 class Reflector extends Reflectable {
   const Reflector()
-      : super(typeCapability, const InstanceInvokeCapability("foo"));
+      : super(typeCapability, const InstanceInvokeCapability('foo'));
 }
 
 const reflector = Reflector();
@@ -42,26 +42,26 @@ class D {
 Matcher throwsNoSuchCapabilityError =
     throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("GlobalQuantifyCapability", () {
+  test('GlobalQuantifyCapability', () {
     expect(reflector.canReflectType(A), true);
     expect(reflector.canReflect(A()), true);
     expect(reflector.reflectType(A), const TypeMatcher<ClassMirror>());
-    expect(reflector.reflect(A()).invoke("foo", []), 42);
+    expect(reflector.reflect(A()).invoke('foo', []), 42);
     expect(reflector.canReflectType(B), true);
     expect(reflector.canReflect(B()), true);
     expect(reflector.reflectType(B), const TypeMatcher<ClassMirror>());
-    expect(reflector.reflect(B()).invoke("foo", []), 43);
+    expect(reflector.reflect(B()).invoke('foo', []), 43);
     expect(reflector.canReflectType(C), false);
     expect(reflector.canReflect(C()), false);
     expect(() => reflector.reflectType(C), throwsNoSuchCapabilityError);
     expect(() => reflector.reflect(C()), throwsNoSuchCapabilityError);
   });
-  test("GlobalQuantifyMetaCapability", () {
+  test('GlobalQuantifyMetaCapability', () {
     expect(reflector.canReflectType(D), true);
     expect(reflector.canReflect(D()), true);
-    expect(reflector.reflect(D()).invoke("foo", []), 45);
+    expect(reflector.reflect(D()).invoke('foo', []), 45);
   });
 }

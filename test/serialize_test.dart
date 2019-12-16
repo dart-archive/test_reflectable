@@ -4,8 +4,8 @@
 
 library test_reflectable.test.serialize_test;
 
-import "package:test/test.dart";
-import "package:test_reflectable/serialize.dart";
+import 'package:test/test.dart';
+import 'package:test_reflectable/serialize.dart';
 import 'serialize_test.reflectable.dart';
 
 // By annotating with [Serializable] we indicate that [A] can be serialized
@@ -21,7 +21,7 @@ class A {
   // This is just a convenience constructor for making the test data.
   A.fromValues(this.a, this.b);
 
-  toString() => "A(a = $a, b = $b)";
+  toString() => 'A(a = $a, b = $b)';
 
   /// Special case lists.
   _equalsHandlingLists(dynamic x, dynamic y) {
@@ -63,33 +63,33 @@ class B extends A {
   int get hashCode => super.hashCode ^ c.hashCode;
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   Serializer serializer = Serializer();
-  test("Round trip test", () {
+  test('Round trip test', () {
     var input = A.fromValues(
-        "one", A.fromValues(2, [3, A.fromValues(4, 5)]));
+        'one', A.fromValues(2, [3, A.fromValues(4, 5)]));
     var out = serializer.serialize(input);
     // Assert that the output of the serialization is equals to
     // the expected map:
     expect(out, {
-      "type": "test_reflectable.test.serialize_test.A",
-      "fields": {
-        "a": {"type": "String", "val": "one"},
-        "b": {
-          "type": "test_reflectable.test.serialize_test.A",
-          "fields": {
-            "a": {"type": "num", "val": 2},
-            "b": {
-              "type": "List",
-              "val": [
-                {"type": "num", "val": 3},
+      'type': 'test_reflectable.test.serialize_test.A',
+      'fields': {
+        'a': {'type': 'String', 'val': 'one'},
+        'b': {
+          'type': 'test_reflectable.test.serialize_test.A',
+          'fields': {
+            'a': {'type': 'num', 'val': 2},
+            'b': {
+              'type': 'List',
+              'val': [
+                {'type': 'num', 'val': 3},
                 {
-                  "type": "test_reflectable.test.serialize_test.A",
-                  "fields": {
-                    "a": {"type": "num", "val": 4},
-                    "b": {"type": "num", "val": 5}
+                  'type': 'test_reflectable.test.serialize_test.A',
+                  'fields': {
+                    'a': {'type': 'num', 'val': 4},
+                    'b': {'type': 'num', 'val': 5}
                   }
                 }
               ]
@@ -102,19 +102,19 @@ main() {
     // original input.
     expect(serializer.deserialize(out), input);
   });
-  test("Serialize subtype", () {
+  test('Serialize subtype', () {
     var input = A.fromValues(1, B.fromValues(1, 2, 3));
     var output = serializer.serialize(input);
     expect(output, {
-      "type": "test_reflectable.test.serialize_test.A",
-      "fields": {
-        "a": {"type": "num", "val": 1},
-        "b": {
-          "type": "test_reflectable.test.serialize_test.B",
-          "fields": {
-            "a": {"type": "num", "val": 1},
-            "b": {"type": "num", "val": 2},
-            "c": {"type": "num", "val": 3}
+      'type': 'test_reflectable.test.serialize_test.A',
+      'fields': {
+        'a': {'type': 'num', 'val': 1},
+        'b': {
+          'type': 'test_reflectable.test.serialize_test.B',
+          'fields': {
+            'a': {'type': 'num', 'val': 1},
+            'b': {'type': 'num', 'val': 2},
+            'c': {'type': 'num', 'val': 3}
           }
         }
       }

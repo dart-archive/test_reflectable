@@ -16,7 +16,7 @@ import 'three_files_test.reflectable.dart';
 @myReflectable
 class A {}
 
-main() {
+void main() {
   initializeReflectable();
 
   test('reflect local', () {

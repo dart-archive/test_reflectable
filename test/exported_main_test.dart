@@ -7,4 +7,4 @@
 
 library test_reflectable.test.exported_main_test;
 
-export "exported_main_lib.dart";
+export 'exported_main_lib.dart';

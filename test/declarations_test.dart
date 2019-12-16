@@ -4,8 +4,8 @@
 
 library test_reflectable.test.declarations_test;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'declarations_test.reflectable.dart';
 
 class Reflector extends Reflectable {
@@ -46,7 +46,7 @@ class B extends A {
   B();
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   const reflector = Reflector();
@@ -55,28 +55,28 @@ main() {
   Map<String, DeclarationMirror> declarationsA = aMirror.declarations;
   Map<String, DeclarationMirror> declarationsB = bMirror.declarations;
 
-  test("declarations", () {
+  test('declarations', () {
     expect(
         declarationsA.values.map((x) => x.simpleName),
         Set.from([
-          "foo",
-          "getter1",
-          "getter2",
-          "setter1=",
-          "+",
-          "A",
-          "A.redirecting",
-          "A.factory",
-          "A.redirectingFactory",
-          "A.c"
+          'foo',
+          'getter1',
+          'getter2',
+          'setter1=',
+          '+',
+          'A',
+          'A.redirecting',
+          'A.factory',
+          'A.redirectingFactory',
+          'A.c'
         ]));
 
     expect(declarationsB.values.map((x) => x.simpleName),
-        Set.from(["bar", "getter1", "getter2", "setter2=", "B.c", "B"]));
+        Set.from(['bar', 'getter1', 'getter2', 'setter2=', 'B.c', 'B']));
   });
 
-  test("MethodMirror properties", () {
-    MethodMirror foo = declarationsA["foo"] as MethodMirror;
+  test('MethodMirror properties', () {
+    MethodMirror foo = declarationsA['foo'] as MethodMirror;
     expect(foo.isRegularMethod, isTrue);
     expect(foo.isStatic, isFalse);
     expect(foo.isGetter, isFalse);
@@ -91,7 +91,7 @@ main() {
     expect(foo.isOperator, isFalse);
     expect(foo.isSynthetic, isFalse);
     expect(foo.isTopLevel, isFalse);
-    MethodMirror getter2A = declarationsA["getter2"] as MethodMirror;
+    MethodMirror getter2A = declarationsA['getter2'] as MethodMirror;
     expect(getter2A.isRegularMethod, isFalse);
     expect(getter2A.isStatic, isFalse);
     expect(getter2A.isGetter, isTrue);
@@ -106,7 +106,7 @@ main() {
     expect(getter2A.isOperator, isFalse);
     expect(getter2A.isSynthetic, isFalse);
     expect(getter2A.isTopLevel, isFalse);
-    MethodMirror setter1 = declarationsA["setter1="] as MethodMirror;
+    MethodMirror setter1 = declarationsA['setter1='] as MethodMirror;
     expect(setter1.isRegularMethod, isFalse);
     expect(setter1.isStatic, isFalse);
     expect(setter1.isGetter, isFalse);
@@ -115,7 +115,7 @@ main() {
     expect(setter1.isAbstract, isFalse);
     expect(setter1.isOperator, isFalse);
     expect(setter1.isSynthetic, isFalse);
-    MethodMirror operatorPlus = declarationsA["+"] as MethodMirror;
+    MethodMirror operatorPlus = declarationsA['+'] as MethodMirror;
     expect(operatorPlus.isRegularMethod, isTrue);
     expect(operatorPlus.isStatic, isFalse);
     expect(operatorPlus.isGetter, isFalse);
@@ -124,7 +124,7 @@ main() {
     expect(operatorPlus.isAbstract, isFalse);
     expect(operatorPlus.isConstructor, isFalse);
     expect(operatorPlus.isOperator, isTrue);
-    MethodMirror constructorA = declarationsA["A"] as MethodMirror;
+    MethodMirror constructorA = declarationsA['A'] as MethodMirror;
     expect(constructorA.isRegularMethod, isFalse);
     expect(constructorA.isStatic, isFalse);
     expect(constructorA.isGetter, isFalse);
@@ -140,27 +140,27 @@ main() {
     expect(constructorA.isSynthetic, isFalse);
     expect(constructorA.isTopLevel, isFalse);
     MethodMirror redirectingConstructorA =
-        declarationsA["A.redirecting"] as MethodMirror;
+        declarationsA['A.redirecting'] as MethodMirror;
     expect(redirectingConstructorA.isConstructor, isTrue);
     expect(redirectingConstructorA.isGenerativeConstructor, isTrue);
     expect(redirectingConstructorA.isFactoryConstructor, isFalse);
     expect(redirectingConstructorA.isConstConstructor, isFalse);
     expect(redirectingConstructorA.isRedirectingConstructor, isTrue);
     MethodMirror factoryConstructorA =
-        declarationsA["A.factory"] as MethodMirror;
+        declarationsA['A.factory'] as MethodMirror;
     expect(factoryConstructorA.isConstructor, isTrue);
     expect(factoryConstructorA.isGenerativeConstructor, isFalse);
     expect(factoryConstructorA.isFactoryConstructor, isTrue);
     expect(factoryConstructorA.isConstConstructor, isFalse);
     expect(factoryConstructorA.isRedirectingConstructor, isFalse);
-    MethodMirror constConstructorA = declarationsA["A.c"] as MethodMirror;
+    MethodMirror constConstructorA = declarationsA['A.c'] as MethodMirror;
     expect(constConstructorA.isConstructor, isTrue);
     expect(constConstructorA.isGenerativeConstructor, isTrue);
     expect(constConstructorA.isFactoryConstructor, isFalse);
     expect(constConstructorA.isConstConstructor, isTrue);
     expect(constConstructorA.isRedirectingConstructor, isFalse);
     MethodMirror redirectingFactoryConstructorA =
-        declarationsA["A.redirectingFactory"] as MethodMirror;
+        declarationsA['A.redirectingFactory'] as MethodMirror;
     expect(redirectingFactoryConstructorA.isConstructor, isTrue);
     expect(redirectingFactoryConstructorA.isGenerativeConstructor, isFalse);
     expect(redirectingFactoryConstructorA.isFactoryConstructor, isTrue);
@@ -168,39 +168,39 @@ main() {
     expect(redirectingFactoryConstructorA.isRedirectingConstructor, isTrue);
   });
 
-  test("instanceMethods", () {
+  test('instanceMethods', () {
     ClassMirror aMirror = reflector.reflectType(A);
     Map<String, DeclarationMirror> instanceMembersA = aMirror.instanceMembers;
     expect(
         instanceMembersA.values.map((x) => x.simpleName),
         Set.from([
-          "toString",
-          "hashCode",
-          "==",
-          "noSuchMethod",
-          "runtimeType",
-          "foo",
-          "getter1",
-          "setter1=",
-          "+"
+          'toString',
+          'hashCode',
+          '==',
+          'noSuchMethod',
+          'runtimeType',
+          'foo',
+          'getter1',
+          'setter1=',
+          '+'
         ]));
     ClassMirror bMirror = reflector.reflectType(B);
     Map<String, DeclarationMirror> instanceMembersB = bMirror.instanceMembers;
     expect(
         instanceMembersB.values.map((x) => x.simpleName),
         Set.from([
-          "toString",
-          "hashCode",
-          "==",
-          "noSuchMethod",
-          "runtimeType",
-          "foo",
-          "bar",
-          "getter1",
-          "getter2",
-          "setter1=",
-          "setter2=",
-          "+"
+          'toString',
+          'hashCode',
+          '==',
+          'noSuchMethod',
+          'runtimeType',
+          'foo',
+          'bar',
+          'getter1',
+          'getter2',
+          'setter1=',
+          'setter2=',
+          '+'
         ]));
   });
 }

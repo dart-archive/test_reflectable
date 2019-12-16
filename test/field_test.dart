@@ -33,20 +33,20 @@ const noFieldReflector = NoFieldReflector();
 @noFieldReflector
 class A {
   int f1;
-  final String f2 = "f2";
+  final String f2 = 'f2';
   static A f3;
   static final List<num> f4 = <num>[1];
-  static const f5 = "42!";
+  static const f5 = '42!';
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = fieldReflector.reflectType(A);
-  test("instance field properties", () {
-    VariableMirror f1Mirror = classMirror.declarations["f1"];
-    expect(f1Mirror.simpleName, "f1");
-    expect(f1Mirror.qualifiedName, "test_reflectable.test.field_test.A.f1");
+  test('instance field properties', () {
+    VariableMirror f1Mirror = classMirror.declarations['f1'];
+    expect(f1Mirror.simpleName, 'f1');
+    expect(f1Mirror.qualifiedName, 'test_reflectable.test.field_test.A.f1');
     expect(f1Mirror.owner, classMirror);
     expect(f1Mirror.isPrivate, isFalse);
     expect(f1Mirror.isTopLevel, isFalse);
@@ -56,9 +56,9 @@ main() {
     expect(f1Mirror.isConst, isFalse);
     expect(f1Mirror.type.reflectedType, int);
 
-    VariableMirror f2Mirror = classMirror.declarations["f2"];
-    expect(f2Mirror.simpleName, "f2");
-    expect(f2Mirror.qualifiedName, "test_reflectable.test.field_test.A.f2");
+    VariableMirror f2Mirror = classMirror.declarations['f2'];
+    expect(f2Mirror.simpleName, 'f2');
+    expect(f2Mirror.qualifiedName, 'test_reflectable.test.field_test.A.f2');
     expect(f2Mirror.owner, classMirror);
     expect(f2Mirror.isPrivate, isFalse);
     expect(f2Mirror.isTopLevel, isFalse);
@@ -69,10 +69,10 @@ main() {
     expect(f2Mirror.type.reflectedType, String);
   });
 
-  test("static field properties", () {
-    VariableMirror f3Mirror = classMirror.declarations["f3"];
-    expect(f3Mirror.simpleName, "f3");
-    expect(f3Mirror.qualifiedName, "test_reflectable.test.field_test.A.f3");
+  test('static field properties', () {
+    VariableMirror f3Mirror = classMirror.declarations['f3'];
+    expect(f3Mirror.simpleName, 'f3');
+    expect(f3Mirror.qualifiedName, 'test_reflectable.test.field_test.A.f3');
     expect(f3Mirror.owner, classMirror);
     expect(f3Mirror.isPrivate, isFalse);
     expect(f3Mirror.isTopLevel, isFalse);
@@ -82,9 +82,9 @@ main() {
     expect(f3Mirror.isConst, isFalse);
     expect(f3Mirror.type.reflectedType, A);
 
-    VariableMirror f4Mirror = classMirror.declarations["f4"];
-    expect(f4Mirror.simpleName, "f4");
-    expect(f4Mirror.qualifiedName, "test_reflectable.test.field_test.A.f4");
+    VariableMirror f4Mirror = classMirror.declarations['f4'];
+    expect(f4Mirror.simpleName, 'f4');
+    expect(f4Mirror.qualifiedName, 'test_reflectable.test.field_test.A.f4');
     expect(f4Mirror.owner, classMirror);
     expect(f4Mirror.isPrivate, isFalse);
     expect(f4Mirror.isTopLevel, isFalse);
@@ -93,11 +93,11 @@ main() {
     expect(f4Mirror.isFinal, isTrue);
     expect(f4Mirror.isConst, isFalse);
     expect(f4Mirror.type.isOriginalDeclaration, false);
-    expect(f4Mirror.type.originalDeclaration.simpleName, "List");
+    expect(f4Mirror.type.originalDeclaration.simpleName, 'List');
 
-    VariableMirror f5Mirror = classMirror.declarations["f5"];
-    expect(f5Mirror.simpleName, "f5");
-    expect(f5Mirror.qualifiedName, "test_reflectable.test.field_test.A.f5");
+    VariableMirror f5Mirror = classMirror.declarations['f5'];
+    expect(f5Mirror.simpleName, 'f5');
+    expect(f5Mirror.qualifiedName, 'test_reflectable.test.field_test.A.f5');
     expect(f5Mirror.owner, classMirror);
     expect(f5Mirror.isPrivate, isFalse);
     expect(f5Mirror.isTopLevel, isFalse);
@@ -108,7 +108,7 @@ main() {
     expect(f5Mirror.type.reflectedType, String);
   });
 
-  test("no field capability", () {
+  test('no field capability', () {
     ClassMirror classMirror = noFieldReflector.reflectType(A);
     expect(() => classMirror.declarations,
         throwsA(const TypeMatcher<NoSuchCapabilityError>()));

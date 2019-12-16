@@ -4,8 +4,8 @@
 
 library test_reflectable.test.annotated_classes_test;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'annotated_classes_test.reflectable.dart';
 
 class MyReflectable extends Reflectable {
@@ -36,15 +36,15 @@ class F implements A {}
 @MyReflectable2()
 class G {}
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("Annotated classes", () {
+  test('Annotated classes', () {
     expect(const MyReflectable().annotatedClasses
             .map((ClassMirror classMirror) => classMirror.simpleName),
-        ["A", "B", "G"].toSet());
+        ['A', 'B', 'G'].toSet());
     expect(const MyReflectable2().annotatedClasses
             .map((ClassMirror classMirror) => classMirror.simpleName),
-        ["E", "F", "G"].toSet());
+        ['E', 'F', 'G'].toSet());
   });
 }

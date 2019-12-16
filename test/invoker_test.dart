@@ -27,44 +27,44 @@ class A {
   int argNamed(int x, int y, {int z = 42}) => x + y - z + f;
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   A instance1 = A(0);
   A instance2 = A(1);
   ClassMirror classMirror = myReflectable.reflectType(A);
   test('invoker with no arguments', () {
-    Function arg0Invoker = classMirror.invoker("arg0");
+    Function arg0Invoker = classMirror.invoker('arg0');
     expect(arg0Invoker(instance1)(), 42);
     expect(arg0Invoker(instance2)(), 43);
   });
   test('invoker with simple argument list, one argument', () {
-    Function arg1Invoker = classMirror.invoker("arg1");
+    Function arg1Invoker = classMirror.invoker('arg1');
     expect(arg1Invoker(instance1)(84), 42);
     expect(arg1Invoker(instance2)(84), 43);
   });
   test('invoker with mandatory arguments, omitting optional ones', () {
-    Function arg1to3Invoker = classMirror.invoker("arg1to3");
+    Function arg1to3Invoker = classMirror.invoker('arg1to3');
     expect(arg1to3Invoker(instance1)(40, 2), 42);
     expect(arg1to3Invoker(instance2)(40, 2), 43);
   });
   test('invoker with mandatory arguments, plus some optional ones', () {
-    Function arg1to3Invoker = classMirror.invoker("arg1to3");
+    Function arg1to3Invoker = classMirror.invoker('arg1to3');
     expect(arg1to3Invoker(instance1)(1, -1, 1), 42);
     expect(arg1to3Invoker(instance2)(1, -1, 1), 43);
   });
   test('invoker with mandatory arguments, plus all optional ones', () {
-    Function arg1to3Invoker = classMirror.invoker("arg1to3");
-    expect(arg1to3Invoker(instance1)(21, 21, 0, "Ignored"), 42);
-    expect(arg1to3Invoker(instance2)(21, 21, 0, "Ignored"), 43);
+    Function arg1to3Invoker = classMirror.invoker('arg1to3');
+    expect(arg1to3Invoker(instance1)(21, 21, 0, 'Ignored'), 42);
+    expect(arg1to3Invoker(instance2)(21, 21, 0, 'Ignored'), 43);
   });
   test('invoker with mandatory arguments, omitting named ones', () {
-    Function argNamedInvoker = classMirror.invoker("argNamed");
+    Function argNamedInvoker = classMirror.invoker('argNamed');
     expect(argNamedInvoker(instance1)(55, 29), 42);
     expect(argNamedInvoker(instance2)(55, 29), 43);
   });
   test('invoker with mandatory arguments, plus named ones', () {
-    Function argNamedInvoker = classMirror.invoker("argNamed");
+    Function argNamedInvoker = classMirror.invoker('argNamed');
     expect(argNamedInvoker(instance1)(21, 21, z: 0), 42);
     expect(argNamedInvoker(instance2)(21, 21, z: 0), 43);
   });

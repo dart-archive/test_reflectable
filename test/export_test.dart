@@ -16,6 +16,6 @@ export 'package:reflectable/reflectable.dart';
 
 const Reflectable ignored = null;  // To avoid 'unused import'.
 
-main() {
+void main() {
   initializeReflectable();
 }

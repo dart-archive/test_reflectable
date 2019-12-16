@@ -9,7 +9,7 @@
 // reflectable. This variant was again created as a variant of
 // 'new_instance_html_test.dart' which does not depend on 'dart:html'.
 
-@GlobalQuantifyCapability(r"^dart.core.List", reflector)
+@GlobalQuantifyCapability(r'^dart.core.List', reflector)
 import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'new_instance_native_test.reflectable.dart';
@@ -24,10 +24,10 @@ const Reflector reflector = Reflector();
 void main() {
   initializeReflectable();
 
-  LibraryMirror lib = reflector.findLibrary("dart.core");
-  ClassMirror fooClass = lib.declarations["List"];
-  List fooInstance = fooClass.newInstance("", []);
+  LibraryMirror lib = reflector.findLibrary('dart.core');
+  ClassMirror fooClass = lib.declarations['List'];
+  List fooInstance = fooClass.newInstance('', []);
   test('Creating instance of native class', () {
-      expect(fooInstance.toString(), "[]");
+      expect(fooInstance.toString(), '[]');
   });
 }

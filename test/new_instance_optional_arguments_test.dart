@@ -38,7 +38,7 @@ class ClazzA
   ClazzA([dynamic property]);
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   // Problem reproduction code as described in the issue, adjusted to make it a
@@ -60,98 +60,98 @@ main() {
   var o;
 
   test('No arguments given', () {
-    o = cm.newInstance("a0", []);
+    o = cm.newInstance('a0', []);
     expect(null, o.req1);
     expect(null, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("b0", []);
+    o = cm.newInstance('b0', []);
     expect(null, o.req1);
     expect(null, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("c0", []);
+    o = cm.newInstance('c0', []);
     expect(null, o.req1);
     expect(499, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("d0", []);
+    o = cm.newInstance('d0', []);
     expect(null, o.req1);
     expect(499, o.opt1);
     expect(42, o.opt2);
   });
 
   test('Giving one optional argument', () {
-    o = cm.newInstance("a0", [77]);
+    o = cm.newInstance('a0', [77]);
     expect(null, o.req1);
     expect(77, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("b0", [77]);
+    o = cm.newInstance('b0', [77]);
     expect(null, o.req1);
     expect(77, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("c0", [77]);
+    o = cm.newInstance('c0', [77]);
     expect(null, o.req1);
     expect(77, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("d0", [77]);
+    o = cm.newInstance('d0', [77]);
     expect(null, o.req1);
     expect(77, o.opt1);
     expect(42, o.opt2);
   });
 
   test('Giving two optional arguments', () {
-    o = cm.newInstance("b0", [77, 11]);
+    o = cm.newInstance('b0', [77, 11]);
     expect(null, o.req1);
     expect(77, o.opt1);
     expect(11, o.opt2);
-    o = cm.newInstance("d0", [77, 11]);
+    o = cm.newInstance('d0', [77, 11]);
     expect(null, o.req1);
     expect(77, o.opt1);
     expect(11, o.opt2);
   });
 
   test('Giving one required argument', () {
-    o = cm.newInstance("a1", [123]);
+    o = cm.newInstance('a1', [123]);
     expect(123, o.req1);
     expect(null, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("b1", [123]);
+    o = cm.newInstance('b1', [123]);
     expect(123, o.req1);
     expect(null, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("c1", [123]);
+    o = cm.newInstance('c1', [123]);
     expect(123, o.req1);
     expect(499, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("d1", [123]);
+    o = cm.newInstance('d1', [123]);
     expect(123, o.req1);
     expect(499, o.opt1);
     expect(42, o.opt2);
   });
 
   test('Giving one required and one optional argument', () {
-    o = cm.newInstance("a1", [123, 77]);
+    o = cm.newInstance('a1', [123, 77]);
     expect(123, o.req1);
     expect(77, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("b1", [123, 77]);
+    o = cm.newInstance('b1', [123, 77]);
     expect(123, o.req1);
     expect(77, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("c1", [123, 77]);
+    o = cm.newInstance('c1', [123, 77]);
     expect(123, o.req1);
     expect(77, o.opt1);
     expect(null, o.opt2);
-    o = cm.newInstance("d1", [123, 77]);
+    o = cm.newInstance('d1', [123, 77]);
     expect(123, o.req1);
     expect(77, o.opt1);
     expect(42, o.opt2);
   });
 
   test('Giving one required and two optional arguments', () {
-    o = cm.newInstance("b1", [123, 77, 11]);
+    o = cm.newInstance('b1', [123, 77, 11]);
     expect(123, o.req1);
     expect(77, o.opt1);
     expect(11, o.opt2);
-    o = cm.newInstance("d1", [123, 77, 11]);
+    o = cm.newInstance('d1', [123, 77, 11]);
     expect(123, o.req1);
     expect(77, o.opt1);
     expect(11, o.opt2);

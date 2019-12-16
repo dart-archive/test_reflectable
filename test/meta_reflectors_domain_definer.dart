@@ -10,8 +10,8 @@
 /// it uses `A` as an upper bound in a superclass quantifier.
 library test_reflectable.test.meta_reflectors_domain_definer;
 
-import "package:reflectable/reflectable.dart";
-import "meta_reflectors_domain.dart";
+import 'package:reflectable/reflectable.dart';
+import 'meta_reflectors_domain.dart';
 
 class ReflectorUpwardsClosedToA extends Reflectable {
   const ReflectorUpwardsClosedToA()

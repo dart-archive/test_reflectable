@@ -4,8 +4,8 @@
 
 library test_reflectable.test.mixin_static_const_test;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'mixin_static_const_test.reflectable.dart';
 
 class Reflector extends Reflectable {
@@ -26,7 +26,7 @@ class B extends A with M {}
 void main() {
   initializeReflectable();
 
-  test("Static const not present in mixin application", () {
+  test('Static const not present in mixin application', () {
     ClassMirror mMirror = reflector.reflectType(M);
     expect(mMirror.declarations['s'] != null, true);
     ClassMirror classMirror = reflector.reflectType(B);

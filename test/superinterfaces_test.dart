@@ -4,8 +4,8 @@
 
 library test_reflectable.test.superinterfaces_test;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'superinterfaces_test.reflectable.dart';
 
 class Reflector extends Reflectable {
@@ -22,7 +22,7 @@ class B implements A {}
 
 @Reflector()
 class C implements G {
-  String get expires => "never";
+  String get expires => 'never';
 }
 
 @Reflector()
@@ -44,7 +44,7 @@ void main() {
   ClassMirror bm = reflector.reflectType(B);
   ClassMirror dm = reflector.reflectType(D);
   ClassMirror fm = reflector.reflectType(F);
-  test("superinterfaces", () {
+  test('superinterfaces', () {
     // Test that only the supported classes from the superinterface
     // list in the class-declaration are included.
     expect(fm.superinterfaces, [bm, dm]);

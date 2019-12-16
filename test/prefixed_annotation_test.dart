@@ -17,12 +17,12 @@ class C {
   int m() => 42;
 }
 
-main() {
+void main() {
   initializeReflectable();
   
-  test("Using an import prefix with a reflector", () {
+  test('Using an import prefix with a reflector', () {
     InstanceMirror instanceMirror = prefix.reflector.reflect(C());
-    var result = instanceMirror.invoke("m", []);
+    var result = instanceMirror.invoke('m', []);
     expect(result, 42);
   });
 }

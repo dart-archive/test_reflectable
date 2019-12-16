@@ -8,7 +8,7 @@
 /// to private features.
 library test_reflectable.test.private_class_test;
 
-@GlobalQuantifyCapability("PublicClass", privacyReflectable)
+@GlobalQuantifyCapability('PublicClass', privacyReflectable)
 import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'private_class_library.dart';
@@ -27,16 +27,16 @@ class PrivacyReflectable extends Reflectable {
 const privacyReflectable = PrivacyReflectable();
 
 final Set<String> libraryClassNames = <String>[
-  "PublicClass",
-  "_PrivateClass1",
-  "_PrivateClass2",
-  "PublicSubclass1",
-  "PublicSubclass2"
+  'PublicClass',
+  '_PrivateClass1',
+  '_PrivateClass2',
+  'PublicSubclass1',
+  'PublicSubclass2'
 ].toSet();
 
 void testPrivacyViolation(PublicClass object, String description,
     {bool doReflect = true}) {
-  test("Privacy, $description", () {
+  test('Privacy, $description', () {
     bool canReflect = privacyReflectable.canReflect(object);
     expect(canReflect, doReflect);
     if (canReflect) {
@@ -55,12 +55,12 @@ void testPrivacyViolation(PublicClass object, String description,
         expect(method.parameters.length, 0);
         expect(
             <String>[
-              "publicMethod",
-              "supposedlyPrivate",
-              "supposedlyPrivateToo"
+              'publicMethod',
+              'supposedlyPrivate',
+              'supposedlyPrivateToo'
             ].contains(method.simpleName),
             true);
-        if (method.simpleName != "publicMethod") {
+        if (method.simpleName != 'publicMethod') {
           expect(instanceMirror.invoke(declaration.simpleName, []),
               -object.publicMethod());
         }
@@ -69,20 +69,20 @@ void testPrivacyViolation(PublicClass object, String description,
   });
 }
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("Privacy, libraries", () {
+  test('Privacy, libraries', () {
     // Check that we can browse libraries.
     Map<Uri, LibraryMirror> libraries = privacyReflectable.libraries;
     Uri libraryUri = libraries.keys.firstWhere(
-        (Uri uri) => uri.toString().contains("private_class_library"));
+        (Uri uri) => uri.toString().contains('private_class_library'));
     LibraryMirror library = libraries[libraryUri];
     expect(library.declarations.keys, libraryClassNames);
   });
 
-  testPrivacyViolation(func1(), "private subclass", doReflect: false);
-  testPrivacyViolation(func2(), "private subtype", doReflect: false);
-  testPrivacyViolation(func3(), "public subclass of private subclass");
-  testPrivacyViolation(func4(), "public subclass of private subtype");
+  testPrivacyViolation(func1(), 'private subclass', doReflect: false);
+  testPrivacyViolation(func2(), 'private subtype', doReflect: false);
+  testPrivacyViolation(func3(), 'public subclass of private subclass');
+  testPrivacyViolation(func4(), 'public subclass of private subtype');
 }

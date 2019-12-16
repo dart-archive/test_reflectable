@@ -18,7 +18,7 @@ class MyReflectable extends Reflectable {
 
 const myReflectable = MyReflectable();
 
-const String globalConstant = "20";
+const String globalConstant = '20';
 
 class B {
   const B({int named});
@@ -44,21 +44,21 @@ class A {
   List i;
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = myReflectable.reflectType(A);
   test('optional argument default value, imported local constant', () {
-    expect((classMirror.newInstance("optional", [], {}) as A).f, 42);
+    expect((classMirror.newInstance('optional', [], {}) as A).f, 42);
   });
   test('optional argument default value, using identical', () {
-    expect((classMirror.newInstance("optional", [], {}) as A).g, true);
+    expect((classMirror.newInstance('optional', [], {}) as A).g, true);
   });
   test('optional argument default value, imported local constant', () {
-    expect((classMirror.newInstance("optional", [], {}) as A).h, "2121");
+    expect((classMirror.newInstance('optional', [], {}) as A).h, '2121');
   });
   test('optional argument default value, ', () {
-    expect((classMirror.newInstance("optional", [], {}) as A).i, [
+    expect((classMirror.newInstance('optional', [], {}) as A).i, [
       String,
       null,
       myReflectable,

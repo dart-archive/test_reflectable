@@ -9,7 +9,7 @@ library test_reflectable.test.generic_mixin_test;
 
 // See https://github.com/dart-lang/reflectable/issues/59 for an explanation
 // why we need to explicitly request coverage for `num`.
-@GlobalQuantifyCapability(r"^dart.core.num$", reflector)
+@GlobalQuantifyCapability(r'^dart.core.num$', reflector)
 import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'generic_mixin_test.reflectable.dart';
@@ -42,16 +42,16 @@ class MM<E> = A with M<E>;
 @reflector
 class D<E> extends MM<E> {}
 
-main() {
+void main() {
   initializeReflectable();
 
   test('Generic mixin, instance', () {
     InstanceMirror bMirror = reflector.reflect(B());
-    expect(bMirror.invokeGetter("e"), null);
+    expect(bMirror.invokeGetter('e'), null);
     InstanceMirror cMirror = reflector.reflect(C<int>());
-    expect(cMirror.invokeGetter("e"), null);
+    expect(cMirror.invokeGetter('e'), null);
     InstanceMirror dMirror = reflector.reflect(D<int>());
-    expect(dMirror.invokeGetter("e"), null);
+    expect(dMirror.invokeGetter('e'), null);
   });
 
   test('Generic mixin, super of plain class', () {

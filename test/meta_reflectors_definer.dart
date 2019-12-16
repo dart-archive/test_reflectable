@@ -10,7 +10,7 @@
 /// these reflectors could have been defined in a third-party package .
 library test_reflectable.test.meta_reflectors_definer;
 
-import "package:reflectable/reflectable.dart";
+import 'package:reflectable/reflectable.dart';
 
 class Reflector extends Reflectable {
   const Reflector()

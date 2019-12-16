@@ -10,8 +10,8 @@ import 'no_such_capability_test.reflectable.dart';
 
 class MyReflectable extends r.Reflectable {
   const MyReflectable()
-      : super(const r.StaticInvokeCapability("nonExisting"),
-            const r.InstanceInvokeCapability("nonExisting"));
+      : super(const r.StaticInvokeCapability('nonExisting'),
+            const r.InstanceInvokeCapability('nonExisting'));
 }
 
 const myReflectable = MyReflectable();
@@ -22,24 +22,24 @@ class A {}
 Matcher throwsReflectableNoMethod =
     throwsA(const TypeMatcher<r.ReflectableNoSuchMethodError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   test('reflect', () {
     r.InstanceMirror instanceMirror = myReflectable.reflect(A());
-    expect(() => instanceMirror.invoke("foo", []),
+    expect(() => instanceMirror.invoke('foo', []),
         throwsA(const TypeMatcher<r.ReflectableNoSuchMethodError>()));
     r.ClassMirror classMirror = myReflectable.reflectType(A);
-    expect(() => classMirror.invoke("foo", []),
+    expect(() => classMirror.invoke('foo', []),
         throwsA(const TypeMatcher<r.ReflectableNoSuchMethodError>()));
     // When we have the capability we get the NoSuchMethodError, not
     // NoSuchCapabilityError.
-    expect(() => instanceMirror.invoke("nonExisting", []),
+    expect(() => instanceMirror.invoke('nonExisting', []),
         throwsReflectableNoMethod);
 
     // When we have the capability we get the NoSuchMethodError, not
     // NoSuchCapabilityError.
     expect(
-        () => classMirror.invoke("nonExisting", []), throwsReflectableNoMethod);
+        () => classMirror.invoke('nonExisting', []), throwsReflectableNoMethod);
   });
 }

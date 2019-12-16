@@ -4,10 +4,10 @@
 
 library test_reflectable.test.metadata_name_clash_test;
 
-import "metadata_name_clash_lib.dart" as o;
+import 'metadata_name_clash_lib.dart' as o;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'metadata_name_clash_test.reflectable.dart';
 
 class Reflector extends Reflectable {
@@ -24,10 +24,10 @@ const Reflectable reflector = Reflector();
 @Bar()
 class C {}
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("Metadata with name-clash", () {
+  test('Metadata with name-clash', () {
     expect(reflector.reflectType(C).metadata, [reflector, const Bar()]);
     expect(
         o.reflector2.reflectType(o.D).metadata, [o.reflector2, const o.Bar()]);

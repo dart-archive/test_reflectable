@@ -31,20 +31,20 @@ final Matcher throwsNoCapability =
     throwsA(TypeMatcher<NoSuchCapabilityError>());
 
 void performTests(String message, reflector) {
-  test("$message: reflectType", () {
+  test('$message: reflectType', () {
     ClassMirror cm = reflector.reflectType(A);
     expect(cm, TypeMatcher<ClassMirror>());
-    expect(cm.simpleName, "A");
+    expect(cm.simpleName, 'A');
     expect(() => reflector.reflectType(B), throwsNoCapability);
   });
-  test("$message: InstanceMirror.type", () {
+  test('$message: InstanceMirror.type', () {
     ClassMirror cm = reflector.reflectType(A);
     ClassMirror cm2 = reflector.reflect(A()).type;
     expect(cm.qualifiedName, cm2.qualifiedName);
   });
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   performTests('With typeCapability', reflector);

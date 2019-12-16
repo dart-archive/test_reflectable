@@ -58,10 +58,10 @@ class Reflector extends Reflectable {
 @Reflector()
 class C {}
 
-main() {
+void main() {
   initializeReflectable();
 
-  test("exported main", () {
+  test('exported main', () {
     expect(const Reflector().canReflectType(C), true);
   });
 }

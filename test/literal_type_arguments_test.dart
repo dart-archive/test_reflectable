@@ -37,7 +37,7 @@ class C {
   int get bar => 43;
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   test('Type arguments on literal maps and lists', () {

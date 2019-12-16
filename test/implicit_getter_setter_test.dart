@@ -13,7 +13,7 @@ import 'implicit_getter_setter_test.reflectable.dart';
 
 class Reflector extends Reflectable {
   const Reflector()
-      : super(declarationsCapability, const InvokingCapability("f"));
+      : super(declarationsCapability, const InvokingCapability('f'));
 }
 
 const reflector = Reflector();
@@ -28,16 +28,16 @@ class A {
   A(this.f2);
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = reflector.reflectType(A);
 
-  test("implicit getter properties", () {
-    MethodMirror f1GetterMirror = classMirror.instanceMembers["f1"];
-    expect(f1GetterMirror.simpleName, "f1");
+  test('implicit getter properties', () {
+    MethodMirror f1GetterMirror = classMirror.instanceMembers['f1'];
+    expect(f1GetterMirror.simpleName, 'f1');
     expect(f1GetterMirror.qualifiedName,
-        "test_reflectable.test.implicit_getter_setter_test.A.f1");
+        'test_reflectable.test.implicit_getter_setter_test.A.f1');
     expect(f1GetterMirror.isPrivate, isFalse);
     expect(f1GetterMirror.isTopLevel, isFalse);
     expect(f1GetterMirror.returnType.reflectedType, A);
@@ -49,7 +49,7 @@ main() {
     expect(f1GetterMirror.isGetter, isTrue);
     expect(f1GetterMirror.isSetter, isFalse);
     expect(f1GetterMirror.isConstructor, isFalse);
-    expect(f1GetterMirror.constructorName, "");
+    expect(f1GetterMirror.constructorName, '');
     expect(f1GetterMirror.isConstConstructor, isFalse);
     expect(f1GetterMirror.isGenerativeConstructor, isFalse);
     expect(f1GetterMirror.isRedirectingConstructor, isFalse);
@@ -57,10 +57,10 @@ main() {
     expect(f1GetterMirror.parameters.length, 0);
     expect(f1GetterMirror.owner, classMirror);
 
-    MethodMirror f2getterMirror = classMirror.instanceMembers["f2"];
-    expect(f2getterMirror.simpleName, "f2");
+    MethodMirror f2getterMirror = classMirror.instanceMembers['f2'];
+    expect(f2getterMirror.simpleName, 'f2');
     expect(f2getterMirror.qualifiedName,
-        "test_reflectable.test.implicit_getter_setter_test.A.f2");
+        'test_reflectable.test.implicit_getter_setter_test.A.f2');
     expect(f2getterMirror.isPrivate, isFalse);
     expect(f2getterMirror.isTopLevel, isFalse);
     expect(f2getterMirror.returnType.reflectedType, A);
@@ -72,7 +72,7 @@ main() {
     expect(f2getterMirror.isGetter, isTrue);
     expect(f2getterMirror.isSetter, isFalse);
     expect(f2getterMirror.isConstructor, isFalse);
-    expect(f2getterMirror.constructorName, "");
+    expect(f2getterMirror.constructorName, '');
     expect(f2getterMirror.isConstConstructor, isFalse);
     expect(f2getterMirror.isGenerativeConstructor, isFalse);
     expect(f2getterMirror.isRedirectingConstructor, isFalse);
@@ -80,10 +80,10 @@ main() {
     expect(f2getterMirror.parameters.length, 0);
     expect(f2getterMirror.owner, classMirror);
 
-    MethodMirror f3GetterMirror = classMirror.staticMembers["f3"];
-    expect(f3GetterMirror.simpleName, "f3");
+    MethodMirror f3GetterMirror = classMirror.staticMembers['f3'];
+    expect(f3GetterMirror.simpleName, 'f3');
     expect(f3GetterMirror.qualifiedName,
-        "test_reflectable.test.implicit_getter_setter_test.A.f3");
+        'test_reflectable.test.implicit_getter_setter_test.A.f3');
     expect(f3GetterMirror.isPrivate, isFalse);
     expect(f3GetterMirror.isTopLevel, isFalse);
     expect(f3GetterMirror.returnType.reflectedType, A);
@@ -95,7 +95,7 @@ main() {
     expect(f3GetterMirror.isGetter, isTrue);
     expect(f3GetterMirror.isSetter, isFalse);
     expect(f3GetterMirror.isConstructor, isFalse);
-    expect(f3GetterMirror.constructorName, "");
+    expect(f3GetterMirror.constructorName, '');
     expect(f3GetterMirror.isConstConstructor, isFalse);
     expect(f3GetterMirror.isGenerativeConstructor, isFalse);
     expect(f3GetterMirror.isRedirectingConstructor, isFalse);
@@ -103,10 +103,10 @@ main() {
     expect(f3GetterMirror.parameters.length, 0);
     expect(f3GetterMirror.owner, classMirror);
 
-    MethodMirror f4GetterMirror = classMirror.staticMembers["f4"];
-    expect(f4GetterMirror.simpleName, "f4");
+    MethodMirror f4GetterMirror = classMirror.staticMembers['f4'];
+    expect(f4GetterMirror.simpleName, 'f4');
     expect(f4GetterMirror.qualifiedName,
-        "test_reflectable.test.implicit_getter_setter_test.A.f4");
+        'test_reflectable.test.implicit_getter_setter_test.A.f4');
     expect(f4GetterMirror.isPrivate, isFalse);
     expect(f4GetterMirror.isTopLevel, isFalse);
     expect(f4GetterMirror.returnType.reflectedType, A);
@@ -118,7 +118,7 @@ main() {
     expect(f4GetterMirror.isGetter, isTrue);
     expect(f4GetterMirror.isSetter, isFalse);
     expect(f4GetterMirror.isConstructor, isFalse);
-    expect(f4GetterMirror.constructorName, "");
+    expect(f4GetterMirror.constructorName, '');
     expect(f4GetterMirror.isConstConstructor, isFalse);
     expect(f4GetterMirror.isGenerativeConstructor, isFalse);
     expect(f4GetterMirror.isRedirectingConstructor, isFalse);
@@ -126,10 +126,10 @@ main() {
     expect(f4GetterMirror.parameters.length, 0);
     expect(f4GetterMirror.owner, classMirror);
 
-    MethodMirror f5GetterMirror = classMirror.staticMembers["f5"];
-    expect(f5GetterMirror.simpleName, "f5");
+    MethodMirror f5GetterMirror = classMirror.staticMembers['f5'];
+    expect(f5GetterMirror.simpleName, 'f5');
     expect(f5GetterMirror.qualifiedName,
-        "test_reflectable.test.implicit_getter_setter_test.A.f5");
+        'test_reflectable.test.implicit_getter_setter_test.A.f5');
     expect(f5GetterMirror.isPrivate, isFalse);
     expect(f5GetterMirror.isTopLevel, isFalse);
     expect(f5GetterMirror.returnType.reflectedType, dynamic);
@@ -141,7 +141,7 @@ main() {
     expect(f5GetterMirror.isGetter, isTrue);
     expect(f5GetterMirror.isSetter, isFalse);
     expect(f5GetterMirror.isConstructor, isFalse);
-    expect(f5GetterMirror.constructorName, "");
+    expect(f5GetterMirror.constructorName, '');
     expect(f5GetterMirror.isConstConstructor, isFalse);
     expect(f5GetterMirror.isGenerativeConstructor, isFalse);
     expect(f5GetterMirror.isRedirectingConstructor, isFalse);
@@ -150,11 +150,11 @@ main() {
     expect(f5GetterMirror.owner, classMirror);
   });
 
-  test("implicit setter properties", () {
-    MethodMirror f1SetterMirror = classMirror.instanceMembers["f1="];
-    expect(f1SetterMirror.simpleName, "f1=");
+  test('implicit setter properties', () {
+    MethodMirror f1SetterMirror = classMirror.instanceMembers['f1='];
+    expect(f1SetterMirror.simpleName, 'f1=');
     expect(f1SetterMirror.qualifiedName,
-        "test_reflectable.test.implicit_getter_setter_test.A.f1=");
+        'test_reflectable.test.implicit_getter_setter_test.A.f1=');
     expect(f1SetterMirror.isPrivate, isFalse);
     expect(f1SetterMirror.isTopLevel, isFalse);
     expect(f1SetterMirror.returnType.reflectedType, A);
@@ -166,23 +166,23 @@ main() {
     expect(f1SetterMirror.isGetter, isFalse);
     expect(f1SetterMirror.isSetter, isTrue);
     expect(f1SetterMirror.isConstructor, isFalse);
-    expect(f1SetterMirror.constructorName, "");
+    expect(f1SetterMirror.constructorName, '');
     expect(f1SetterMirror.isConstConstructor, isFalse);
     expect(f1SetterMirror.isGenerativeConstructor, isFalse);
     expect(f1SetterMirror.isRedirectingConstructor, isFalse);
     expect(f1SetterMirror.isFactoryConstructor, isFalse);
     expect(f1SetterMirror.owner, classMirror);
     expect(f1SetterMirror.parameters.length, 1);
-    expect(f1SetterMirror.parameters[0].simpleName, "f1");
+    expect(f1SetterMirror.parameters[0].simpleName, 'f1');
     expect(f1SetterMirror.parameters[0].type.reflectedType, A);
     expect(f1SetterMirror.parameters[0].owner, f1SetterMirror);
 
-    expect(classMirror.instanceMembers["f2="], null);
+    expect(classMirror.instanceMembers['f2='], null);
 
-    MethodMirror f3SetterMirror = classMirror.staticMembers["f3="];
-    expect(f3SetterMirror.simpleName, "f3=");
+    MethodMirror f3SetterMirror = classMirror.staticMembers['f3='];
+    expect(f3SetterMirror.simpleName, 'f3=');
     expect(f3SetterMirror.qualifiedName,
-        "test_reflectable.test.implicit_getter_setter_test.A.f3=");
+        'test_reflectable.test.implicit_getter_setter_test.A.f3=');
     expect(f3SetterMirror.isPrivate, isFalse);
     expect(f3SetterMirror.isTopLevel, isFalse);
     expect(f3SetterMirror.returnType.reflectedType, A);
@@ -194,7 +194,7 @@ main() {
     expect(f3SetterMirror.isGetter, isFalse);
     expect(f3SetterMirror.isSetter, isTrue);
     expect(f3SetterMirror.isConstructor, isFalse);
-    expect(f3SetterMirror.constructorName, "");
+    expect(f3SetterMirror.constructorName, '');
     expect(f3SetterMirror.isConstConstructor, isFalse);
     expect(f3SetterMirror.isGenerativeConstructor, isFalse);
     expect(f3SetterMirror.isRedirectingConstructor, isFalse);
@@ -204,8 +204,8 @@ main() {
     expect(f3SetterMirror.parameters[0].type.reflectedType, A);
     expect(f3SetterMirror.parameters[0].owner, f3SetterMirror);
 
-    expect(classMirror.staticMembers["f4="], null);
+    expect(classMirror.staticMembers['f4='], null);
 
-    expect(classMirror.staticMembers["f5="], null);
+    expect(classMirror.staticMembers['f5='], null);
   });
 }

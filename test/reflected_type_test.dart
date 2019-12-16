@@ -31,42 +31,42 @@ class A {
   int operator [](int x) => null;
   void operator []=(int x, v) {}
 
-  String get getset => "42";
+  String get getset => '42';
   set getset(String string) {}
 
   static int noArguments() => null;
   static int oneArgument(String x) => null;
   static int optionalArguments(A x, double y, [Reflector z, dynamic w = 42]) =>
       null;
-  static int namedArguments(String x, List y, {String z = "4" + "2"}) => null;
+  static int namedArguments(String x, List y, {String z = '4' + '2'}) => null;
 
-  static List<String> get staticGetset => ["42"];
+  static List<String> get staticGetset => ['42'];
   static set staticGetset(List<String> list) {}
 }
 
 final throwsNoCapability = throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror aMirror = reflector.reflectType(A);
   Map<String, DeclarationMirror> declarations = aMirror.declarations;
 
-  MethodMirror arg0Mirror = declarations["arg0"];
-  MethodMirror arg1Mirror = declarations["arg1"];
-  MethodMirror arg2to4Mirror = declarations["arg2to4"];
-  MethodMirror argNamedMirror = declarations["argNamed"];
-  MethodMirror opPlusMirror = declarations["+"];
-  MethodMirror opBracketMirror = declarations["[]"];
-  MethodMirror opBracketEqualsMirror = declarations["[]="];
-  MethodMirror getsetMirror = declarations["getset"];
-  MethodMirror getsetEqualsMirror = declarations["getset="];
-  MethodMirror noArgumentsMirror = declarations["noArguments"];
-  MethodMirror oneArgumentMirror = declarations["oneArgument"];
-  MethodMirror optionalArgumentsMirror = declarations["optionalArguments"];
-  MethodMirror namedArgumentsMirror = declarations["namedArguments"];
-  MethodMirror staticGetsetMirror = declarations["staticGetset"];
-  MethodMirror staticGetsetEqualsMirror = declarations["staticGetset="];
+  MethodMirror arg0Mirror = declarations['arg0'];
+  MethodMirror arg1Mirror = declarations['arg1'];
+  MethodMirror arg2to4Mirror = declarations['arg2to4'];
+  MethodMirror argNamedMirror = declarations['argNamed'];
+  MethodMirror opPlusMirror = declarations['+'];
+  MethodMirror opBracketMirror = declarations['[]'];
+  MethodMirror opBracketEqualsMirror = declarations['[]='];
+  MethodMirror getsetMirror = declarations['getset'];
+  MethodMirror getsetEqualsMirror = declarations['getset='];
+  MethodMirror noArgumentsMirror = declarations['noArguments'];
+  MethodMirror oneArgumentMirror = declarations['oneArgument'];
+  MethodMirror optionalArgumentsMirror = declarations['optionalArguments'];
+  MethodMirror namedArgumentsMirror = declarations['namedArguments'];
+  MethodMirror staticGetsetMirror = declarations['staticGetset'];
+  MethodMirror staticGetsetEqualsMirror = declarations['staticGetset='];
 
   test('parameter reflected types, instance methods', () {
     expect(arg0Mirror.parameters.length, 0);

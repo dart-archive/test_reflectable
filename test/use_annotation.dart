@@ -17,4 +17,4 @@ class MyReflectable extends Reflectable {
 @MyReflectable()
 class A {}
 
-main() {}
+void main() {}

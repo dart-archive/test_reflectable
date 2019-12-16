@@ -27,7 +27,7 @@ class D {
   set setter(int owtytrof) {}
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror classMirror = C.reflector.reflectType(D);

@@ -36,7 +36,7 @@ void testDynamicReflectedType(
   });
 }
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror aMirror = reflector.reflectType(A);

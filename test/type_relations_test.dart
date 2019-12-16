@@ -21,13 +21,13 @@ const myReflectable = MyReflectable();
 @myReflectable
 class MyClass {}
 
-main() {
+void main() {
   initializeReflectable();
 
   ClassMirror myClassMirror = myReflectable.reflectType(MyClass);
   ClassMirror classObjectMirror = myClassMirror.superclass;
   test('superclass targetting un-annotated class', () {
-    expect(classObjectMirror.simpleName, "Object");
+    expect(classObjectMirror.simpleName, 'Object');
   });
   test('non-existing superclass', () {
     expect(classObjectMirror.superclass, null);

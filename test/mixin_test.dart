@@ -4,8 +4,8 @@
 
 library test_reflectable.test.mixin_test;
 
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'mixin_test.reflectable.dart';
 
 class Reflector extends Reflectable {
@@ -108,7 +108,7 @@ class AA {}
 class BB extends AA with M4, M5, M6 {}
 
 testReflector(Reflectable reflector, String desc) {
-  test("Mixin, $desc", () {
+  test('Mixin, $desc', () {
     ClassMirror aMirror = reflector.reflectType(A);
     ClassMirror bMirror = reflector.reflectType(B);
     ClassMirror cMirror = reflector.reflectType(C);
@@ -128,9 +128,9 @@ testReflector(Reflectable reflector, String desc) {
     expect(cMirror.superclass.superclass.superclass, bMirror);
     expect(dMirror.mixin, m1Mirror);
     expect(dMirror.superclass.mixin, aMirror);
-    expect(bMirror.superclass.declarations["foo"].owner, m1Mirror);
-    expect(bMirror.superclass.declarations["field"].owner, m1Mirror);
-    expect(bMirror.superclass.declarations["staticBar"], null);
+    expect(bMirror.superclass.declarations['foo'].owner, m1Mirror);
+    expect(bMirror.superclass.declarations['field'].owner, m1Mirror);
+    expect(bMirror.superclass.declarations['staticBar'], null);
     expect(bMirror.superclass.hasReflectedType, true);
     expect(bMirror.superclass.reflectedType, const TypeMatcher<Type>());
     expect(bMirror.superclass.superclass.reflectedType,
@@ -141,12 +141,12 @@ testReflector(Reflectable reflector, String desc) {
 Matcher throwsANoSuchCapabilityException =
     throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
-main() {
+void main() {
   initializeReflectable();
 
-  testReflector(const Reflector(), "each is annotated");
-  testReflector(const ReflectorUpwardsClosed(), "upwards closed");
-  test("Mixin, superclasses not included", () {
+  testReflector(const Reflector(), 'each is annotated');
+  testReflector(const ReflectorUpwardsClosed(), 'upwards closed');
+  test('Mixin, superclasses not included', () {
     var reflector2 = const Reflector2();
     ClassMirror bMirror = reflector2.reflectType(B);
     ClassMirror cMirror = reflector2.reflectType(C);
@@ -173,7 +173,7 @@ main() {
     expect(cMirror.superclass.superclass.superclass, bMirror);
     expect(() => dMirror.superclass, throwsANoSuchCapabilityException);
   });
-  test("Mixin, superclasses included up to bound", () {
+  test('Mixin, superclasses included up to bound', () {
     var reflector = const ReflectorUpwardsClosedToA();
     ClassMirror aMirror = reflector.reflectType(A);
     ClassMirror bMirror = reflector.reflectType(B);
@@ -193,7 +193,7 @@ main() {
     expect(dMirror.mixin, m1Mirror);
     expect(dMirror.superclass, aMirror);
   });
-  test("Mixin, superclasses included up to but not including bound", () {
+  test('Mixin, superclasses included up to but not including bound', () {
     var reflector = const ReflectorUpwardsClosedUntilA();
     ClassMirror bMirror = reflector.reflectType(B);
     ClassMirror cMirror = reflector.reflectType(C);
@@ -214,7 +214,7 @@ main() {
     expect(dMirror.mixin, m1Mirror);
     expect(() => dMirror.superclass, throwsANoSuchCapabilityException);
   });
-  test("Mixin, naming", () {
+  test('Mixin, naming', () {
     var reflector2 = const Reflector2();
     ClassMirror bMirror = reflector2.reflectType(B);
     ClassMirror cMirror = reflector2.reflectType(C);
@@ -222,48 +222,48 @@ main() {
     ClassMirror aWithM1Mirror = bMirror.superclass;
     ClassMirror bWithM2Mirror = cMirror.superclass.superclass;
     ClassMirror bWithM2WithM3Mirror = cMirror.superclass;
-    expect(bMirror.simpleName, "B");
-    expect(cMirror.simpleName, "C");
-    expect(dMirror.simpleName, "D");
+    expect(bMirror.simpleName, 'B');
+    expect(cMirror.simpleName, 'C');
+    expect(dMirror.simpleName, 'D');
     expect(
         aWithM1Mirror.simpleName,
-        "test_reflectable.test.mixin_test.A with "
-        "test_reflectable.test.mixin_test.M1");
+        'test_reflectable.test.mixin_test.A with '
+        'test_reflectable.test.mixin_test.M1');
     expect(
         bWithM2Mirror.simpleName,
-        "test_reflectable.test.mixin_test.B with "
-        "test_reflectable.test.mixin_test.M2");
+        'test_reflectable.test.mixin_test.B with '
+        'test_reflectable.test.mixin_test.M2');
     expect(
         bWithM2WithM3Mirror.simpleName,
-        "test_reflectable.test.mixin_test.B with "
-        "test_reflectable.test.mixin_test.M2, "
-        "test_reflectable.test.mixin_test.M3");
-    expect(cMirror.simpleName, "C");
-    expect(dMirror.simpleName, "D");
+        'test_reflectable.test.mixin_test.B with '
+        'test_reflectable.test.mixin_test.M2, '
+        'test_reflectable.test.mixin_test.M3');
+    expect(cMirror.simpleName, 'C');
+    expect(dMirror.simpleName, 'D');
 
-    expect(bMirror.qualifiedName, "test_reflectable.test.mixin_test.B");
-    expect(cMirror.qualifiedName, "test_reflectable.test.mixin_test.C");
-    expect(dMirror.qualifiedName, "test_reflectable.test.mixin_test.D");
+    expect(bMirror.qualifiedName, 'test_reflectable.test.mixin_test.B');
+    expect(cMirror.qualifiedName, 'test_reflectable.test.mixin_test.C');
+    expect(dMirror.qualifiedName, 'test_reflectable.test.mixin_test.D');
     expect(
         aWithM1Mirror.qualifiedName,
-        "test_reflectable.test.mixin_test."
-        "test_reflectable.test.mixin_test.A with "
-        "test_reflectable.test.mixin_test.M1");
+        'test_reflectable.test.mixin_test.'
+        'test_reflectable.test.mixin_test.A with '
+        'test_reflectable.test.mixin_test.M1');
     expect(
         bWithM2Mirror.qualifiedName,
-        "test_reflectable.test.mixin_test."
-        "test_reflectable.test.mixin_test.B with "
-        "test_reflectable.test.mixin_test.M2");
+        'test_reflectable.test.mixin_test.'
+        'test_reflectable.test.mixin_test.B with '
+        'test_reflectable.test.mixin_test.M2');
     expect(
         bWithM2WithM3Mirror.qualifiedName,
-        "test_reflectable.test.mixin_test."
-        "test_reflectable.test.mixin_test.B with "
-        "test_reflectable.test.mixin_test.M2, "
-        "test_reflectable.test.mixin_test.M3");
-    expect(cMirror.qualifiedName, "test_reflectable.test.mixin_test.C");
-    expect(dMirror.qualifiedName, "test_reflectable.test.mixin_test.D");
+        'test_reflectable.test.mixin_test.'
+        'test_reflectable.test.mixin_test.B with '
+        'test_reflectable.test.mixin_test.M2, '
+        'test_reflectable.test.mixin_test.M3');
+    expect(cMirror.qualifiedName, 'test_reflectable.test.mixin_test.C');
+    expect(dMirror.qualifiedName, 'test_reflectable.test.mixin_test.D');
   });
-  test("Mixins, some covered and some uncovered", () {
+  test('Mixins, some covered and some uncovered', () {
     expect(
         const Reflector().reflectType(BB), const TypeMatcher<ClassMirror>());
   });

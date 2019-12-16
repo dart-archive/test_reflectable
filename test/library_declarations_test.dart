@@ -35,37 +35,37 @@ typedef G<X> = double Function(X);
 @reflector
 typedef H = String Function<X>(X);
 
-main() {
+void main() {
   initializeReflectable();
 
   LibraryMirror libraryMirror = reflector
-      .findLibrary("test_reflectable.test.library_declarations_test");
+      .findLibrary('test_reflectable.test.library_declarations_test');
   var declarations = libraryMirror.declarations;
 
   // Commented out below: Cf. reflectable issue #165.
 
-  test("library declarations", () {
-    expect(declarations["reflector"].simpleName, "reflector");
-    expect(declarations["A"].simpleName, "A");
-    expect(declarations["B"].simpleName, "B");
-    // expect(declarations["F"].simpleName, "F");
-    // expect(declarations["G"].simpleName, "G");
-    // expect(declarations["H"].simpleName, "H");
-    expect(declarations["main"].simpleName, "main");
+  test('library declarations', () {
+    expect(declarations['reflector'].simpleName, 'reflector');
+    expect(declarations['A'].simpleName, 'A');
+    expect(declarations['B'].simpleName, 'B');
+    // expect(declarations['F'].simpleName, 'F');
+    // expect(declarations['G'].simpleName, 'G');
+    // expect(declarations['H'].simpleName, 'H');
+    expect(declarations['main'].simpleName, 'main');
 
-    expect(declarations["reflector"] is VariableMirror, isTrue);
-    expect(declarations["A"] is ClassMirror, isTrue);
-    expect(declarations["B"] is ClassMirror, isTrue);
-    // expect(declarations["F"] is TypedefMirror, isTrue);
-    // expect(declarations["G"] is TypedefMirror, isTrue);
-    // expect(declarations["H"] is TypedefMirror, isTrue);
-    expect(declarations["main"] is MethodMirror, isTrue);
+    expect(declarations['reflector'] is VariableMirror, isTrue);
+    expect(declarations['A'] is ClassMirror, isTrue);
+    expect(declarations['B'] is ClassMirror, isTrue);
+    // expect(declarations['F'] is TypedefMirror, isTrue);
+    // expect(declarations['G'] is TypedefMirror, isTrue);
+    // expect(declarations['H'] is TypedefMirror, isTrue);
+    expect(declarations['main'] is MethodMirror, isTrue);
 
-    ClassMirror aMirror = declarations["A"];
-    ClassMirror bMirror = declarations["B"];
-    // TypedefMirror fMirror = declarations["F"];
-    // TypedefMirror gMirror = declarations["G"];
-    // TypedefMirror hMirror = declarations["H"];
+    ClassMirror aMirror = declarations['A'];
+    ClassMirror bMirror = declarations['B'];
+    // TypedefMirror fMirror = declarations['F'];
+    // TypedefMirror gMirror = declarations['G'];
+    // TypedefMirror hMirror = declarations['H'];
     
     expect(aMirror.hasReflectedType, isTrue);
     expect(bMirror.hasReflectedType, isTrue);

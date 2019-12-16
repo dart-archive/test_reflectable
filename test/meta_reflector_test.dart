@@ -11,9 +11,9 @@
 library test_reflectable.test.meta_reflector_test;
 
 @GlobalQuantifyCapability(
-    r"^reflectable.reflectable.Reflectable$", MetaReflector())
-import "package:reflectable/reflectable.dart";
-import "package:test/test.dart";
+    r'^reflectable.reflectable.Reflectable$', MetaReflector())
+import 'package:reflectable/reflectable.dart';
+import 'package:test/test.dart';
 import 'meta_reflector_test.reflectable.dart';
 
 abstract class AllReflectorsCapable implements Reflectable {
@@ -28,7 +28,7 @@ class MetaReflector extends Reflectable {
     Set<Reflectable> result = Set<Reflectable>();
     annotatedClasses.forEach((ClassMirror classMirror) {
       if (classMirror.isAbstract) return;
-      Reflectable reflector = classMirror.newInstance("", []);
+      Reflectable reflector = classMirror.newInstance('', []);
       if (reflector is AllReflectorsCapable) {
         result.add(reflector.self);
       }
@@ -44,7 +44,7 @@ class Reflector extends Reflectable implements AllReflectorsCapable {
       : super(invokingCapability, declarationsCapability,
             typeRelationsCapability, libraryCapability);
   Reflectable get self => const Reflector();
-  Set<String> get scopes => setOf("polymer");
+  Set<String> get scopes => setOf('polymer');
 }
 
 class Reflector2 extends Reflectable implements AllReflectorsCapable {
@@ -52,7 +52,7 @@ class Reflector2 extends Reflectable implements AllReflectorsCapable {
       : super(invokingCapability, metadataCapability, typeRelationsCapability,
             libraryCapability);
   Reflectable get self => const Reflector2();
-  Set<String> get scopes => setOf("observe");
+  Set<String> get scopes => setOf('observe');
 }
 
 class ReflectorUpwardsClosed extends Reflectable
@@ -61,7 +61,7 @@ class ReflectorUpwardsClosed extends Reflectable
       : super(superclassQuantifyCapability, invokingCapability,
             declarationsCapability, typeRelationsCapability);
   Reflectable get self => const ReflectorUpwardsClosed();
-  Set<String> get scopes => setOf("polymer")..add("observe");
+  Set<String> get scopes => setOf('polymer')..add('observe');
 }
 
 class ReflectorUpwardsClosedToA extends Reflectable
@@ -133,7 +133,7 @@ class C extends B with M2, M3 {}
 class D = A with M1;
 
 testReflector(Reflectable reflector, String desc) {
-  test("Mixin, $desc", () {
+  test('Mixin, $desc', () {
     ClassMirror aMirror = reflector.reflectType(A);
     ClassMirror bMirror = reflector.reflectType(B);
     ClassMirror cMirror = reflector.reflectType(C);
@@ -153,9 +153,9 @@ testReflector(Reflectable reflector, String desc) {
     expect(cMirror.superclass.superclass.superclass, bMirror);
     expect(dMirror.mixin, m1Mirror);
     expect(dMirror.superclass.mixin, aMirror);
-    expect(bMirror.superclass.declarations["foo"].owner, m1Mirror);
-    expect(bMirror.superclass.declarations["field"].owner, m1Mirror);
-    expect(bMirror.superclass.declarations["staticBar"], null);
+    expect(bMirror.superclass.declarations['foo'].owner, m1Mirror);
+    expect(bMirror.superclass.declarations['field'].owner, m1Mirror);
+    expect(bMirror.superclass.declarations['staticBar'], null);
     expect(bMirror.superclass.hasReflectedType, true);
     expect(bMirror.superclass.reflectedType, const TypeMatcher<Type>());
     expect(bMirror.superclass.superclass.reflectedType,
@@ -166,12 +166,12 @@ testReflector(Reflectable reflector, String desc) {
 Matcher throwsANoSuchCapabilityException =
     throwsA(const TypeMatcher<NoSuchCapabilityError>());
 
-main() {
+void main() {
   initializeReflectable();
 
   Set<Reflectable> allReflectors = const MetaReflector().allReflectors;
 
-  test("MetaReflector, set of reflectors", () {
+  test('MetaReflector, set of reflectors', () {
     expect(
         allReflectors,
         [
@@ -184,25 +184,25 @@ main() {
     expect(
         allReflectors.where((Reflectable reflector) =>
             reflector is AllReflectorsCapable &&
-            reflector.scopes.contains("polymer")),
+            reflector.scopes.contains('polymer')),
         [const Reflector(), const ReflectorUpwardsClosed()].toSet());
     expect(
         allReflectors.where((Reflectable reflector) =>
             reflector is AllReflectorsCapable &&
-            reflector.scopes.contains("observe")),
+            reflector.scopes.contains('observe')),
         [const Reflector2(), const ReflectorUpwardsClosed()].toSet());
   });
 
   allReflectors
       .where((Reflectable reflector) =>
           reflector is AllReflectorsCapable &&
-          reflector.scopes.contains("polymer"))
+          reflector.scopes.contains('polymer'))
       .forEach(
-          (Reflectable reflector) => testReflector(reflector, "$reflector"));
+          (Reflectable reflector) => testReflector(reflector, '$reflector'));
 
-  test("MetaReflector, select by name", () {
+  test('MetaReflector, select by name', () {
     var reflector2 = allReflectors
-        .firstWhere((Reflectable reflector) => "$reflector".contains("2"));
+        .firstWhere((Reflectable reflector) => '$reflector'.contains('2'));
     ClassMirror bMirror = reflector2.reflectType(B);
     ClassMirror cMirror = reflector2.reflectType(C);
     ClassMirror dMirror = reflector2.reflectType(D);
@@ -229,7 +229,7 @@ main() {
     expect(() => dMirror.superclass, throwsANoSuchCapabilityException);
   });
 
-  test("MetaReflector, select by capability", () {
+  test('MetaReflector, select by capability', () {
     var reflector = allReflectors.firstWhere((Reflectable reflector) {
       return (reflector.capabilities.any((ReflectCapability capability) =>
               capability is SuperclassQuantifyCapability &&

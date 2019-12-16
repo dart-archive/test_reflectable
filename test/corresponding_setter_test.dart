@@ -73,14 +73,14 @@ const staticInvokeFrReflector = StaticInvokeFrReflector();
 const topLevelInvokeFrReflector = TopLevelInvokeFrReflector();
 
 final Map<Type, String> description = <Type, String>{
-  InvokingMetaReflector: "Invoking",
-  InstanceInvokeMetaReflector: "InstanceInvoke",
-  StaticInvokeMetaReflector: "StaticInvoke",
-  TopLevelInvokeMetaReflector: "TopLevelInvoke",
-  InvokingFrReflector: "InvokingFr",
-  InstanceInvokeFrReflector: "InstanceInvokeFr",
-  StaticInvokeFrReflector: "StaticInvokeFr",
-  TopLevelInvokeFrReflector: "TopLevelInvokeFr"
+  InvokingMetaReflector: 'Invoking',
+  InstanceInvokeMetaReflector: 'InstanceInvoke',
+  StaticInvokeMetaReflector: 'StaticInvoke',
+  TopLevelInvokeMetaReflector: 'TopLevelInvoke',
+  InvokingFrReflector: 'InvokingFr',
+  InstanceInvokeFrReflector: 'InstanceInvokeFr',
+  StaticInvokeFrReflector: 'StaticInvokeFr',
+  TopLevelInvokeFrReflector: 'TopLevelInvokeFr'
 };
 
 class P {
@@ -139,28 +139,28 @@ Matcher throwsReflectableNoMethod =
     throwsA(TypeMatcher<ReflectableNoSuchMethodError>());
 
 void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad = false}) {
-  test("Instance invocation: ${description[mirrorSystem.runtimeType]}", () {
+  test('Instance invocation: ${description[mirrorSystem.runtimeType]}', () {
     reflectee.reset();
     InstanceMirror instanceMirror = mirrorSystem.reflect(reflectee);
     if (broad) {
-      expect(instanceMirror.invokeGetter("foo"), 44);
+      expect(instanceMirror.invokeGetter('foo'), 44);
     } else {
       expect(() {
-        instanceMirror.invokeGetter("foo");
+        instanceMirror.invokeGetter('foo');
       }, throwsReflectableNoMethod);
     }
-    expect(instanceMirror.invokeGetter("foobar"), 45);
+    expect(instanceMirror.invokeGetter('foobar'), 45);
     expect(reflectee.field, 46);
     if (broad) {
-      expect(instanceMirror.invokeSetter("foo=", 100), 100);
+      expect(instanceMirror.invokeSetter('foo=', 100), 100);
       expect(reflectee.field, 100);
     } else {
       expect(() {
-        instanceMirror.invokeSetter("foo=", 100);
+        instanceMirror.invokeSetter('foo=', 100);
       }, throwsReflectableNoMethod);
       expect(reflectee.field, 46);
     }
-    expect(instanceMirror.invokeSetter("foobar=", 100), 100);
+    expect(instanceMirror.invokeSetter('foobar=', 100), 100);
     expect(reflectee.field, 100);
   });
 }
@@ -168,39 +168,39 @@ void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad = false}) {
 void testStatic(Reflectable mirrorSystem, Type reflectee, void classResetter(),
     int classGetter(),
     {bool broad = false}) {
-  test("Static invocation: ${description[mirrorSystem.runtimeType]}", () {
+  test('Static invocation: ${description[mirrorSystem.runtimeType]}', () {
     classResetter();
     ClassMirror classMirror = mirrorSystem.reflectType(reflectee);
     if (broad) {
-      expect(classMirror.invokeGetter("foo"), 44);
+      expect(classMirror.invokeGetter('foo'), 44);
     } else {
       expect(() {
-        classMirror.invokeGetter("foo");
+        classMirror.invokeGetter('foo');
       }, throwsReflectableNoMethod);
     }
-    expect(classMirror.invokeGetter("foobar"), 45);
+    expect(classMirror.invokeGetter('foobar'), 45);
     expect(B.field, 46);
     if (broad) {
-      expect(classMirror.invokeSetter("foo=", 100), 100);
+      expect(classMirror.invokeSetter('foo=', 100), 100);
       expect(classGetter(), 100);
     } else {
       expect(() {
-        classMirror.invokeSetter("foo=", 100);
+        classMirror.invokeSetter('foo=', 100);
       }, throwsReflectableNoMethod);
       expect(classGetter(), 46);
     }
-    expect(classMirror.invokeSetter("foobar=", 100), 100);
+    expect(classMirror.invokeSetter('foobar=', 100), 100);
     expect(classGetter(), 100);
   });
 }
 
 void testTopLevel(Reflectable mirrorSystem) {
-  test("Top level invocation: ${description[mirrorSystem.runtimeType]}", () {
+  test('Top level invocation: ${description[mirrorSystem.runtimeType]}', () {
     LibraryMirror libraryMirror = mirrorSystem
-        .findLibrary("test_reflectable.test.corresponding_setter_test");
-    expect(libraryMirror.invokeGetter("fooBar"), 14);
+        .findLibrary('test_reflectable.test.corresponding_setter_test');
+    expect(libraryMirror.invokeGetter('fooBar'), 14);
     int oldValue = fooBarVariable;
-    libraryMirror.invokeSetter("fooBar=", oldValue + 1);
+    libraryMirror.invokeSetter('fooBar=', oldValue + 1);
     expect(fooBarVariable, oldValue + 1);
   });
 }
