@@ -7,7 +7,6 @@
 
 library test_reflectable.test.three_files_test;
 
-import 'package:reflectable/mirrors.dart';
 import 'package:test/test.dart';
 import 'three_files_dir/three_files_aux.dart';
 import 'three_files_meta.dart';

@@ -7,7 +7,6 @@
 
 library test_reflectable.test.prefixed_annotation_test;
 
-import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'prefixed_annotation_lib.dart' as prefix;
 import 'prefixed_annotation_test.reflectable.dart';
