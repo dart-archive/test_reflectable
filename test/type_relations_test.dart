@@ -11,6 +11,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'type_relations_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class MyReflectable extends Reflectable {
   const MyReflectable()
       : super(superclassQuantifyCapability, typeRelationsCapability);

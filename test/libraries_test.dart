@@ -40,7 +40,7 @@ class C {}
 @reflector3
 class D {}
 
-myFunction() => 'hello';
+String myFunction() => 'hello';
 
 class Test {
   const Test();
@@ -68,7 +68,7 @@ void main() {
   initializeReflectable();
 
   test('invoke function, getter', () {
-    LibraryMirror libraryMirror =
+    var libraryMirror =
         reflector.findLibrary('test_reflectable.test.libraries_test');
     expect(libraryMirror.simpleName, 'test_reflectable.test.libraries_test');
     expect(libraryMirror.invoke('myFunction', []), 'hello');

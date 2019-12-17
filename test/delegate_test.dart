@@ -84,10 +84,10 @@ Matcher throwsReflectableNoMethod =
 void main() {
   initializeReflectable();
 
-  A a = A();
-  B b = B(reflector.reflect(a));
-  B bName = B(nameReflector.reflect(a));
-  B bMeta = B(metaReflector.reflect(a));
+  var a = A();
+  var b = B(reflector.reflect(a));
+  var bName = B(nameReflector.reflect(a));
+  var bMeta = B(metaReflector.reflect(a));
 
   test('Delegate method, no arguments', () {
     expect(b.arg0(), a.arg0());

@@ -11,6 +11,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'proxy_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class ProxyReflectable extends Reflectable {
   const ProxyReflectable()
       : super(instanceInvokeCapability, declarationsCapability);
@@ -40,12 +42,12 @@ class Proxy implements A {
 }
 
 Map<Symbol, Function> createMethodMap(Type T) {
-  Map<Symbol, Function> methodMapForT = <Symbol, Function>{};
+  var methodMapForT = <Symbol, Function>{};
   ClassMirror classMirror = proxyReflectable.reflectType(T);
   Map<String, DeclarationMirror> declarations = classMirror.declarations;
 
   for (String name in declarations.keys) {
-    DeclarationMirror declaration = declarations[name];
+    var declaration = declarations[name];
     if (declaration is MethodMirror) {
       methodMapForT.putIfAbsent(
           Symbol(name),
@@ -66,8 +68,8 @@ void main() {
   Map<Symbol, Function> methodMapForA = createMethodMap(A);
 
   // Set up a single proxy for a single instance.
-  final A a = A();
-  Proxy proxy = Proxy(a, methodMapForA);
+  final a = A();
+  var proxy = Proxy(a, methodMapForA);
 
   // Use it.
   test('Using proxy', () {

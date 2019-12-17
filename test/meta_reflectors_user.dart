@@ -17,6 +17,8 @@ import 'package:test/test.dart';
 import 'meta_reflectors_meta.dart';
 import 'meta_reflectors_domain.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 void testReflector(Reflectable reflector, String desc) {
   test('Mixin, $desc', () {
     ClassMirror aMirror = reflector.reflectType(A);
@@ -53,7 +55,7 @@ Matcher throwsANoSuchCapabilityException =
 
 Iterable<String> getNames(Iterable<Reflectable> reflectables) {
   return reflectables.map((Reflectable reflector) {
-    String fullString = reflector.toString();
+    var fullString = reflector.toString();
     return fullString.substring(13, fullString.length - 1);
   });
 }

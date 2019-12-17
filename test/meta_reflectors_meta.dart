@@ -15,6 +15,8 @@ library test_reflectable.test.meta_reflectors_meta;
     AllReflectorsMetaReflector())
 import 'package:reflectable/reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 /// Used to provide access to reflectors associated with a given scope,
 /// which is a [String]. The connection is created by top level functions
 /// in the program with the annotation `@MetaReflector()`. Such a function

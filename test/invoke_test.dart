@@ -40,8 +40,8 @@ class A {
 void main() {
   initializeReflectable();
 
-  A instance = A();
-  InstanceMirror instanceMirror = myReflectable.reflect(instance);
+  var instance = A();
+  var instanceMirror = myReflectable.reflect(instance);
   test('invoke with no arguments', () {
     expect(instanceMirror.invoke('arg0', []), 42);
   });

@@ -11,6 +11,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'implicit_getter_setter_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class Reflector extends Reflectable {
   const Reflector()
       : super(declarationsCapability, const InvokingCapability('f'));

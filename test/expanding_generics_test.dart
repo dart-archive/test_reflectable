@@ -41,6 +41,6 @@ void main() {
   test('Reject reflection directly on instantiated generic class', () {
     expect(reflector.canReflectType(COfInt), false);
   });
-  InstanceMirror instanceMirror = reflector.reflect(C<int>());
+  var instanceMirror = reflector.reflect(C<int>());
   runTest('using `reflect`, then `type`.', instanceMirror.type);
 }

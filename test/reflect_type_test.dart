@@ -53,7 +53,7 @@ void main() {
     expect(
         () => reflector.findLibrary('test_reflectable.test.reflect_type_test'),
         throwsNoCapability);
-    LibraryMirror libraryMirror =
+    var libraryMirror =
         broadReflector.findLibrary('test_reflectable.test.reflect_type_test');
     expect(libraryMirror, isNotNull);
     expect(libraryMirror.uri.toString().contains('reflect_type_test'), true);

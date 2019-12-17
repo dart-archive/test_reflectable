@@ -12,6 +12,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'reflected_type_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class Reflector extends Reflectable {
   const Reflector()
       : super(reflectedTypeCapability, invokingCapability,
@@ -96,10 +98,8 @@ void main() {
     expect(opBracketMirror.parameters[0].reflectedType, int);
 
     expect(opBracketEqualsMirror.parameters.length, 2);
-    ParameterMirror opBracketEqualsParameter0 =
-        opBracketEqualsMirror.parameters[0];
-    ParameterMirror opBracketEqualsParameter1 =
-        opBracketEqualsMirror.parameters[1];
+    var opBracketEqualsParameter0 = opBracketEqualsMirror.parameters[0];
+    var opBracketEqualsParameter1 = opBracketEqualsMirror.parameters[1];
     expect(opBracketEqualsParameter0.reflectedType, int);
     expect(opBracketEqualsParameter1.reflectedType, dynamic);
   });
@@ -107,7 +107,7 @@ void main() {
   test('parameter reflected types, getters and setters', () {
     expect(getsetMirror.parameters.length, 0);
     expect(getsetEqualsMirror.parameters.length, 1);
-    ParameterMirror getsetEqualsParameter0 = getsetEqualsMirror.parameters[0];
+    var getsetEqualsParameter0 = getsetEqualsMirror.parameters[0];
     expect(getsetEqualsParameter0.reflectedType, String);
   });
 
@@ -118,26 +118,19 @@ void main() {
     expect(oneArgumentMirror.parameters[0].reflectedType, String);
 
     expect(optionalArgumentsMirror.parameters.length, 4);
-    ParameterMirror optionalArgumentsParameter0 =
-        optionalArgumentsMirror.parameters[0];
-    ParameterMirror optionalArgumentsParameter1 =
-        optionalArgumentsMirror.parameters[1];
-    ParameterMirror optionalArgumentsParameter2 =
-        optionalArgumentsMirror.parameters[2];
-    ParameterMirror optionalArgumentsParameter3 =
-        optionalArgumentsMirror.parameters[3];
+    var optionalArgumentsParameter0 = optionalArgumentsMirror.parameters[0];
+    var optionalArgumentsParameter1 = optionalArgumentsMirror.parameters[1];
+    var optionalArgumentsParameter2 = optionalArgumentsMirror.parameters[2];
+    var optionalArgumentsParameter3 = optionalArgumentsMirror.parameters[3];
     expect(optionalArgumentsParameter0.reflectedType, A);
     expect(optionalArgumentsParameter1.reflectedType, double);
     expect(optionalArgumentsParameter2.reflectedType, Reflector);
     expect(optionalArgumentsParameter3.reflectedType, dynamic);
 
     expect(namedArgumentsMirror.parameters.length, 3);
-    ParameterMirror namedArgumentsParameter0 =
-        namedArgumentsMirror.parameters[0];
-    ParameterMirror namedArgumentsParameter1 =
-        namedArgumentsMirror.parameters[1];
-    ParameterMirror namedArgumentsParameter2 =
-        namedArgumentsMirror.parameters[2];
+    var namedArgumentsParameter0 = namedArgumentsMirror.parameters[0];
+    var namedArgumentsParameter1 = namedArgumentsMirror.parameters[1];
+    var namedArgumentsParameter2 = namedArgumentsMirror.parameters[2];
     expect(namedArgumentsParameter0.reflectedType, String);
     expect(namedArgumentsParameter1.reflectedType, List);
     expect(namedArgumentsParameter2.reflectedType, String);
@@ -146,8 +139,7 @@ void main() {
   test('parameter reflected types, static getters and setters', () {
     expect(staticGetsetMirror.parameters.length, 0);
     expect(staticGetsetEqualsMirror.parameters.length, 1);
-    ParameterMirror staticGetsetEqualsParameter0 =
-        staticGetsetEqualsMirror.parameters[0];
+    var staticGetsetEqualsParameter0 = staticGetsetEqualsMirror.parameters[0];
     expect(staticGetsetEqualsParameter0.reflectedType,
         const TypeValue<List<String>>().type);
   });

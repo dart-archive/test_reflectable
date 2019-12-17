@@ -52,7 +52,7 @@ void runTestNoBounds(String message, ClassMirror classMirror) {
   test('Type variables, no bounds capability, $message', () {
     expect(classMirror.typeVariables.length, 2);
 
-    TypeVariableMirror xMirror = classMirror.typeVariables[0];
+    var xMirror = classMirror.typeVariables[0];
     expect(xMirror.simpleName, 'X');
     expect(
         xMirror.qualifiedName, 'test_reflectable.test.type_variable_test.B.X');
@@ -63,7 +63,7 @@ void runTestNoBounds(String message, ClassMirror classMirror) {
     expect(() => xMirror.upperBound, throwsANoSuchCapabilityException);
     expect(xMirror.isStatic, false);
 
-    TypeVariableMirror yMirror = classMirror.typeVariables[1];
+    var yMirror = classMirror.typeVariables[1];
     expect(yMirror.simpleName, 'Y');
     expect(
         yMirror.qualifiedName, 'test_reflectable.test.type_variable_test.B.Y');
@@ -85,10 +85,10 @@ void runTest(String message, ClassMirror bMirror, ClassMirror cMirror,
     expect(dMirror.typeVariables.length, 1);
     expect(eMirror.typeVariables.length, 0);
 
-    TypeVariableMirror bParameter0Mirror = bMirror.typeVariables[0];
-    TypeVariableMirror bParameter1Mirror = bMirror.typeVariables[1];
-    TypeVariableMirror cParameterMirror = cMirror.typeVariables[0];
-    TypeVariableMirror dParameterMirror = dMirror.typeVariables[0];
+    var bParameter0Mirror = bMirror.typeVariables[0];
+    var bParameter1Mirror = bMirror.typeVariables[1];
+    var cParameterMirror = cMirror.typeVariables[0];
+    var dParameterMirror = dMirror.typeVariables[0];
 
     expect(bParameter0Mirror.upperBound.reflectedType, Object);
     expect(bParameter1Mirror.upperBound.reflectedType, A);
@@ -109,20 +109,20 @@ Matcher throwsANoSuchCapabilityException =
 void main() {
   initializeReflectable();
 
-  B<int, A> b = B<int, A>();
+  var b = B<int, A>();
 
   test('Type variables, no type variable capability', () {
-    ClassMirror classMirror = noTypeVariablesReflector.reflect(b).type;
+    var classMirror = noTypeVariablesReflector.reflect(b).type;
     expect(() => classMirror.typeVariables, throwsANoSuchCapabilityException);
   });
 
-  LibraryMirror noBoundsLibraryMirror =
+  var noBoundsLibraryMirror =
       noBoundsReflector.findLibrary('test_reflectable.test.type_variable_test');
   runTestNoBounds('generic class', noBoundsLibraryMirror.declarations['B']);
   runTestNoBounds(
       'instantiated generic class', noBoundsReflector.reflect(b).type);
 
-  LibraryMirror libraryMirror =
+  var libraryMirror =
       reflector.findLibrary('test_reflectable.test.type_variable_test');
   runTest(
       'static',

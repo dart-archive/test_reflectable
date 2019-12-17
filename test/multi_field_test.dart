@@ -11,6 +11,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'multi_field_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class Reflector extends Reflectable {
   const Reflector()
       : super(reflectedTypeCapability, invokingCapability,
@@ -53,11 +55,11 @@ final Matcher throwsReflectableNoMethod =
 void main() {
   initializeReflectable();
 
-  A theA = A();
-  B theB = B();
-  InstanceMirror aInstanceMirror = reflector.reflect(theA),
+  var theA = A();
+  var theB = B();
+  var aInstanceMirror = reflector.reflect(theA),
       bInstanceMirror = metaReflector.reflect(theB);
-  ClassMirror aClassMirror = aInstanceMirror.type,
+  var aClassMirror = aInstanceMirror.type,
       bClassMirror = bInstanceMirror.type;
 
   test('multiple declarations with one type annotation, read', () {
@@ -93,19 +95,19 @@ void main() {
     Map<String, DeclarationMirror> declarations = aClassMirror.declarations;
     // Four visible declarations, one implicit default constructor.
     expect(declarations.length, 5);
-    DeclarationMirror iDeclaration = declarations['i'];
+    var iDeclaration = declarations['i'];
     expect(iDeclaration is VariableMirror && iDeclaration.reflectedType == int,
         true);
     expect(iDeclaration is VariableMirror && iDeclaration.isStatic, false);
-    DeclarationMirror jDeclaration = declarations['j'];
+    var jDeclaration = declarations['j'];
     expect(jDeclaration is VariableMirror && jDeclaration.reflectedType == int,
         true);
     expect(jDeclaration is VariableMirror && jDeclaration.isStatic, false);
-    DeclarationMirror kDeclaration = declarations['k'];
+    var kDeclaration = declarations['k'];
     expect(kDeclaration is VariableMirror && kDeclaration.isStatic, true);
     expect(kDeclaration is VariableMirror && kDeclaration.reflectedType == int,
         true);
-    DeclarationMirror lDeclaration = declarations['l'];
+    var lDeclaration = declarations['l'];
     expect(lDeclaration is VariableMirror && lDeclaration.isStatic, true);
     expect(lDeclaration is VariableMirror && lDeclaration.reflectedType == int,
         true);

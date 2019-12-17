@@ -36,15 +36,15 @@ void main() {
   test('Parameter mirrors', () {
     ClassMirror cm = const Reflector().reflectType(A);
     MethodMirror f1 = cm.declarations['f1'];
-    List<ParameterMirror> f1Parameters = f1.parameters;
+    var f1Parameters = f1.parameters;
     MethodMirror f2 = cm.declarations['f2'];
-    List<ParameterMirror> f2Parameters = f2.parameters;
+    var f2Parameters = f2.parameters;
     MethodMirror f3 = cm.declarations['f3'];
-    List<ParameterMirror> f3Parameters = f3.parameters;
+    var f3Parameters = f3.parameters;
     MethodMirror f4 = cm.declarations['f4'];
-    List<ParameterMirror> f4Parameters = f4.parameters;
+    var f4Parameters = f4.parameters;
     MethodMirror constructor = cm.declarations['A'];
-    List<ParameterMirror> constructorParameters = constructor.parameters;
+    var constructorParameters = constructor.parameters;
 
     expect(f1Parameters, []);
 

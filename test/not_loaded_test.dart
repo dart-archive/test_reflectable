@@ -14,6 +14,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'not_loaded_lib.dart' deferred as not_loaded; // ignore:unused_import
 
+// ignore_for_file: omit_local_variable_types
+
 class Reflector extends Reflectable {
   const Reflector() : super(libraryCapability);
 }
@@ -25,8 +27,7 @@ void main() {
     LibraryMirror libraryMirror =
         reflector.findLibrary('test_reflectable.test.not_loaded_test');
     bool foundIt = false;
-    for (LibraryDependencyMirror dependency in
-             libraryMirror.libraryDependencies) {
+    for (var dependency in libraryMirror.libraryDependencies) {
       if (dependency.prefix == 'not_loaded') {
         foundIt = true;
         expect(dependency.targetLibrary, null);

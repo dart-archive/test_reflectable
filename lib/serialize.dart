@@ -7,6 +7,8 @@ library test_reflectable.serialize;
 
 import 'package:reflectable/reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class Serializable extends Reflectable {
   const Serializable()
       : super(instanceInvokeCapability, const NewInstanceCapability(r'^$'),
@@ -28,7 +30,7 @@ class Serializer {
     // `Serializable` inherits support for finding all classes carrying itself
     // as metadata from `Reflectable`, and they are exactly the classes that we
     // wish to provide serialization support for.
-    for (ClassMirror classMirror in serializable.annotatedClasses) {
+    for (var classMirror in serializable.annotatedClasses) {
       classes[classMirror.qualifiedName] = classMirror;
     }
   }
@@ -64,7 +66,7 @@ class Serializer {
     ClassMirror classMirror = im.type;
     result['type'] = classMirror.qualifiedName;
     result['fields'] = {};
-    for (String fieldName in _getPublicFieldNames(classMirror)) {
+    for (var fieldName in _getPublicFieldNames(classMirror)) {
       result['fields'][fieldName] = serialize(im.invokeGetter(fieldName));
     }
     return result;

@@ -8,6 +8,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'mixin_application_static_invoke_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class Reflector extends Reflectable {
   const Reflector()
       : super(invokingCapability, declarationsCapability, libraryCapability,

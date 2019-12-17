@@ -38,7 +38,7 @@ typedef H = String Function<X>(X);
 void main() {
   initializeReflectable();
 
-  LibraryMirror libraryMirror = reflector
+  var libraryMirror = reflector
       .findLibrary('test_reflectable.test.library_declarations_test');
   var declarations = libraryMirror.declarations;
 

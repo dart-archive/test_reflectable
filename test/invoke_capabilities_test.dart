@@ -141,7 +141,7 @@ void testInstance(r.Reflectable mirrorSystem, A reflectee,
     {bool broad = false}) {
   test('Instance invocation: ${description[mirrorSystem.runtimeType]}', () {
     reflectee.reset();
-    r.InstanceMirror instanceMirror = mirrorSystem.reflect(reflectee);
+    var instanceMirror = mirrorSystem.reflect(reflectee);
     if (broad) {
       expect(instanceMirror.invoke('foo', []), 42);
     } else {
@@ -235,7 +235,7 @@ void testReflect(r.Reflectable mirrorSystem, B reflectee) {
 void main() {
   initializeReflectable();
 
-  A a = A();
+  var a = A();
   testInstance(invokingReflector, a, broad: true);
   testInstance(instanceInvokeReflector, a, broad: true);
   testInstance(invokingFrReflector, a);

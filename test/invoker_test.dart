@@ -11,6 +11,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'invoker_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class MyReflectable extends Reflectable {
   const MyReflectable() : super(invokingCapability, typeCapability);
 }
@@ -30,8 +32,8 @@ class A {
 void main() {
   initializeReflectable();
 
-  A instance1 = A(0);
-  A instance2 = A(1);
+  var instance1 = A(0);
+  var instance2 = A(1);
   ClassMirror classMirror = myReflectable.reflectType(A);
   test('invoker with no arguments', () {
     Function arg0Invoker = classMirror.invoker('arg0');

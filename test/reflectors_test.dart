@@ -15,6 +15,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'reflectors_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 /// Used to get access to all reflectors.
 class AllReflectorsMetaReflector extends Reflectable {
   const AllReflectorsMetaReflector()

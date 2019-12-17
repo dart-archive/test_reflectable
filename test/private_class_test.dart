@@ -14,6 +14,8 @@ import 'package:test/test.dart';
 import 'private_class_library.dart';
 import 'private_class_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class PrivacyReflectable extends Reflectable {
   const PrivacyReflectable()
       : super(
@@ -37,7 +39,7 @@ final Set<String> libraryClassNames = {
 void testPrivacyViolation(PublicClass object, String description,
     {bool doReflect = true}) {
   test('Privacy, $description', () {
-    bool canReflect = privacyReflectable.canReflect(object);
+    var canReflect = privacyReflectable.canReflect(object);
     expect(canReflect, doReflect);
     if (canReflect) {
       // Check that we can reflect upon [object], and that its class

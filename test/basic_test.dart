@@ -11,6 +11,8 @@ import 'package:reflectable/reflectable.dart' as r;
 import 'package:reflectable/capability.dart';
 import 'basic_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class MyReflectable extends r.Reflectable {
   const MyReflectable()
       : super(instanceInvokeCapability, newInstanceCapability,
@@ -121,7 +123,7 @@ void main() {
   var bMethod = 'bMethod';
   var cMethod = 'cMethod';
 
-  r.Reflectable reflectable = const MyReflectable();
+  var reflectable = const MyReflectable();
 
   r.ClassMirror aClass = reflectable.reflectType(A);
   r.ClassMirror bClass = reflectable.reflectType(B);

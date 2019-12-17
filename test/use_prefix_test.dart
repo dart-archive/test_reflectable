@@ -25,8 +25,7 @@ void main() {
   initializeReflectable();
 
   test('reflect', () {
-    r.InstanceMirror instanceMirror = myReflectable.reflect(A());
+    var instanceMirror = myReflectable.reflect(A());
     expect(instanceMirror == null, isFalse);
   });
 }
-

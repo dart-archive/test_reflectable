@@ -13,6 +13,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:reflectable/capability.dart';
 import 'corresponding_setter_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 const String methodRegExp = r'f.*r$';
 
 class InvokingMetaReflector extends Reflectable {
@@ -141,7 +143,7 @@ Matcher throwsReflectableNoMethod =
 void testInstance(Reflectable mirrorSystem, A reflectee, {bool broad = false}) {
   test('Instance invocation: ${description[mirrorSystem.runtimeType]}', () {
     reflectee.reset();
-    InstanceMirror instanceMirror = mirrorSystem.reflect(reflectee);
+    var instanceMirror = mirrorSystem.reflect(reflectee);
     if (broad) {
       expect(instanceMirror.invokeGetter('foo'), 44);
     } else {
@@ -196,7 +198,7 @@ void testStatic(Reflectable mirrorSystem, Type reflectee, void Function() classR
 
 void testTopLevel(Reflectable mirrorSystem) {
   test('Top level invocation: ${description[mirrorSystem.runtimeType]}', () {
-    LibraryMirror libraryMirror = mirrorSystem
+    var libraryMirror = mirrorSystem
         .findLibrary('test_reflectable.test.corresponding_setter_test');
     expect(libraryMirror.invokeGetter('fooBar'), 14);
     int oldValue = fooBarVariable;
@@ -208,7 +210,7 @@ void testTopLevel(Reflectable mirrorSystem) {
 void main() {
   initializeReflectable();
 
-  A a = A();
+  var a = A();
   testInstance(invokingMetaReflector, a, broad: true);
   testInstance(instanceInvokeMetaReflector, a, broad: true);
   testInstance(invokingFrReflector, a);

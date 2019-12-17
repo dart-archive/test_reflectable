@@ -126,7 +126,7 @@ void testDynamic(B o, String description) {
   test('Dynamic invocation $description', () {
     expect(instanceReflector.canReflect(o), true);
     expect(instanceReflector.canReflectType(o.runtimeType), true);
-    r.InstanceMirror instanceMirror = instanceReflector.reflect(o);
+    var instanceMirror = instanceReflector.reflect(o);
     expect(instanceMirror.invoke('foo', []), 42);
     expect(instanceMirror.invoke('boo', []), 47);
     expect(() => instanceMirror.invoke('bar', []), throwsReflectableNoMethod);

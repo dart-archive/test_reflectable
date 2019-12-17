@@ -10,6 +10,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'polymer_basic_needs_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 /// This class was used to separate Jacob Macdonald's Polymer example from
 /// the package `smoke`, such that it was made possible to create a variant
 /// of his example building on both `reflectable` and `smoke`, making the
@@ -66,17 +68,17 @@ List<ThinDeclarationMirror> buildMirrors(Type dartType) {
 }
 
 Object read(Object instance, String name) {
-  InstanceMirror mirror = myReflectable.reflect(instance);
+  var mirror = myReflectable.reflect(instance);
   return mirror.invokeGetter(name);
 }
 
 void write(Object instance, String name, Object value) {
-  InstanceMirror mirror = myReflectable.reflect(instance);
+  var mirror = myReflectable.reflect(instance);
   mirror.invokeSetter(name, value);
 }
 
 Object invoke(Object instance, String name, List<Object> newArgs) {
-  InstanceMirror mirror = myReflectable.reflect(instance);
+  var mirror = myReflectable.reflect(instance);
   // TODO(eernst) future: fix up the `newArgs` to emulate `adjust: true`.
   return mirror.invoke(name, newArgs);
 }

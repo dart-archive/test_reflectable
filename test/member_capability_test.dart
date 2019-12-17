@@ -72,8 +72,8 @@ void main() {
   initializeReflectable();
 
   test('invokingCapability', () {
-    Foo foo = Foo();
-    InstanceMirror fooMirror = myReflectable.reflect(foo);
+    var foo = Foo();
+    var fooMirror = myReflectable.reflect(foo);
     expect(fooMirror.invokeGetter('a'), 1);
     expect(fooMirror.invokeSetter('a', 11), 11);
     expect(fooMirror.invokeGetter('a'), 11);
@@ -87,8 +87,8 @@ void main() {
   });
 
   test("InstanceInvokeCapability('x')", () {
-    Foo2 foo = Foo2();
-    InstanceMirror fooMirror = myReflectable2.reflect(foo);
+    var foo = Foo2();
+    var fooMirror = myReflectable2.reflect(foo);
     expect(() => fooMirror.invokeGetter('a'), throwsReflectableNoMethod);
     expect(() => fooMirror.invokeSetter('a', 11), throwsReflectableNoMethod);
     expect(fooMirror.invokeGetter('b'), 2);
@@ -101,8 +101,8 @@ void main() {
   });
 
   test('InstanceInvokeMetaCapability(Bar)', () {
-    Foo3 foo = Foo3();
-    InstanceMirror fooMirror = myReflectable3.reflect(foo);
+    var foo = Foo3();
+    var fooMirror = myReflectable3.reflect(foo);
     expect(() => fooMirror.invokeGetter('a'), throwsReflectableNoMethod);
     expect(() => fooMirror.invokeSetter('a', 11), throwsReflectableNoMethod);
     expect(fooMirror.invokeGetter('b'), 2);

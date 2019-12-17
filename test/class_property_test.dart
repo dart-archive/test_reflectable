@@ -12,6 +12,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'class_property_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class Reflector extends Reflectable {
   const Reflector()
       : super(

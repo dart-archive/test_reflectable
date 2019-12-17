@@ -8,6 +8,8 @@ import 'package:reflectable/reflectable.dart' as r;
 import 'package:test/test.dart';
 import 'no_such_capability_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 class MyReflectable extends r.Reflectable {
   const MyReflectable()
       : super(const r.StaticInvokeCapability('nonExisting'),

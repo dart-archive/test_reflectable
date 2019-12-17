@@ -28,7 +28,7 @@ class A {
   bool _equalsHandlingLists(dynamic x, dynamic y) {
     if (x is List) {
       if (y is! List) return false;
-      for (int i = 0; i < x.length; i++) {
+      for (var i = 0; i < x.length; i++) {
         if (!_equalsHandlingLists(x[i], y[i])) return false;
       }
       return true;
@@ -71,7 +71,7 @@ class B extends A {
 void main() {
   initializeReflectable();
 
-  Serializer serializer = Serializer();
+  final serializer = Serializer();
   test('Round trip test', () {
     var input = A.fromValues(
         'one', A.fromValues(2, [3, A.fromValues(4, 5)]));

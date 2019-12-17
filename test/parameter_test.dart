@@ -23,6 +23,8 @@ import 'package:reflectable/reflectable.dart';
 import 'package:test/test.dart';
 import 'parameter_test.reflectable.dart';
 
+// ignore_for_file: omit_local_variable_types
+
 // TODO(eernst) implement: Avoid testing the same things twice in this test and
 // in 'parameter_mirrors_test.dart'.
 

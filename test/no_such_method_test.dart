@@ -39,8 +39,8 @@ Matcher throwsReflectableNoSuchMethod =
 void main() {
   initializeReflectable();
 
-  InstanceMirror aMirror = reflector.reflect(A());
-  LibraryMirror libraryMirror =
+  var aMirror = reflector.reflect(A());
+  var libraryMirror =
       reflector.findLibrary('test_reflectable.test.no_such_method_test');
 
   // Check that reflectable invocations of non-existing methods causes
