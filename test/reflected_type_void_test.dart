@@ -30,7 +30,7 @@ void main() {
   ClassMirror aMirror = reflector.reflectType(A);
   Map<String, DeclarationMirror> declarations = aMirror.declarations;
   MethodMirror mMirror = declarations['m'];
-  
+
   test('Reflecting types involving `void`', () {
     expect(mMirror.parameters[0].hasReflectedType, true);
     expect(mMirror.parameters[0].reflectedType,
