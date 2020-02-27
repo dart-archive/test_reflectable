@@ -38,7 +38,7 @@ measure_output: build
 	@./measure_output --include-js --include-source-tree --include-unminified
 
 build:
-	( cd ..; pub run build_runner build test )
+	( cd ..; pub run build_runner build )
 
 test:
 	( cd ..; pub run build_runner test )
